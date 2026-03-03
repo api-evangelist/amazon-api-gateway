@@ -1,4 +1,6 @@
 name: Amazon API Gateway
+segments:
+  - Gateways
 description: Amazon API Gateway is a fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale.
 url: https://aws.amazon.com/api-gateway/
 type: Index
