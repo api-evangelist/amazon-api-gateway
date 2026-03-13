@@ -1,0 +1,713 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "apigw": "https://docs.aws.amazon.com/apigateway/latest/api/",
+    "aws": "https://aws.amazon.com/",
+    "iam": "https://docs.aws.amazon.com/IAM/latest/UserGuide/",
+    "hydra": "http://www.w3.org/ns/hydra/core#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+
+    "RestApi": {
+      "@id": "apigw:API_GetRestApi",
+      "@context": {
+        "id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "version": {
+          "@id": "schema:version",
+          "@type": "xsd:string"
+        },
+        "createdDate": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "apiKeySource": {
+          "@id": "apigw:apiKeySource",
+          "@type": "xsd:string"
+        },
+        "binaryMediaTypes": {
+          "@id": "apigw:binaryMediaTypes",
+          "@container": "@list"
+        },
+        "minimumCompressionSize": {
+          "@id": "apigw:minimumCompressionSize",
+          "@type": "xsd:integer"
+        },
+        "endpointConfiguration": {
+          "@id": "apigw:endpointConfiguration",
+          "@type": "apigw:EndpointConfiguration"
+        },
+        "policy": {
+          "@id": "apigw:resourcePolicy",
+          "@type": "xsd:string"
+        },
+        "tags": {
+          "@id": "schema:keywords",
+          "@container": "@index"
+        },
+        "disableExecuteApiEndpoint": {
+          "@id": "apigw:disableExecuteApiEndpoint",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "Resource": {
+      "@id": "apigw:API_GetResource",
+      "@context": {
+        "id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "parentId": {
+          "@id": "apigw:parentResource",
+          "@type": "xsd:string"
+        },
+        "pathPart": {
+          "@id": "apigw:pathPart",
+          "@type": "xsd:string"
+        },
+        "path": {
+          "@id": "schema:urlTemplate",
+          "@type": "xsd:string"
+        },
+        "resourceMethods": {
+          "@id": "apigw:resourceMethods",
+          "@container": "@index"
+        }
+      }
+    },
+
+    "Method": {
+      "@id": "apigw:API_GetMethod",
+      "@context": {
+        "httpMethod": {
+          "@id": "schema:httpMethod",
+          "@type": "xsd:string"
+        },
+        "authorizationType": {
+          "@id": "apigw:authorizationType",
+          "@type": "xsd:string"
+        },
+        "authorizerId": {
+          "@id": "apigw:authorizer",
+          "@type": "@id"
+        },
+        "apiKeyRequired": {
+          "@id": "apigw:apiKeyRequired",
+          "@type": "xsd:boolean"
+        },
+        "operationName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "requestValidatorId": {
+          "@id": "apigw:requestValidator",
+          "@type": "@id"
+        },
+        "requestParameters": {
+          "@id": "apigw:requestParameters",
+          "@container": "@index"
+        },
+        "requestModels": {
+          "@id": "apigw:requestModels",
+          "@container": "@index"
+        },
+        "methodResponses": {
+          "@id": "apigw:methodResponses",
+          "@container": "@index"
+        },
+        "methodIntegration": {
+          "@id": "apigw:integration",
+          "@type": "apigw:Integration"
+        }
+      }
+    },
+
+    "Integration": {
+      "@id": "apigw:API_GetIntegration",
+      "@context": {
+        "type": {
+          "@id": "apigw:integrationType",
+          "@type": "xsd:string"
+        },
+        "httpMethod": {
+          "@id": "apigw:integrationHttpMethod",
+          "@type": "xsd:string"
+        },
+        "uri": {
+          "@id": "apigw:integrationUri",
+          "@type": "@id"
+        },
+        "connectionType": {
+          "@id": "apigw:connectionType",
+          "@type": "xsd:string"
+        },
+        "connectionId": {
+          "@id": "apigw:vpcLinkId",
+          "@type": "xsd:string"
+        },
+        "credentials": {
+          "@id": "apigw:integrationCredentials",
+          "@type": "xsd:string"
+        },
+        "requestParameters": {
+          "@id": "apigw:integrationRequestParameters",
+          "@container": "@index"
+        },
+        "requestTemplates": {
+          "@id": "apigw:requestTemplates",
+          "@container": "@index"
+        },
+        "passthroughBehavior": {
+          "@id": "apigw:passthroughBehavior",
+          "@type": "xsd:string"
+        },
+        "contentHandling": {
+          "@id": "apigw:contentHandling",
+          "@type": "xsd:string"
+        },
+        "timeoutInMillis": {
+          "@id": "apigw:timeoutInMillis",
+          "@type": "xsd:integer"
+        },
+        "cacheNamespace": {
+          "@id": "apigw:cacheNamespace",
+          "@type": "xsd:string"
+        },
+        "cacheKeyParameters": {
+          "@id": "apigw:cacheKeyParameters",
+          "@container": "@list"
+        }
+      }
+    },
+
+    "Stage": {
+      "@id": "apigw:API_GetStage",
+      "@context": {
+        "stageName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "deploymentId": {
+          "@id": "apigw:deployment",
+          "@type": "@id"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "clientCertificateId": {
+          "@id": "apigw:clientCertificate",
+          "@type": "xsd:string"
+        },
+        "cacheClusterEnabled": {
+          "@id": "apigw:cacheClusterEnabled",
+          "@type": "xsd:boolean"
+        },
+        "cacheClusterSize": {
+          "@id": "apigw:cacheClusterSize",
+          "@type": "xsd:string"
+        },
+        "variables": {
+          "@id": "apigw:stageVariables",
+          "@container": "@index"
+        },
+        "tracingEnabled": {
+          "@id": "apigw:tracingEnabled",
+          "@type": "xsd:boolean"
+        },
+        "webAclArn": {
+          "@id": "apigw:webAclArn",
+          "@type": "xsd:string"
+        },
+        "tags": {
+          "@id": "schema:keywords",
+          "@container": "@index"
+        },
+        "createdDate": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "lastUpdatedDate": {
+          "@id": "schema:dateModified",
+          "@type": "xsd:dateTime"
+        },
+        "accessLogSettings": {
+          "@id": "apigw:accessLogSettings",
+          "@type": "apigw:AccessLogSettings"
+        },
+        "canarySettings": {
+          "@id": "apigw:canarySettings",
+          "@type": "apigw:CanarySettings"
+        }
+      }
+    },
+
+    "Deployment": {
+      "@id": "apigw:API_GetDeployment",
+      "@context": {
+        "id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "createdDate": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "apiSummary": {
+          "@id": "apigw:apiSummary",
+          "@container": "@index"
+        }
+      }
+    },
+
+    "Authorizer": {
+      "@id": "apigw:API_GetAuthorizer",
+      "@context": {
+        "id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "type": {
+          "@id": "apigw:authorizerType",
+          "@type": "xsd:string"
+        },
+        "providerARNs": {
+          "@id": "apigw:providerARNs",
+          "@container": "@list"
+        },
+        "authType": {
+          "@id": "apigw:authType",
+          "@type": "xsd:string"
+        },
+        "authorizerUri": {
+          "@id": "apigw:authorizerUri",
+          "@type": "@id"
+        },
+        "authorizerCredentials": {
+          "@id": "apigw:authorizerCredentials",
+          "@type": "xsd:string"
+        },
+        "identitySource": {
+          "@id": "apigw:identitySource",
+          "@type": "xsd:string"
+        },
+        "identityValidationExpression": {
+          "@id": "apigw:identityValidationExpression",
+          "@type": "xsd:string"
+        },
+        "authorizerResultTtlInSeconds": {
+          "@id": "apigw:authorizerResultTtlInSeconds",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "Model": {
+      "@id": "apigw:API_GetModel",
+      "@context": {
+        "id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "schema": {
+          "@id": "apigw:modelSchema",
+          "@type": "xsd:string"
+        },
+        "contentType": {
+          "@id": "schema:encodingFormat",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "ApiKey": {
+      "@id": "apigw:API_GetApiKey",
+      "@context": {
+        "id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "enabled": {
+          "@id": "apigw:enabled",
+          "@type": "xsd:boolean"
+        },
+        "value": {
+          "@id": "apigw:apiKeyValue",
+          "@type": "xsd:string"
+        },
+        "customerId": {
+          "@id": "apigw:customerId",
+          "@type": "xsd:string"
+        },
+        "stageKeys": {
+          "@id": "apigw:stageKeys",
+          "@container": "@list"
+        },
+        "createdDate": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "lastUpdatedDate": {
+          "@id": "schema:dateModified",
+          "@type": "xsd:dateTime"
+        },
+        "tags": {
+          "@id": "schema:keywords",
+          "@container": "@index"
+        }
+      }
+    },
+
+    "UsagePlan": {
+      "@id": "apigw:API_GetUsagePlan",
+      "@context": {
+        "id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "apiStages": {
+          "@id": "apigw:apiStages",
+          "@container": "@list"
+        },
+        "throttle": {
+          "@id": "apigw:throttleSettings",
+          "@type": "apigw:ThrottleSettings"
+        },
+        "quota": {
+          "@id": "apigw:quotaSettings",
+          "@type": "apigw:QuotaSettings"
+        },
+        "productCode": {
+          "@id": "apigw:productCode",
+          "@type": "xsd:string"
+        },
+        "tags": {
+          "@id": "schema:keywords",
+          "@container": "@index"
+        }
+      }
+    },
+
+    "DomainName": {
+      "@id": "apigw:API_GetDomainName",
+      "@context": {
+        "domainName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "certificateArn": {
+          "@id": "apigw:certificateArn",
+          "@type": "xsd:string"
+        },
+        "certificateName": {
+          "@id": "apigw:certificateName",
+          "@type": "xsd:string"
+        },
+        "regionalDomainName": {
+          "@id": "apigw:regionalDomainName",
+          "@type": "xsd:string"
+        },
+        "regionalCertificateArn": {
+          "@id": "apigw:regionalCertificateArn",
+          "@type": "xsd:string"
+        },
+        "distributionDomainName": {
+          "@id": "apigw:distributionDomainName",
+          "@type": "xsd:string"
+        },
+        "endpointConfiguration": {
+          "@id": "apigw:endpointConfiguration",
+          "@type": "apigw:EndpointConfiguration"
+        },
+        "domainNameStatus": {
+          "@id": "apigw:domainNameStatus",
+          "@type": "xsd:string"
+        },
+        "securityPolicy": {
+          "@id": "apigw:securityPolicy",
+          "@type": "xsd:string"
+        },
+        "tags": {
+          "@id": "schema:keywords",
+          "@container": "@index"
+        }
+      }
+    },
+
+    "VpcLink": {
+      "@id": "apigw:API_GetVpcLink",
+      "@context": {
+        "id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "targetArns": {
+          "@id": "apigw:targetArns",
+          "@container": "@list"
+        },
+        "status": {
+          "@id": "apigw:vpcLinkStatus",
+          "@type": "xsd:string"
+        },
+        "statusMessage": {
+          "@id": "apigw:vpcLinkStatusMessage",
+          "@type": "xsd:string"
+        },
+        "tags": {
+          "@id": "schema:keywords",
+          "@container": "@index"
+        }
+      }
+    },
+
+    "EndpointConfiguration": {
+      "@id": "apigw:EndpointConfiguration",
+      "@context": {
+        "types": {
+          "@id": "apigw:endpointTypes",
+          "@container": "@list"
+        },
+        "vpcEndpointIds": {
+          "@id": "apigw:vpcEndpointIds",
+          "@container": "@list"
+        }
+      }
+    },
+
+    "ThrottleSettings": {
+      "@id": "apigw:ThrottleSettings",
+      "@context": {
+        "burstLimit": {
+          "@id": "apigw:burstLimit",
+          "@type": "xsd:integer"
+        },
+        "rateLimit": {
+          "@id": "apigw:rateLimit",
+          "@type": "xsd:double"
+        }
+      }
+    },
+
+    "QuotaSettings": {
+      "@id": "apigw:QuotaSettings",
+      "@context": {
+        "limit": {
+          "@id": "apigw:quotaLimit",
+          "@type": "xsd:integer"
+        },
+        "offset": {
+          "@id": "apigw:quotaOffset",
+          "@type": "xsd:integer"
+        },
+        "period": {
+          "@id": "apigw:quotaPeriod",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "AccessLogSettings": {
+      "@id": "apigw:AccessLogSettings",
+      "@context": {
+        "format": {
+          "@id": "apigw:accessLogFormat",
+          "@type": "xsd:string"
+        },
+        "destinationArn": {
+          "@id": "apigw:accessLogDestinationArn",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "CanarySettings": {
+      "@id": "apigw:CanarySettings",
+      "@context": {
+        "percentTraffic": {
+          "@id": "apigw:canaryPercentTraffic",
+          "@type": "xsd:double"
+        },
+        "deploymentId": {
+          "@id": "apigw:canaryDeploymentId",
+          "@type": "xsd:string"
+        },
+        "stageVariableOverrides": {
+          "@id": "apigw:stageVariableOverrides",
+          "@container": "@index"
+        },
+        "useStageCache": {
+          "@id": "apigw:useStageCache",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "RequestValidator": {
+      "@id": "apigw:API_GetRequestValidator",
+      "@context": {
+        "id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "validateRequestBody": {
+          "@id": "apigw:validateRequestBody",
+          "@type": "xsd:boolean"
+        },
+        "validateRequestParameters": {
+          "@id": "apigw:validateRequestParameters",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "GatewayResponse": {
+      "@id": "apigw:API_GetGatewayResponse",
+      "@context": {
+        "responseType": {
+          "@id": "apigw:gatewayResponseType",
+          "@type": "xsd:string"
+        },
+        "statusCode": {
+          "@id": "apigw:gatewayResponseStatusCode",
+          "@type": "xsd:string"
+        },
+        "responseParameters": {
+          "@id": "apigw:gatewayResponseParameters",
+          "@container": "@index"
+        },
+        "responseTemplates": {
+          "@id": "apigw:gatewayResponseTemplates",
+          "@container": "@index"
+        },
+        "defaultResponse": {
+          "@id": "apigw:defaultGatewayResponse",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "WebSocketApi": {
+      "@id": "apigw:WebSocketApi",
+      "@context": {
+        "id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "routeSelectionExpression": {
+          "@id": "apigw:routeSelectionExpression",
+          "@type": "xsd:string"
+        },
+        "apiEndpoint": {
+          "@id": "schema:url",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "WebSocketConnection": {
+      "@id": "apigw:WebSocketConnection",
+      "@context": {
+        "connectionId": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "connectedAt": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "lastActiveAt": {
+          "@id": "schema:dateModified",
+          "@type": "xsd:dateTime"
+        },
+        "sourceIp": {
+          "@id": "apigw:sourceIp",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "BasePathMapping": {
+      "@id": "apigw:API_GetBasePathMapping",
+      "@context": {
+        "basePath": {
+          "@id": "apigw:basePath",
+          "@type": "xsd:string"
+        },
+        "restApiId": {
+          "@id": "apigw:restApi",
+          "@type": "@id"
+        },
+        "stage": {
+          "@id": "apigw:stageName",
+          "@type": "xsd:string"
+        }
+      }
+    }
+  }
+}
