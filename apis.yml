@@ -14,7 +14,7 @@ tags:
 - HTTP API
 - AWS
 created: '2024'
-modified: '2026-03-04'
+modified: '2026-03-16'
 apis:
 - name: Amazon API Gateway REST API
   description: RESTful APIs that are optimized for serverless workloads and HTTP backends using HTTP APIs
