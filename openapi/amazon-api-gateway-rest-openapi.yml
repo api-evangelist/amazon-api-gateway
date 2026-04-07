@@ -41,36 +41,36 @@ servers:
 security:
   - sigv4: []
 tags:
-  - name: REST APIs
-    description: Operations for creating and managing REST APIs
-  - name: Resources
-    description: Operations for managing API resources (URL paths)
-  - name: Methods
-    description: Operations for managing HTTP methods on resources
-  - name: Stages
-    description: Operations for managing deployment stages
-  - name: Deployments
-    description: Operations for managing API deployments
-  - name: Authorizers
-    description: Operations for managing API authorizers
-  - name: Models
-    description: Operations for managing API data models
   - name: API Keys
     description: Operations for managing API keys
-  - name: Usage Plans
-    description: Operations for managing usage plans and throttling
-  - name: Domain Names
-    description: Operations for managing custom domain names
+  - name: Authorizers
+    description: Operations for managing API authorizers
   - name: Base Path Mappings
     description: Operations for managing base path mappings
-  - name: Request Validators
-    description: Operations for managing request validators
-  - name: Gateway Responses
-    description: Operations for managing gateway responses
-  - name: VPC Links
-    description: Operations for managing VPC links
+  - name: Deployments
+    description: Operations for managing API deployments
   - name: Documentation
     description: Operations for managing API documentation
+  - name: Domain Names
+    description: Operations for managing custom domain names
+  - name: Gateway Responses
+    description: Operations for managing gateway responses
+  - name: Methods
+    description: Operations for managing HTTP methods on resources
+  - name: Models
+    description: Operations for managing API data models
+  - name: Request Validators
+    description: Operations for managing request validators
+  - name: Resources
+    description: Operations for managing API resources (URL paths)
+  - name: REST APIs
+    description: Operations for creating and managing REST APIs
+  - name: Stages
+    description: Operations for managing deployment stages
+  - name: Usage Plans
+    description: Operations for managing usage plans and throttling
+  - name: VPC Links
+    description: Operations for managing VPC links
 paths:
   /restapis:
     get:
