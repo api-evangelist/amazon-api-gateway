@@ -75,7 +75,7 @@ paths:
   /restapis:
     get:
       operationId: GetRestApis
-      summary: List REST APIs
+      summary: Amazon API Gateway List REST APIs
       description: Lists the collection of REST APIs in your account.
       tags:
         - REST APIs
@@ -99,7 +99,7 @@ paths:
           $ref: '#/components/responses/InternalError'
     post:
       operationId: CreateRestApi
-      summary: Create a REST API
+      summary: Amazon API Gateway Create a REST API
       description: Creates a new REST API.
       tags:
         - REST APIs
@@ -130,7 +130,7 @@ paths:
   /restapis/{restapi_id}:
     get:
       operationId: GetRestApi
-      summary: Get a REST API
+      summary: Amazon API Gateway Get a REST API
       description: Returns information about a specific REST API.
       tags:
         - REST APIs
@@ -149,7 +149,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     patch:
       operationId: UpdateRestApi
-      summary: Update a REST API
+      summary: Amazon API Gateway Update a REST API
       description: Updates an existing REST API.
       tags:
         - REST APIs
@@ -178,7 +178,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     delete:
       operationId: DeleteRestApi
-      summary: Delete a REST API
+      summary: Amazon API Gateway Delete a REST API
       description: Deletes the specified REST API.
       tags:
         - REST APIs
@@ -195,7 +195,7 @@ paths:
   /restapis/{restapi_id}/resources:
     get:
       operationId: GetResources
-      summary: List resources
+      summary: Amazon API Gateway List resources
       description: Lists the API resources for a given REST API.
       tags:
         - Resources
@@ -229,7 +229,7 @@ paths:
   /restapis/{restapi_id}/resources/{resource_id}:
     get:
       operationId: GetResource
-      summary: Get a resource
+      summary: Amazon API Gateway Get a resource
       description: Returns information about a specific API resource.
       tags:
         - Resources
@@ -255,7 +255,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     post:
       operationId: CreateResource
-      summary: Create a child resource
+      summary: Amazon API Gateway Create a child resource
       description: Creates a child resource under the specified parent resource.
       tags:
         - Resources
@@ -291,7 +291,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     patch:
       operationId: UpdateResource
-      summary: Update a resource
+      summary: Amazon API Gateway Update a resource
       description: Updates an existing API resource.
       tags:
         - Resources
@@ -321,7 +321,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     delete:
       operationId: DeleteResource
-      summary: Delete a resource
+      summary: Amazon API Gateway Delete a resource
       description: Deletes the specified API resource.
       tags:
         - Resources
@@ -341,7 +341,7 @@ paths:
   /restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}:
     get:
       operationId: GetMethod
-      summary: Get a method
+      summary: Amazon API Gateway Get a method
       description: Returns information about an API method request.
       tags:
         - Methods
@@ -362,7 +362,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     put:
       operationId: PutMethod
-      summary: Create or update a method
+      summary: Amazon API Gateway Create or update a method
       description: >-
         Adds or updates an HTTP method on a resource. The method defines
         how the client submits requests to the API.
@@ -395,7 +395,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     patch:
       operationId: UpdateMethod
-      summary: Update a method
+      summary: Amazon API Gateway Update a method
       description: Updates an existing method request.
       tags:
         - Methods
@@ -424,7 +424,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     delete:
       operationId: DeleteMethod
-      summary: Delete a method
+      summary: Amazon API Gateway Delete a method
       description: Deletes the specified method.
       tags:
         - Methods
@@ -445,7 +445,7 @@ paths:
   /restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration:
     get:
       operationId: GetIntegration
-      summary: Get an integration
+      summary: Amazon API Gateway Get an integration
       description: Returns the integration setup for a method.
       tags:
         - Methods
@@ -466,7 +466,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     put:
       operationId: PutIntegration
-      summary: Create or update an integration
+      summary: Amazon API Gateway Create or update an integration
       description: Sets up an integration for a method.
       tags:
         - Methods
@@ -499,7 +499,7 @@ paths:
   /restapis/{restapi_id}/stages:
     get:
       operationId: GetStages
-      summary: List stages
+      summary: Amazon API Gateway List stages
       description: Returns information about all stages of a REST API.
       tags:
         - Stages
@@ -523,7 +523,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     post:
       operationId: CreateStage
-      summary: Create a stage
+      summary: Amazon API Gateway Create a stage
       description: Creates a new stage for a REST API deployment.
       tags:
         - Stages
@@ -554,7 +554,7 @@ paths:
   /restapis/{restapi_id}/stages/{stage_name}:
     get:
       operationId: GetStage
-      summary: Get a stage
+      summary: Amazon API Gateway Get a stage
       description: Returns information about a specific stage.
       tags:
         - Stages
@@ -574,7 +574,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     patch:
       operationId: UpdateStage
-      summary: Update a stage
+      summary: Amazon API Gateway Update a stage
       description: Updates an existing stage configuration.
       tags:
         - Stages
@@ -604,7 +604,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     delete:
       operationId: DeleteStage
-      summary: Delete a stage
+      summary: Amazon API Gateway Delete a stage
       description: Deletes the specified stage.
       tags:
         - Stages
@@ -622,7 +622,7 @@ paths:
   /restapis/{restapi_id}/deployments:
     get:
       operationId: GetDeployments
-      summary: List deployments
+      summary: Amazon API Gateway List deployments
       description: Returns information about all deployments of a REST API.
       tags:
         - Deployments
@@ -645,7 +645,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     post:
       operationId: CreateDeployment
-      summary: Create a deployment
+      summary: Amazon API Gateway Create a deployment
       description: >-
         Creates a deployment for a REST API, making it callable by
         consumers.
@@ -680,7 +680,7 @@ paths:
   /restapis/{restapi_id}/deployments/{deployment_id}:
     get:
       operationId: GetDeployment
-      summary: Get a deployment
+      summary: Amazon API Gateway Get a deployment
       description: Returns information about a specific deployment.
       tags:
         - Deployments
@@ -706,7 +706,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     patch:
       operationId: UpdateDeployment
-      summary: Update a deployment
+      summary: Amazon API Gateway Update a deployment
       description: Updates an existing deployment.
       tags:
         - Deployments
@@ -734,7 +734,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     delete:
       operationId: DeleteDeployment
-      summary: Delete a deployment
+      summary: Amazon API Gateway Delete a deployment
       description: Deletes the specified deployment.
       tags:
         - Deployments
@@ -752,7 +752,7 @@ paths:
   /restapis/{restapi_id}/authorizers:
     get:
       operationId: GetAuthorizers
-      summary: List authorizers
+      summary: Amazon API Gateway List authorizers
       description: Returns a collection of Authorizer resources for a given REST API.
       tags:
         - Authorizers
@@ -775,7 +775,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     post:
       operationId: CreateAuthorizer
-      summary: Create an authorizer
+      summary: Amazon API Gateway Create an authorizer
       description: Creates an Authorizer resource for a given REST API.
       tags:
         - Authorizers
@@ -804,7 +804,7 @@ paths:
   /restapis/{restapi_id}/authorizers/{authorizer_id}:
     get:
       operationId: GetAuthorizer
-      summary: Get an authorizer
+      summary: Amazon API Gateway Get an authorizer
       description: Returns information about a specific authorizer.
       tags:
         - Authorizers
@@ -824,7 +824,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     patch:
       operationId: UpdateAuthorizer
-      summary: Update an authorizer
+      summary: Amazon API Gateway Update an authorizer
       description: Updates an existing authorizer.
       tags:
         - Authorizers
@@ -852,7 +852,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     delete:
       operationId: DeleteAuthorizer
-      summary: Delete an authorizer
+      summary: Amazon API Gateway Delete an authorizer
       description: Deletes an existing authorizer.
       tags:
         - Authorizers
@@ -872,7 +872,7 @@ paths:
   /restapis/{restapi_id}/models:
     get:
       operationId: GetModels
-      summary: List models
+      summary: Amazon API Gateway List models
       description: Returns information about all models defined for a REST API.
       tags:
         - Models
@@ -895,7 +895,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     post:
       operationId: CreateModel
-      summary: Create a model
+      summary: Amazon API Gateway Create a model
       description: Adds a new Model resource to an existing REST API.
       tags:
         - Models
@@ -926,7 +926,7 @@ paths:
   /restapis/{restapi_id}/models/{model_name}:
     get:
       operationId: GetModel
-      summary: Get a model
+      summary: Amazon API Gateway Get a model
       description: Returns information about a specific model.
       tags:
         - Models
@@ -951,7 +951,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     patch:
       operationId: UpdateModel
-      summary: Update a model
+      summary: Amazon API Gateway Update a model
       description: Changes an existing model.
       tags:
         - Models
@@ -981,7 +981,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     delete:
       operationId: DeleteModel
-      summary: Delete a model
+      summary: Amazon API Gateway Delete a model
       description: Deletes the specified model.
       tags:
         - Models
@@ -1001,7 +1001,7 @@ paths:
   /apikeys:
     get:
       operationId: GetApiKeys
-      summary: List API keys
+      summary: Amazon API Gateway List API keys
       description: Returns information about all current API keys.
       tags:
         - API Keys
@@ -1036,7 +1036,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     post:
       operationId: CreateApiKey
-      summary: Create an API key
+      summary: Amazon API Gateway Create an API key
       description: Creates a new API key.
       tags:
         - API Keys
@@ -1063,7 +1063,7 @@ paths:
   /apikeys/{api_key}:
     get:
       operationId: GetApiKey
-      summary: Get an API key
+      summary: Amazon API Gateway Get an API key
       description: Returns information about a specific API key.
       tags:
         - API Keys
@@ -1087,7 +1087,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     patch:
       operationId: UpdateApiKey
-      summary: Update an API key
+      summary: Amazon API Gateway Update an API key
       description: Updates an existing API key.
       tags:
         - API Keys
@@ -1116,7 +1116,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     delete:
       operationId: DeleteApiKey
-      summary: Delete an API key
+      summary: Amazon API Gateway Delete an API key
       description: Deletes the specified API key.
       tags:
         - API Keys
@@ -1133,7 +1133,7 @@ paths:
   /usageplans:
     get:
       operationId: GetUsagePlans
-      summary: List usage plans
+      summary: Amazon API Gateway List usage plans
       description: Returns information about all usage plans.
       tags:
         - Usage Plans
@@ -1158,7 +1158,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     post:
       operationId: CreateUsagePlan
-      summary: Create a usage plan
+      summary: Amazon API Gateway Create a usage plan
       description: Creates a new usage plan.
       tags:
         - Usage Plans
@@ -1185,7 +1185,7 @@ paths:
   /usageplans/{usageplan_id}:
     get:
       operationId: GetUsagePlan
-      summary: Get a usage plan
+      summary: Amazon API Gateway Get a usage plan
       description: Returns information about a specific usage plan.
       tags:
         - Usage Plans
@@ -1204,7 +1204,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     patch:
       operationId: UpdateUsagePlan
-      summary: Update a usage plan
+      summary: Amazon API Gateway Update a usage plan
       description: Updates an existing usage plan.
       tags:
         - Usage Plans
@@ -1233,7 +1233,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     delete:
       operationId: DeleteUsagePlan
-      summary: Delete a usage plan
+      summary: Amazon API Gateway Delete a usage plan
       description: Deletes the specified usage plan.
       tags:
         - Usage Plans
@@ -1250,7 +1250,7 @@ paths:
   /domainnames:
     get:
       operationId: GetDomainNames
-      summary: List custom domain names
+      summary: Amazon API Gateway List custom domain names
       description: Returns information about all custom domain names.
       tags:
         - Domain Names
@@ -1270,7 +1270,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     post:
       operationId: CreateDomainName
-      summary: Create a custom domain name
+      summary: Amazon API Gateway Create a custom domain name
       description: Creates a new custom domain name.
       tags:
         - Domain Names
@@ -1297,7 +1297,7 @@ paths:
   /domainnames/{domain_name}:
     get:
       operationId: GetDomainName
-      summary: Get a custom domain name
+      summary: Amazon API Gateway Get a custom domain name
       description: Returns information about a specific custom domain name.
       tags:
         - Domain Names
@@ -1316,7 +1316,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     patch:
       operationId: UpdateDomainName
-      summary: Update a custom domain name
+      summary: Amazon API Gateway Update a custom domain name
       description: Updates an existing custom domain name.
       tags:
         - Domain Names
@@ -1345,7 +1345,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     delete:
       operationId: DeleteDomainName
-      summary: Delete a custom domain name
+      summary: Amazon API Gateway Delete a custom domain name
       description: Deletes the specified custom domain name.
       tags:
         - Domain Names
@@ -1362,7 +1362,7 @@ paths:
   /domainnames/{domain_name}/basepathmappings:
     get:
       operationId: GetBasePathMappings
-      summary: List base path mappings
+      summary: Amazon API Gateway List base path mappings
       description: Returns all base path mappings for a custom domain name.
       tags:
         - Base Path Mappings
@@ -1383,7 +1383,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     post:
       operationId: CreateBasePathMapping
-      summary: Create a base path mapping
+      summary: Amazon API Gateway Create a base path mapping
       description: Creates a base path mapping for a custom domain name.
       tags:
         - Base Path Mappings
@@ -1414,7 +1414,7 @@ paths:
   /restapis/{restapi_id}/requestvalidators:
     get:
       operationId: GetRequestValidators
-      summary: List request validators
+      summary: Amazon API Gateway List request validators
       description: Returns all request validators for a REST API.
       tags:
         - Request Validators
@@ -1437,7 +1437,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     post:
       operationId: CreateRequestValidator
-      summary: Create a request validator
+      summary: Amazon API Gateway Create a request validator
       description: Creates a request validator for a REST API.
       tags:
         - Request Validators
@@ -1464,7 +1464,7 @@ paths:
   /restapis/{restapi_id}/gatewayresponses:
     get:
       operationId: GetGatewayResponses
-      summary: List gateway responses
+      summary: Amazon API Gateway List gateway responses
       description: Returns all gateway responses defined for a REST API.
       tags:
         - Gateway Responses
@@ -1489,7 +1489,7 @@ paths:
   /restapis/{restapi_id}/gatewayresponses/{response_type}:
     get:
       operationId: GetGatewayResponse
-      summary: Get a gateway response
+      summary: Amazon API Gateway Get a gateway response
       description: Returns a gateway response of a specified type.
       tags:
         - Gateway Responses
@@ -1509,7 +1509,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     put:
       operationId: PutGatewayResponse
-      summary: Create or update a gateway response
+      summary: Amazon API Gateway Create or update a gateway response
       description: Creates or updates a gateway response of a specified type.
       tags:
         - Gateway Responses
@@ -1539,7 +1539,7 @@ paths:
   /vpclinks:
     get:
       operationId: GetVpcLinks
-      summary: List VPC links
+      summary: Amazon API Gateway List VPC links
       description: Returns information about all VPC links.
       tags:
         - VPC Links
@@ -1559,7 +1559,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     post:
       operationId: CreateVpcLink
-      summary: Create a VPC link
+      summary: Amazon API Gateway Create a VPC link
       description: Creates a VPC link for private integrations.
       tags:
         - VPC Links
@@ -1586,7 +1586,7 @@ paths:
   /vpclinks/{vpclink_id}:
     get:
       operationId: GetVpcLink
-      summary: Get a VPC link
+      summary: Amazon API Gateway Get a VPC link
       description: Returns information about a specific VPC link.
       tags:
         - VPC Links
@@ -1605,7 +1605,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     patch:
       operationId: UpdateVpcLink
-      summary: Update a VPC link
+      summary: Amazon API Gateway Update a VPC link
       description: Updates an existing VPC link.
       tags:
         - VPC Links
@@ -1634,7 +1634,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     delete:
       operationId: DeleteVpcLink
-      summary: Delete a VPC link
+      summary: Amazon API Gateway Delete a VPC link
       description: Deletes the specified VPC link.
       tags:
         - VPC Links
@@ -1651,7 +1651,7 @@ paths:
   /restapis/{restapi_id}/documentation/parts:
     get:
       operationId: GetDocumentationParts
-      summary: List documentation parts
+      summary: Amazon API Gateway List documentation parts
       description: Returns documentation parts for a REST API.
       tags:
         - Documentation
@@ -1702,7 +1702,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     post:
       operationId: CreateDocumentationPart
-      summary: Create a documentation part
+      summary: Amazon API Gateway Create a documentation part
       description: Creates a documentation part for a REST API.
       tags:
         - Documentation
@@ -1733,7 +1733,7 @@ paths:
   /restapis/{restapi_id}/documentation/versions:
     get:
       operationId: GetDocumentationVersions
-      summary: List documentation versions
+      summary: Amazon API Gateway List documentation versions
       description: Returns documentation versions for a REST API.
       tags:
         - Documentation
@@ -1756,7 +1756,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
     post:
       operationId: CreateDocumentationVersion
-      summary: Create a documentation version
+      summary: Amazon API Gateway Create a documentation version
       description: Creates a snapshot of the documentation for a REST API.
       tags:
         - Documentation
