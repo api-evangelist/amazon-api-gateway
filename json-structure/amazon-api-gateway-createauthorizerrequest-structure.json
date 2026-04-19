@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "CreateAuthorizerRequest",
+  "type": "record",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "type",
+      "type": "string"
+    },
+    {
+      "name": "providerARNs",
+      "type": "array"
+    },
+    {
+      "name": "authType",
+      "type": "string"
+    },
+    {
+      "name": "authorizerUri",
+      "type": "string"
+    },
+    {
+      "name": "authorizerCredentials",
+      "type": "string"
+    },
+    {
+      "name": "identitySource",
+      "type": "string"
+    },
+    {
+      "name": "identityValidationExpression",
+      "type": "string"
+    },
+    {
+      "name": "authorizerResultTtlInSeconds",
+      "type": "int32"
+    }
+  ]
+}

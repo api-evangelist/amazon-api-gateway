@@ -1,0 +1,14 @@
+{
+  "domainName": "example-domainName",
+  "certificateName": "example-certificateName",
+  "certificateBody": "example-certificateBody",
+  "certificatePrivateKey": "example-certificatePrivateKey",
+  "certificateChain": "example-certificateChain",
+  "certificateArn": "example-certificateArn",
+  "regionalCertificateName": "example-regionalCertificateName",
+  "regionalCertificateArn": "example-regionalCertificateArn",
+  "endpointConfiguration": "example-endpointConfiguration",
+  "tags": {},
+  "securityPolicy": "TLS_1_0",
+  "mutualTlsAuthentication": {}
+}

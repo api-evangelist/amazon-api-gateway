@@ -1,0 +1,12 @@
+{
+  "id": "example-id",
+  "value": "example-value",
+  "name": "example-name",
+  "customerId": "example-customerId",
+  "description": "example-description",
+  "enabled": true,
+  "createdDate": "2024-01-15T10:30:00Z",
+  "lastUpdatedDate": "2024-01-15T10:30:00Z",
+  "stageKeys": [],
+  "tags": {}
+}

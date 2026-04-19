@@ -1,0 +1,13 @@
+{
+  "name": "example-name",
+  "description": "example-description",
+  "version": "example-version",
+  "cloneFrom": "example-cloneFrom",
+  "binaryMediaTypes": [],
+  "minimumCompressionSize": 1,
+  "apiKeySource": "HEADER",
+  "endpointConfiguration": "example-endpointConfiguration",
+  "policy": "example-policy",
+  "tags": {},
+  "disableExecuteApiEndpoint": true
+}

@@ -1,0 +1,12 @@
+{
+  "httpMethod": "example-httpMethod",
+  "authorizationType": "example-authorizationType",
+  "authorizerId": "example-authorizerId",
+  "apiKeyRequired": true,
+  "requestValidatorId": "example-requestValidatorId",
+  "operationName": "example-operationName",
+  "requestParameters": {},
+  "requestModels": {},
+  "methodResponses": {},
+  "methodIntegration": "example-methodIntegration"
+}

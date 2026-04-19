@@ -1,0 +1,12 @@
+{
+  "id": "example-id",
+  "name": "example-name",
+  "type": "TOKEN",
+  "providerARNs": [],
+  "authType": "example-authType",
+  "authorizerUri": "example-authorizerUri",
+  "authorizerCredentials": "example-authorizerCredentials",
+  "identitySource": "example-identitySource",
+  "identityValidationExpression": "example-identityValidationExpression",
+  "authorizerResultTtlInSeconds": 1
+}

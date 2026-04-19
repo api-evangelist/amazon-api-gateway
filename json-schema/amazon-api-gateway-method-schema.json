@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Method",
+  "type": "object",
+  "properties": {
+    "httpMethod": {
+      "type": "string",
+      "description": "The method's HTTP verb."
+    },
+    "authorizationType": {
+      "type": "string",
+      "description": "The method's authorization type. Valid values are NONE, AWS_IAM, CUSTOM, or COGNITO_USER_POOLS."
+    },
+    "authorizerId": {
+      "type": "string",
+      "description": "The identifier of an Authorizer to use on this method."
+    },
+    "apiKeyRequired": {
+      "type": "boolean",
+      "description": "Whether the method requires an API key."
+    },
+    "requestValidatorId": {
+      "type": "string",
+      "description": "The identifier of a RequestValidator."
+    },
+    "operationName": {
+      "type": "string",
+      "description": "A human-friendly operation identifier for the method."
+    },
+    "requestParameters": {
+      "type": "object",
+      "description": "Request parameters that can be accepted by the method. Keys identify the parameter location and name."
+    },
+    "requestModels": {
+      "type": "object",
+      "description": "Specifies the Model resources used for the request's content type."
+    },
+    "methodResponses": {
+      "type": "object",
+      "description": "Method responses keyed by status code."
+    },
+    "methodIntegration": {
+      "$ref": "#/definitions/Integration"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PutGatewayResponseRequest",
+  "type": "object",
+  "properties": {
+    "statusCode": {
+      "type": "string"
+    },
+    "responseParameters": {
+      "type": "object"
+    },
+    "responseTemplates": {
+      "type": "object"
+    }
+  }
+}

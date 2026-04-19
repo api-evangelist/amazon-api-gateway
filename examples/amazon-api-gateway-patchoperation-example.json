@@ -1,0 +1,6 @@
+{
+  "op": "add",
+  "path": "example-path",
+  "value": "example-value",
+  "from": "example-from"
+}

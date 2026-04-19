@@ -1,0 +1,65 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Amazon API Gateway Management
+  description: Workflow capability for managing API Gateway REST APIs including lifecycle management, stage deployment, and configuration.
+  tags:
+  - Amazon
+  - API Gateway
+  - AWS
+  - API Management
+  created: '2026-04-19'
+  modified: '2026-04-19'
+binds:
+- namespace: env
+  keys:
+    AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+    AWS_REGION: AWS_REGION
+capability:
+  consumes:
+  - import: amazon-api-gateway
+    location: ./shared/amazon-api-gateway.yaml
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: api-gateway-management-api
+    description: REST API for API Gateway management.
+    resources:
+    - path: /v1/rest-apis
+      name: rest-apis
+      operations:
+      - method: GET
+        name: list-rest-apis
+        description: List REST APIs.
+        call: amazon-api-gateway.get-rest-apis
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: api-gateway-management-mcp
+    transport: http
+    description: MCP server for AI-assisted API Gateway management.
+    tools:
+    - name: list-rest-apis
+      description: List all REST APIs configured in Amazon API Gateway.
+      hints:
+        readOnly: true
+        openWorld: false
+      call: amazon-api-gateway.get-rest-apis
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-rest-api
+      description: Create a new REST API in Amazon API Gateway.
+      hints:
+        readOnly: false
+        openWorld: false
+      call: amazon-api-gateway.create-rest-api
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

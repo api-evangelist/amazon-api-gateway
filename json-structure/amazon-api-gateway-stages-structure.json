@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "Stages",
+  "type": "record",
+  "fields": [
+    {
+      "name": "item",
+      "type": "array"
+    }
+  ]
+}

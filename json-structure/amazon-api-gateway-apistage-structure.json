@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "ApiStage",
+  "type": "record",
+  "fields": [
+    {
+      "name": "apiId",
+      "type": "string"
+    },
+    {
+      "name": "stage",
+      "type": "string"
+    },
+    {
+      "name": "throttle",
+      "type": "object"
+    }
+  ]
+}

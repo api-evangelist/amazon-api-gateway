@@ -1,0 +1,6 @@
+{
+  "id": "example-id",
+  "name": "example-name",
+  "validateRequestBody": true,
+  "validateRequestParameters": true
+}

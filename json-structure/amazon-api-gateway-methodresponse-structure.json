@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "MethodResponse",
+  "type": "record",
+  "fields": [
+    {
+      "name": "statusCode",
+      "type": "string"
+    },
+    {
+      "name": "responseParameters",
+      "type": "object"
+    },
+    {
+      "name": "responseModels",
+      "type": "object"
+    }
+  ]
+}

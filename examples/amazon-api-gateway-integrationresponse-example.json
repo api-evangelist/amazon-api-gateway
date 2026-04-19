@@ -1,0 +1,7 @@
+{
+  "statusCode": "example-statusCode",
+  "selectionPattern": "example-selectionPattern",
+  "responseParameters": {},
+  "responseTemplates": {},
+  "contentHandling": "CONVERT_TO_BINARY"
+}

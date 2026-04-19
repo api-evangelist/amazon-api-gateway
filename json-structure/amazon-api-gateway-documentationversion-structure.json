@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "DocumentationVersion",
+  "type": "record",
+  "fields": [
+    {
+      "name": "version",
+      "type": "string"
+    },
+    {
+      "name": "createdDate",
+      "type": "datetime"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    }
+  ]
+}

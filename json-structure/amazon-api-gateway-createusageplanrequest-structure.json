@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "CreateUsagePlanRequest",
+  "type": "record",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "apiStages",
+      "type": "array"
+    },
+    {
+      "name": "throttle",
+      "type": "string"
+    },
+    {
+      "name": "quota",
+      "type": "string"
+    },
+    {
+      "name": "tags",
+      "type": "object"
+    }
+  ]
+}

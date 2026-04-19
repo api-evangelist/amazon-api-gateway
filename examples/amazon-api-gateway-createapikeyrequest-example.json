@@ -1,0 +1,10 @@
+{
+  "name": "example-name",
+  "description": "example-description",
+  "enabled": true,
+  "generateDistinctId": true,
+  "value": "example-value",
+  "stageKeys": [],
+  "customerId": "example-customerId",
+  "tags": {}
+}

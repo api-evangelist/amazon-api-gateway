@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "PutIntegrationRequest",
+  "type": "record",
+  "fields": [
+    {
+      "name": "type",
+      "type": "string"
+    },
+    {
+      "name": "httpMethod",
+      "type": "string"
+    },
+    {
+      "name": "uri",
+      "type": "string"
+    },
+    {
+      "name": "connectionType",
+      "type": "string"
+    },
+    {
+      "name": "connectionId",
+      "type": "string"
+    },
+    {
+      "name": "credentials",
+      "type": "string"
+    },
+    {
+      "name": "requestParameters",
+      "type": "object"
+    },
+    {
+      "name": "requestTemplates",
+      "type": "object"
+    },
+    {
+      "name": "passthroughBehavior",
+      "type": "string"
+    },
+    {
+      "name": "contentHandling",
+      "type": "string"
+    },
+    {
+      "name": "timeoutInMillis",
+      "type": "int32"
+    },
+    {
+      "name": "cacheNamespace",
+      "type": "string"
+    },
+    {
+      "name": "cacheKeyParameters",
+      "type": "array"
+    }
+  ]
+}

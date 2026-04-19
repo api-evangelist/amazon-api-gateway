@@ -1,0 +1,10 @@
+{
+  "stageName": "example-stageName",
+  "stageDescription": "example-stageDescription",
+  "description": "example-description",
+  "cacheClusterEnabled": true,
+  "cacheClusterSize": "0.5",
+  "variables": {},
+  "canarySettings": "example-canarySettings",
+  "tracingEnabled": true
+}

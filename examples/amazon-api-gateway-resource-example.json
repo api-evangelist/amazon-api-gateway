@@ -1,0 +1,7 @@
+{
+  "id": "example-id",
+  "parentId": "example-parentId",
+  "pathPart": "example-pathPart",
+  "path": "example-path",
+  "resourceMethods": {}
+}

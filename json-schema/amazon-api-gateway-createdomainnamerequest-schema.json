@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CreateDomainNameRequest",
+  "type": "object",
+  "properties": {
+    "domainName": {
+      "type": "string"
+    },
+    "certificateName": {
+      "type": "string"
+    },
+    "certificateBody": {
+      "type": "string"
+    },
+    "certificatePrivateKey": {
+      "type": "string"
+    },
+    "certificateChain": {
+      "type": "string"
+    },
+    "certificateArn": {
+      "type": "string"
+    },
+    "regionalCertificateName": {
+      "type": "string"
+    },
+    "regionalCertificateArn": {
+      "type": "string"
+    },
+    "endpointConfiguration": {
+      "$ref": "#/definitions/EndpointConfiguration"
+    },
+    "tags": {
+      "type": "object"
+    },
+    "securityPolicy": {
+      "type": "string",
+      "enum": [
+        "TLS_1_0",
+        "TLS_1_2"
+      ]
+    },
+    "mutualTlsAuthentication": {
+      "type": "object",
+      "properties": {
+        "truststoreUri": {
+          "type": "string"
+        },
+        "truststoreVersion": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": [
+    "domainName"
+  ]
+}

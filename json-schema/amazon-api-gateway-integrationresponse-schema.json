@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "IntegrationResponse",
+  "type": "object",
+  "properties": {
+    "statusCode": {
+      "type": "string"
+    },
+    "selectionPattern": {
+      "type": "string"
+    },
+    "responseParameters": {
+      "type": "object"
+    },
+    "responseTemplates": {
+      "type": "object"
+    },
+    "contentHandling": {
+      "type": "string",
+      "enum": [
+        "CONVERT_TO_BINARY",
+        "CONVERT_TO_TEXT"
+      ]
+    }
+  }
+}

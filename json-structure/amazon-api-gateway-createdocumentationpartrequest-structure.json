@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "CreateDocumentationPartRequest",
+  "type": "record",
+  "fields": [
+    {
+      "name": "location",
+      "type": "object"
+    },
+    {
+      "name": "properties",
+      "type": "string"
+    }
+  ]
+}

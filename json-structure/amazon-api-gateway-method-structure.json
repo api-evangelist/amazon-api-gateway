@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "Method",
+  "type": "record",
+  "fields": [
+    {
+      "name": "httpMethod",
+      "type": "string"
+    },
+    {
+      "name": "authorizationType",
+      "type": "string"
+    },
+    {
+      "name": "authorizerId",
+      "type": "string"
+    },
+    {
+      "name": "apiKeyRequired",
+      "type": "boolean"
+    },
+    {
+      "name": "requestValidatorId",
+      "type": "string"
+    },
+    {
+      "name": "operationName",
+      "type": "string"
+    },
+    {
+      "name": "requestParameters",
+      "type": "object"
+    },
+    {
+      "name": "requestModels",
+      "type": "object"
+    },
+    {
+      "name": "methodResponses",
+      "type": "object"
+    },
+    {
+      "name": "methodIntegration",
+      "type": "string"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "CreateApiKeyRequest",
+  "type": "record",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "enabled",
+      "type": "boolean"
+    },
+    {
+      "name": "generateDistinctId",
+      "type": "boolean"
+    },
+    {
+      "name": "value",
+      "type": "string"
+    },
+    {
+      "name": "stageKeys",
+      "type": "array"
+    },
+    {
+      "name": "customerId",
+      "type": "string"
+    },
+    {
+      "name": "tags",
+      "type": "object"
+    }
+  ]
+}

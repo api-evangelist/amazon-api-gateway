@@ -1,0 +1,12 @@
+{
+  "stageName": "example-stageName",
+  "deploymentId": "example-deploymentId",
+  "description": "example-description",
+  "cacheClusterEnabled": true,
+  "cacheClusterSize": "0.5",
+  "variables": {},
+  "documentationVersion": "example-documentationVersion",
+  "canarySettings": "example-canarySettings",
+  "tracingEnabled": true,
+  "tags": {}
+}

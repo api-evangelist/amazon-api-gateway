@@ -1,0 +1,9 @@
+{
+  "authorizationType": "example-authorizationType",
+  "authorizerId": "example-authorizerId",
+  "apiKeyRequired": true,
+  "operationName": "example-operationName",
+  "requestParameters": {},
+  "requestModels": {},
+  "requestValidatorId": "example-requestValidatorId"
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "MethodSetting",
+  "type": "record",
+  "fields": [
+    {
+      "name": "metricsEnabled",
+      "type": "boolean"
+    },
+    {
+      "name": "loggingLevel",
+      "type": "string"
+    },
+    {
+      "name": "dataTraceEnabled",
+      "type": "boolean"
+    },
+    {
+      "name": "throttlingBurstLimit",
+      "type": "int32"
+    },
+    {
+      "name": "throttlingRateLimit",
+      "type": "double"
+    },
+    {
+      "name": "cachingEnabled",
+      "type": "boolean"
+    },
+    {
+      "name": "cacheTtlInSeconds",
+      "type": "int32"
+    },
+    {
+      "name": "cacheDataEncrypted",
+      "type": "boolean"
+    },
+    {
+      "name": "requireAuthorizationForCacheControl",
+      "type": "boolean"
+    },
+    {
+      "name": "unauthorizedCacheControlHeaderStrategy",
+      "type": "string"
+    }
+  ]
+}

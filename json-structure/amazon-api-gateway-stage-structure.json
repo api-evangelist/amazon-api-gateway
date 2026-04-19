@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "Stage",
+  "type": "record",
+  "fields": [
+    {
+      "name": "deploymentId",
+      "type": "string"
+    },
+    {
+      "name": "clientCertificateId",
+      "type": "string"
+    },
+    {
+      "name": "stageName",
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "cacheClusterEnabled",
+      "type": "boolean"
+    },
+    {
+      "name": "cacheClusterSize",
+      "type": "string"
+    },
+    {
+      "name": "cacheClusterStatus",
+      "type": "string"
+    },
+    {
+      "name": "methodSettings",
+      "type": "object"
+    },
+    {
+      "name": "variables",
+      "type": "object"
+    },
+    {
+      "name": "documentationVersion",
+      "type": "string"
+    },
+    {
+      "name": "accessLogSettings",
+      "type": "string"
+    },
+    {
+      "name": "canarySettings",
+      "type": "string"
+    },
+    {
+      "name": "tracingEnabled",
+      "type": "boolean"
+    },
+    {
+      "name": "webAclArn",
+      "type": "string"
+    },
+    {
+      "name": "tags",
+      "type": "object"
+    },
+    {
+      "name": "createdDate",
+      "type": "datetime"
+    },
+    {
+      "name": "lastUpdatedDate",
+      "type": "datetime"
+    }
+  ]
+}

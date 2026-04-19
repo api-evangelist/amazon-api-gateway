@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "PatchOperation",
+  "type": "record",
+  "fields": [
+    {
+      "name": "op",
+      "type": "string"
+    },
+    {
+      "name": "path",
+      "type": "string"
+    },
+    {
+      "name": "value",
+      "type": "string"
+    },
+    {
+      "name": "from",
+      "type": "string"
+    }
+  ]
+}

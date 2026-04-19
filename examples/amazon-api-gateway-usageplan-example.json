@@ -1,0 +1,10 @@
+{
+  "id": "example-id",
+  "name": "example-name",
+  "description": "example-description",
+  "apiStages": [],
+  "throttle": "example-throttle",
+  "quota": "example-quota",
+  "productCode": "example-productCode",
+  "tags": {}
+}

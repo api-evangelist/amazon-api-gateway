@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UsagePlan",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The identifier of the usage plan."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the usage plan."
+    },
+    "description": {
+      "type": "string"
+    },
+    "apiStages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ApiStage"
+      }
+    },
+    "throttle": {
+      "$ref": "#/definitions/ThrottleSettings"
+    },
+    "quota": {
+      "$ref": "#/definitions/QuotaSettings"
+    },
+    "productCode": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "object"
+    }
+  }
+}

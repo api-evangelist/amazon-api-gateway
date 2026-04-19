@@ -1,0 +1,44 @@
+extends:
+- - spectral:oas
+  - all
+rules:
+  amazon-info-title-required:
+    description: API must have a title.
+    message: Info must include title.
+    severity: error
+    given: $.info
+    then:
+      field: title
+      function: truthy
+  amazon-operation-summary-required:
+    description: Operations must have summaries.
+    message: Operation must include summary.
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: summary
+      function: truthy
+  amazon-operation-operationid-required:
+    description: Operations must have operationIds.
+    message: Operation must include operationId.
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: operationId
+      function: truthy
+  amazon-response-200-get:
+    description: GET operations must return 200.
+    message: GET must have 200 response.
+    severity: error
+    given: $.paths[*].get
+    then:
+      field: responses.200
+      function: truthy
+  amazon-schema-description:
+    description: Schemas should have descriptions.
+    message: Schema should include description.
+    severity: info
+    given: $.components.schemas[*]
+    then:
+      field: description
+      function: truthy

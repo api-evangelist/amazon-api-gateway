@@ -1,0 +1,9 @@
+{
+  "id": "example-id",
+  "name": "example-name",
+  "description": "example-description",
+  "targetArns": [],
+  "status": "AVAILABLE",
+  "statusMessage": "example-statusMessage",
+  "tags": {}
+}

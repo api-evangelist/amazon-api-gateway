@@ -1,0 +1,3375 @@
+openapi: 3.1.0
+info:
+  title: Amazon API Gateway REST API
+  description: >-
+    The Amazon API Gateway REST API enables programmatic management of API
+    Gateway resources. You can create, configure, and manage REST APIs,
+    stages, deployments, authorizers, models, resources, methods, and
+    integrations through this management interface.
+  version: '2015-07-09'
+  contact:
+    name: AWS Support
+    url: https://aws.amazon.com/premiumsupport/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  x-logo:
+    url: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+servers:
+- url: https://apigateway.{region}.amazonaws.com
+  description: Amazon API Gateway regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-south-1
+      - sa-east-1
+      - ca-central-1
+security:
+- sigv4: []
+tags:
+- name: API Keys
+  description: Operations for managing API keys
+- name: Authorizers
+  description: Operations for managing API authorizers
+- name: Base Path Mappings
+  description: Operations for managing base path mappings
+- name: Deployments
+  description: Operations for managing API deployments
+- name: Documentation
+  description: Operations for managing API documentation
+- name: Domain Names
+  description: Operations for managing custom domain names
+- name: Gateway Responses
+  description: Operations for managing gateway responses
+- name: Methods
+  description: Operations for managing HTTP methods on resources
+- name: Models
+  description: Operations for managing API data models
+- name: Request Validators
+  description: Operations for managing request validators
+- name: Resources
+  description: Operations for managing API resources (URL paths)
+- name: REST APIs
+  description: Operations for creating and managing REST APIs
+- name: Stages
+  description: Operations for managing deployment stages
+- name: Usage Plans
+  description: Operations for managing usage plans and throttling
+- name: VPC Links
+  description: Operations for managing VPC links
+paths:
+  /restapis:
+    get:
+      operationId: GetRestApis
+      summary: Amazon API Gateway List REST APIs
+      description: Lists the collection of REST APIs in your account.
+      tags:
+      - REST APIs
+      parameters:
+      - $ref: '#/components/parameters/Position'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Successful response with list of REST APIs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestApis'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    post:
+      operationId: CreateRestApi
+      summary: Amazon API Gateway Create a REST API
+      description: Creates a new REST API.
+      tags:
+      - REST APIs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRestApiRequest'
+      responses:
+        '201':
+          description: REST API created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestApi'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /restapis/{restapi_id}:
+    get:
+      operationId: GetRestApi
+      summary: Amazon API Gateway Get a REST API
+      description: Returns information about a specific REST API.
+      tags:
+      - REST APIs
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestApi'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    patch:
+      operationId: UpdateRestApi
+      summary: Amazon API Gateway Update a REST API
+      description: Updates an existing REST API.
+      tags:
+      - REST APIs
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchOperations'
+      responses:
+        '200':
+          description: REST API updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestApi'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      operationId: DeleteRestApi
+      summary: Amazon API Gateway Delete a REST API
+      description: Deletes the specified REST API.
+      tags:
+      - REST APIs
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      responses:
+        '202':
+          description: REST API deletion accepted
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /restapis/{restapi_id}/resources:
+    get:
+      operationId: GetResources
+      summary: Amazon API Gateway List Resources
+      description: Lists the API resources for a given REST API.
+      tags:
+      - Resources
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/Position'
+      - $ref: '#/components/parameters/Limit'
+      - name: embed
+        in: query
+        description: >-
+          A query parameter used to retrieve the specified resources
+          embedded in the returned Resources resource in the response.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Successful response with list of resources
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resources'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /restapis/{restapi_id}/resources/{resource_id}:
+    get:
+      operationId: GetResource
+      summary: Amazon API Gateway Get a Resource
+      description: Returns information about a specific API resource.
+      tags:
+      - Resources
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResourceId'
+      - name: embed
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    post:
+      operationId: CreateResource
+      summary: Amazon API Gateway Create a Child Resource
+      description: Creates a child resource under the specified parent resource.
+      tags:
+      - Resources
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResourceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - pathPart
+              properties:
+                pathPart:
+                  type: string
+                  description: The last path segment for this resource.
+      responses:
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    patch:
+      operationId: UpdateResource
+      summary: Amazon API Gateway Update a Resource
+      description: Updates an existing API resource.
+      tags:
+      - Resources
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResourceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchOperations'
+      responses:
+        '200':
+          description: Resource updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      operationId: DeleteResource
+      summary: Amazon API Gateway Delete a Resource
+      description: Deletes the specified API resource.
+      tags:
+      - Resources
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '202':
+          description: Resource deletion accepted
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}:
+    get:
+      operationId: GetMethod
+      summary: Amazon API Gateway Get a Method
+      description: Returns information about an API method request.
+      tags:
+      - Methods
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/HttpMethod'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Method'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    put:
+      operationId: PutMethod
+      summary: Amazon API Gateway Create or Update a Method
+      description: >-
+        Adds or updates an HTTP method on a resource. The method defines
+        how the client submits requests to the API.
+      tags:
+      - Methods
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/HttpMethod'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutMethodRequest'
+      responses:
+        '201':
+          description: Method created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Method'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    patch:
+      operationId: UpdateMethod
+      summary: Amazon API Gateway Update a Method
+      description: Updates an existing method request.
+      tags:
+      - Methods
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/HttpMethod'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchOperations'
+      responses:
+        '200':
+          description: Method updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Method'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      operationId: DeleteMethod
+      summary: Amazon API Gateway Delete a Method
+      description: Deletes the specified method.
+      tags:
+      - Methods
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/HttpMethod'
+      responses:
+        '204':
+          description: Method deleted successfully
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration:
+    get:
+      operationId: GetIntegration
+      summary: Amazon API Gateway Get an Integration
+      description: Returns the integration setup for a method.
+      tags:
+      - Methods
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/HttpMethod'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integration'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    put:
+      operationId: PutIntegration
+      summary: Amazon API Gateway Create or Update an Integration
+      description: Sets up an integration for a method.
+      tags:
+      - Methods
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/HttpMethod'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutIntegrationRequest'
+      responses:
+        '201':
+          description: Integration created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integration'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /restapis/{restapi_id}/stages:
+    get:
+      operationId: GetStages
+      summary: Amazon API Gateway List Stages
+      description: Returns information about all stages of a REST API.
+      tags:
+      - Stages
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - name: deploymentId
+        in: query
+        description: Filter stages by deployment ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with list of stages
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stages'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    post:
+      operationId: CreateStage
+      summary: Amazon API Gateway Create a Stage
+      description: Creates a new stage for a REST API deployment.
+      tags:
+      - Stages
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateStageRequest'
+      responses:
+        '201':
+          description: Stage created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stage'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /restapis/{restapi_id}/stages/{stage_name}:
+    get:
+      operationId: GetStage
+      summary: Amazon API Gateway Get a Stage
+      description: Returns information about a specific stage.
+      tags:
+      - Stages
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/StageName'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stage'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    patch:
+      operationId: UpdateStage
+      summary: Amazon API Gateway Update a Stage
+      description: Updates an existing stage configuration.
+      tags:
+      - Stages
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/StageName'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchOperations'
+      responses:
+        '200':
+          description: Stage updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stage'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      operationId: DeleteStage
+      summary: Amazon API Gateway Delete a Stage
+      description: Deletes the specified stage.
+      tags:
+      - Stages
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/StageName'
+      responses:
+        '202':
+          description: Stage deletion accepted
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /restapis/{restapi_id}/deployments:
+    get:
+      operationId: GetDeployments
+      summary: Amazon API Gateway List Deployments
+      description: Returns information about all deployments of a REST API.
+      tags:
+      - Deployments
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/Position'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Successful response with list of deployments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployments'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    post:
+      operationId: CreateDeployment
+      summary: Amazon API Gateway Create a Deployment
+      description: >-
+        Creates a deployment for a REST API, making it callable by
+        consumers.
+      tags:
+      - Deployments
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDeploymentRequest'
+      responses:
+        '201':
+          description: Deployment created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /restapis/{restapi_id}/deployments/{deployment_id}:
+    get:
+      operationId: GetDeployment
+      summary: Amazon API Gateway Get a Deployment
+      description: Returns information about a specific deployment.
+      tags:
+      - Deployments
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/DeploymentId'
+      - name: embed
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    patch:
+      operationId: UpdateDeployment
+      summary: Amazon API Gateway Update a Deployment
+      description: Updates an existing deployment.
+      tags:
+      - Deployments
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/DeploymentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchOperations'
+      responses:
+        '200':
+          description: Deployment updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      operationId: DeleteDeployment
+      summary: Amazon API Gateway Delete a Deployment
+      description: Deletes the specified deployment.
+      tags:
+      - Deployments
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/DeploymentId'
+      responses:
+        '202':
+          description: Deployment deletion accepted
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /restapis/{restapi_id}/authorizers:
+    get:
+      operationId: GetAuthorizers
+      summary: Amazon API Gateway List Authorizers
+      description: Returns a collection of Authorizer resources for a given REST API.
+      tags:
+      - Authorizers
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/Position'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Successful response with list of authorizers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authorizers'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    post:
+      operationId: CreateAuthorizer
+      summary: Amazon API Gateway Create an Authorizer
+      description: Creates an Authorizer resource for a given REST API.
+      tags:
+      - Authorizers
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAuthorizerRequest'
+      responses:
+        '201':
+          description: Authorizer created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authorizer'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /restapis/{restapi_id}/authorizers/{authorizer_id}:
+    get:
+      operationId: GetAuthorizer
+      summary: Amazon API Gateway Get an Authorizer
+      description: Returns information about a specific authorizer.
+      tags:
+      - Authorizers
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/AuthorizerId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authorizer'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    patch:
+      operationId: UpdateAuthorizer
+      summary: Amazon API Gateway Update an Authorizer
+      description: Updates an existing authorizer.
+      tags:
+      - Authorizers
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/AuthorizerId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchOperations'
+      responses:
+        '200':
+          description: Authorizer updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authorizer'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      operationId: DeleteAuthorizer
+      summary: Amazon API Gateway Delete an Authorizer
+      description: Deletes an existing authorizer.
+      tags:
+      - Authorizers
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/AuthorizerId'
+      responses:
+        '202':
+          description: Authorizer deletion accepted
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /restapis/{restapi_id}/models:
+    get:
+      operationId: GetModels
+      summary: Amazon API Gateway List Models
+      description: Returns information about all models defined for a REST API.
+      tags:
+      - Models
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/Position'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Successful response with list of models
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Models'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    post:
+      operationId: CreateModel
+      summary: Amazon API Gateway Create a Model
+      description: Adds a new Model resource to an existing REST API.
+      tags:
+      - Models
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateModelRequest'
+      responses:
+        '201':
+          description: Model created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Model'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /restapis/{restapi_id}/models/{model_name}:
+    get:
+      operationId: GetModel
+      summary: Amazon API Gateway Get a Model
+      description: Returns information about a specific model.
+      tags:
+      - Models
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ModelName'
+      - name: flatten
+        in: query
+        description: Resolve all external model references and return a flattened schema.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Model'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    patch:
+      operationId: UpdateModel
+      summary: Amazon API Gateway Update a Model
+      description: Changes an existing model.
+      tags:
+      - Models
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ModelName'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchOperations'
+      responses:
+        '200':
+          description: Model updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Model'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      operationId: DeleteModel
+      summary: Amazon API Gateway Delete a Model
+      description: Deletes the specified model.
+      tags:
+      - Models
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ModelName'
+      responses:
+        '202':
+          description: Model deletion accepted
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /apikeys:
+    get:
+      operationId: GetApiKeys
+      summary: Amazon API Gateway List API Keys
+      description: Returns information about all current API keys.
+      tags:
+      - API Keys
+      parameters:
+      - $ref: '#/components/parameters/Position'
+      - $ref: '#/components/parameters/Limit'
+      - name: nameQuery
+        in: query
+        description: Filter API keys by name.
+        schema:
+          type: string
+      - name: customerId
+        in: query
+        description: Filter API keys by customer ID.
+        schema:
+          type: string
+      - name: includeValues
+        in: query
+        description: Include the API key values in the response.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response with list of API keys
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiKeys'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    post:
+      operationId: CreateApiKey
+      summary: Amazon API Gateway Create an API Key
+      description: Creates a new API key.
+      tags:
+      - API Keys
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateApiKeyRequest'
+      responses:
+        '201':
+          description: API key created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiKey'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /apikeys/{api_key}:
+    get:
+      operationId: GetApiKey
+      summary: Amazon API Gateway Get an API Key
+      description: Returns information about a specific API key.
+      tags:
+      - API Keys
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyId'
+      - name: includeValue
+        in: query
+        description: Include the API key value in the response.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiKey'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    patch:
+      operationId: UpdateApiKey
+      summary: Amazon API Gateway Update an API Key
+      description: Updates an existing API key.
+      tags:
+      - API Keys
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchOperations'
+      responses:
+        '200':
+          description: API key updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiKey'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      operationId: DeleteApiKey
+      summary: Amazon API Gateway Delete an API Key
+      description: Deletes the specified API key.
+      tags:
+      - API Keys
+      parameters:
+      - $ref: '#/components/parameters/ApiKeyId'
+      responses:
+        '202':
+          description: API key deletion accepted
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /usageplans:
+    get:
+      operationId: GetUsagePlans
+      summary: Amazon API Gateway List Usage Plans
+      description: Returns information about all usage plans.
+      tags:
+      - Usage Plans
+      parameters:
+      - $ref: '#/components/parameters/Position'
+      - $ref: '#/components/parameters/Limit'
+      - name: keyId
+        in: query
+        description: Filter by API key identifier.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with list of usage plans
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsagePlans'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    post:
+      operationId: CreateUsagePlan
+      summary: Amazon API Gateway Create a Usage Plan
+      description: Creates a new usage plan.
+      tags:
+      - Usage Plans
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUsagePlanRequest'
+      responses:
+        '201':
+          description: Usage plan created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsagePlan'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /usageplans/{usageplan_id}:
+    get:
+      operationId: GetUsagePlan
+      summary: Amazon API Gateway Get a Usage Plan
+      description: Returns information about a specific usage plan.
+      tags:
+      - Usage Plans
+      parameters:
+      - $ref: '#/components/parameters/UsagePlanId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsagePlan'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    patch:
+      operationId: UpdateUsagePlan
+      summary: Amazon API Gateway Update a Usage Plan
+      description: Updates an existing usage plan.
+      tags:
+      - Usage Plans
+      parameters:
+      - $ref: '#/components/parameters/UsagePlanId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchOperations'
+      responses:
+        '200':
+          description: Usage plan updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsagePlan'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      operationId: DeleteUsagePlan
+      summary: Amazon API Gateway Delete a Usage Plan
+      description: Deletes the specified usage plan.
+      tags:
+      - Usage Plans
+      parameters:
+      - $ref: '#/components/parameters/UsagePlanId'
+      responses:
+        '202':
+          description: Usage plan deletion accepted
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /domainnames:
+    get:
+      operationId: GetDomainNames
+      summary: Amazon API Gateway List Custom Domain Names
+      description: Returns information about all custom domain names.
+      tags:
+      - Domain Names
+      parameters:
+      - $ref: '#/components/parameters/Position'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Successful response with list of domain names
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainNames'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    post:
+      operationId: CreateDomainName
+      summary: Amazon API Gateway Create a Custom Domain Name
+      description: Creates a new custom domain name.
+      tags:
+      - Domain Names
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDomainNameRequest'
+      responses:
+        '201':
+          description: Domain name created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainName'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /domainnames/{domain_name}:
+    get:
+      operationId: GetDomainName
+      summary: Amazon API Gateway Get a Custom Domain Name
+      description: Returns information about a specific custom domain name.
+      tags:
+      - Domain Names
+      parameters:
+      - $ref: '#/components/parameters/DomainNameParam'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainName'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    patch:
+      operationId: UpdateDomainName
+      summary: Amazon API Gateway Update a Custom Domain Name
+      description: Updates an existing custom domain name.
+      tags:
+      - Domain Names
+      parameters:
+      - $ref: '#/components/parameters/DomainNameParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchOperations'
+      responses:
+        '200':
+          description: Domain name updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainName'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      operationId: DeleteDomainName
+      summary: Amazon API Gateway Delete a Custom Domain Name
+      description: Deletes the specified custom domain name.
+      tags:
+      - Domain Names
+      parameters:
+      - $ref: '#/components/parameters/DomainNameParam'
+      responses:
+        '202':
+          description: Domain name deletion accepted
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /domainnames/{domain_name}/basepathmappings:
+    get:
+      operationId: GetBasePathMappings
+      summary: Amazon API Gateway List Base Path Mappings
+      description: Returns all base path mappings for a custom domain name.
+      tags:
+      - Base Path Mappings
+      parameters:
+      - $ref: '#/components/parameters/DomainNameParam'
+      - $ref: '#/components/parameters/Position'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasePathMappings'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    post:
+      operationId: CreateBasePathMapping
+      summary: Amazon API Gateway Create a Base Path Mapping
+      description: Creates a base path mapping for a custom domain name.
+      tags:
+      - Base Path Mappings
+      parameters:
+      - $ref: '#/components/parameters/DomainNameParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBasePathMappingRequest'
+      responses:
+        '201':
+          description: Base path mapping created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasePathMapping'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /restapis/{restapi_id}/requestvalidators:
+    get:
+      operationId: GetRequestValidators
+      summary: Amazon API Gateway List Request Validators
+      description: Returns all request validators for a REST API.
+      tags:
+      - Request Validators
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/Position'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RequestValidators'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    post:
+      operationId: CreateRequestValidator
+      summary: Amazon API Gateway Create a Request Validator
+      description: Creates a request validator for a REST API.
+      tags:
+      - Request Validators
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRequestValidatorRequest'
+      responses:
+        '201':
+          description: Request validator created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RequestValidator'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /restapis/{restapi_id}/gatewayresponses:
+    get:
+      operationId: GetGatewayResponses
+      summary: Amazon API Gateway List Gateway Responses
+      description: Returns all gateway responses defined for a REST API.
+      tags:
+      - Gateway Responses
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/Position'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GatewayResponses'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /restapis/{restapi_id}/gatewayresponses/{response_type}:
+    get:
+      operationId: GetGatewayResponse
+      summary: Amazon API Gateway Get a Gateway Response
+      description: Returns a gateway response of a specified type.
+      tags:
+      - Gateway Responses
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResponseType'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GatewayResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    put:
+      operationId: PutGatewayResponse
+      summary: Amazon API Gateway Create or Update a Gateway Response
+      description: Creates or updates a gateway response of a specified type.
+      tags:
+      - Gateway Responses
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResponseType'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutGatewayResponseRequest'
+      responses:
+        '201':
+          description: Gateway response created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GatewayResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /vpclinks:
+    get:
+      operationId: GetVpcLinks
+      summary: Amazon API Gateway List VPC Links
+      description: Returns information about all VPC links.
+      tags:
+      - VPC Links
+      parameters:
+      - $ref: '#/components/parameters/Position'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VpcLinks'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    post:
+      operationId: CreateVpcLink
+      summary: Amazon API Gateway Create a VPC Link
+      description: Creates a VPC link for private integrations.
+      tags:
+      - VPC Links
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVpcLinkRequest'
+      responses:
+        '202':
+          description: VPC link creation accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VpcLink'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /vpclinks/{vpclink_id}:
+    get:
+      operationId: GetVpcLink
+      summary: Amazon API Gateway Get a VPC Link
+      description: Returns information about a specific VPC link.
+      tags:
+      - VPC Links
+      parameters:
+      - $ref: '#/components/parameters/VpcLinkId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VpcLink'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    patch:
+      operationId: UpdateVpcLink
+      summary: Amazon API Gateway Update a VPC Link
+      description: Updates an existing VPC link.
+      tags:
+      - VPC Links
+      parameters:
+      - $ref: '#/components/parameters/VpcLinkId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchOperations'
+      responses:
+        '200':
+          description: VPC link updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VpcLink'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      operationId: DeleteVpcLink
+      summary: Amazon API Gateway Delete a VPC Link
+      description: Deletes the specified VPC link.
+      tags:
+      - VPC Links
+      parameters:
+      - $ref: '#/components/parameters/VpcLinkId'
+      responses:
+        '202':
+          description: VPC link deletion accepted
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /restapis/{restapi_id}/documentation/parts:
+    get:
+      operationId: GetDocumentationParts
+      summary: Amazon API Gateway List Documentation Parts
+      description: Returns documentation parts for a REST API.
+      tags:
+      - Documentation
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/Position'
+      - $ref: '#/components/parameters/Limit'
+      - name: type
+        in: query
+        description: Filter by documentation part type.
+        schema:
+          type: string
+          enum:
+          - API
+          - AUTHORIZER
+          - MODEL
+          - RESOURCE
+          - METHOD
+          - PATH_PARAMETER
+          - QUERY_PARAMETER
+          - REQUEST_HEADER
+          - REQUEST_BODY
+          - RESPONSE
+          - RESPONSE_HEADER
+          - RESPONSE_BODY
+      - name: nameQuery
+        in: query
+        description: Filter by name.
+        schema:
+          type: string
+      - name: path
+        in: query
+        description: Filter by resource path.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentationParts'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    post:
+      operationId: CreateDocumentationPart
+      summary: Amazon API Gateway Create a Documentation Part
+      description: Creates a documentation part for a REST API.
+      tags:
+      - Documentation
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDocumentationPartRequest'
+      responses:
+        '201':
+          description: Documentation part created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentationPart'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /restapis/{restapi_id}/documentation/versions:
+    get:
+      operationId: GetDocumentationVersions
+      summary: Amazon API Gateway List Documentation Versions
+      description: Returns documentation versions for a REST API.
+      tags:
+      - Documentation
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/Position'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentationVersions'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    post:
+      operationId: CreateDocumentationVersion
+      summary: Amazon API Gateway Create a Documentation Version
+      description: Creates a snapshot of the documentation for a REST API.
+      tags:
+      - Documentation
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDocumentationVersionRequest'
+      responses:
+        '201':
+          description: Documentation version created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentationVersion'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+components:
+  securitySchemes:
+    sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication
+
+  parameters:
+    RestApiId:
+      name: restapi_id
+      in: path
+      required: true
+      description: The identifier of the REST API.
+      schema:
+        type: string
+    ResourceId:
+      name: resource_id
+      in: path
+      required: true
+      description: The identifier of the resource.
+      schema:
+        type: string
+    HttpMethod:
+      name: http_method
+      in: path
+      required: true
+      description: The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS).
+      schema:
+        type: string
+        enum:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        - PATCH
+        - HEAD
+        - OPTIONS
+        - ANY
+    StageName:
+      name: stage_name
+      in: path
+      required: true
+      description: The name of the stage.
+      schema:
+        type: string
+    DeploymentId:
+      name: deployment_id
+      in: path
+      required: true
+      description: The identifier of the deployment.
+      schema:
+        type: string
+    AuthorizerId:
+      name: authorizer_id
+      in: path
+      required: true
+      description: The identifier of the authorizer.
+      schema:
+        type: string
+    ModelName:
+      name: model_name
+      in: path
+      required: true
+      description: The name of the model.
+      schema:
+        type: string
+    ApiKeyId:
+      name: api_key
+      in: path
+      required: true
+      description: The identifier of the API key.
+      schema:
+        type: string
+    UsagePlanId:
+      name: usageplan_id
+      in: path
+      required: true
+      description: The identifier of the usage plan.
+      schema:
+        type: string
+    DomainNameParam:
+      name: domain_name
+      in: path
+      required: true
+      description: The custom domain name.
+      schema:
+        type: string
+    VpcLinkId:
+      name: vpclink_id
+      in: path
+      required: true
+      description: The identifier of the VPC link.
+      schema:
+        type: string
+    ResponseType:
+      name: response_type
+      in: path
+      required: true
+      description: The response type of the gateway response.
+      schema:
+        type: string
+        enum:
+        - DEFAULT_4XX
+        - DEFAULT_5XX
+        - ACCESS_DENIED
+        - API_CONFIGURATION_ERROR
+        - AUTHORIZER_CONFIGURATION_ERROR
+        - AUTHORIZER_FAILURE
+        - BAD_REQUEST_PARAMETERS
+        - BAD_REQUEST_BODY
+        - EXPIRED_TOKEN
+        - INTEGRATION_FAILURE
+        - INTEGRATION_TIMEOUT
+        - INVALID_API_KEY
+        - INVALID_SIGNATURE
+        - MISSING_AUTHENTICATION_TOKEN
+        - QUOTA_EXCEEDED
+        - REQUEST_TOO_LARGE
+        - RESOURCE_NOT_FOUND
+        - THROTTLED
+        - UNAUTHORIZED
+        - UNSUPPORTED_MEDIA_TYPE
+        - WAF_FILTERED
+    Position:
+      name: position
+      in: query
+      description: >-
+        The current pagination position in the paged result set. Used for
+        cursor-based pagination.
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      description: >-
+        The maximum number of returned results per page. The default value
+        is 25 and the maximum value is 500.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 25
+
+  schemas:
+    RestApi:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The API's identifier.
+        name:
+          type: string
+          description: The API's name.
+        description:
+          type: string
+          description: The API's description.
+        createdDate:
+          type: string
+          format: date-time
+          description: The timestamp when the API was created.
+        version:
+          type: string
+          description: A version identifier for the API.
+        warnings:
+          type: array
+          items:
+            type: string
+          description: The warning messages reported when failonwarnings is on.
+        binaryMediaTypes:
+          type: array
+          items:
+            type: string
+          description: The list of binary media types supported by the REST API.
+        minimumCompressionSize:
+          type: integer
+          description: >-
+            A nullable integer for the minimum payload size in bytes to
+            compress.
+        apiKeySource:
+          type: string
+          enum:
+          - HEADER
+          - AUTHORIZER
+          description: The source of the API key for metering requests.
+        endpointConfiguration:
+          $ref: '#/components/schemas/EndpointConfiguration'
+        policy:
+          type: string
+          description: >-
+            A stringified JSON policy document that applies to this REST
+            API.
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Tags attached to the REST API.
+        disableExecuteApiEndpoint:
+          type: boolean
+          description: >-
+            Specifies whether clients can invoke your API by using the
+            default execute-api endpoint.
+
+    RestApis:
+      type: object
+      properties:
+        position:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestApi'
+
+    CreateRestApiRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: The name of the REST API.
+        description:
+          type: string
+          description: The description of the REST API.
+        version:
+          type: string
+          description: A version identifier for the API.
+        cloneFrom:
+          type: string
+          description: The ID of the REST API to clone from.
+        binaryMediaTypes:
+          type: array
+          items:
+            type: string
+          description: The list of binary media types to support.
+        minimumCompressionSize:
+          type: integer
+          description: Minimum payload compression size in bytes.
+        apiKeySource:
+          type: string
+          enum:
+          - HEADER
+          - AUTHORIZER
+        endpointConfiguration:
+          $ref: '#/components/schemas/EndpointConfiguration'
+        policy:
+          type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        disableExecuteApiEndpoint:
+          type: boolean
+
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The resource's identifier.
+        parentId:
+          type: string
+          description: The parent resource's identifier.
+        pathPart:
+          type: string
+          description: The last path segment for this resource.
+        path:
+          type: string
+          description: The full path for this resource.
+        resourceMethods:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Method'
+          description: >-
+            Map of methods for this resource keyed by HTTP method type.
+
+    Resources:
+      type: object
+      properties:
+        position:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+
+    Method:
+      type: object
+      properties:
+        httpMethod:
+          type: string
+          description: The method's HTTP verb.
+        authorizationType:
+          type: string
+          description: >-
+            The method's authorization type. Valid values are NONE, AWS_IAM,
+            CUSTOM, or COGNITO_USER_POOLS.
+        authorizerId:
+          type: string
+          description: The identifier of an Authorizer to use on this method.
+        apiKeyRequired:
+          type: boolean
+          description: Whether the method requires an API key.
+        requestValidatorId:
+          type: string
+          description: The identifier of a RequestValidator.
+        operationName:
+          type: string
+          description: A human-friendly operation identifier for the method.
+        requestParameters:
+          type: object
+          additionalProperties:
+            type: boolean
+          description: >-
+            Request parameters that can be accepted by the method. Keys
+            identify the parameter location and name.
+        requestModels:
+          type: object
+          additionalProperties:
+            type: string
+          description: >-
+            Specifies the Model resources used for the request's content
+            type.
+        methodResponses:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/MethodResponse'
+          description: Method responses keyed by status code.
+        methodIntegration:
+          $ref: '#/components/schemas/Integration'
+
+    PutMethodRequest:
+      type: object
+      required:
+      - authorizationType
+      properties:
+        authorizationType:
+          type: string
+          description: >-
+            The method's authorization type. Valid values are NONE,
+            AWS_IAM, CUSTOM, or COGNITO_USER_POOLS.
+        authorizerId:
+          type: string
+        apiKeyRequired:
+          type: boolean
+        operationName:
+          type: string
+        requestParameters:
+          type: object
+          additionalProperties:
+            type: boolean
+        requestModels:
+          type: object
+          additionalProperties:
+            type: string
+        requestValidatorId:
+          type: string
+
+    MethodResponse:
+      type: object
+      properties:
+        statusCode:
+          type: string
+          description: The method response's status code.
+        responseParameters:
+          type: object
+          additionalProperties:
+            type: boolean
+        responseModels:
+          type: object
+          additionalProperties:
+            type: string
+
+    Integration:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - HTTP
+          - HTTP_PROXY
+          - AWS
+          - AWS_PROXY
+          - MOCK
+          description: The integration input's type.
+        httpMethod:
+          type: string
+          description: The integration's HTTP method type.
+        uri:
+          type: string
+          description: >-
+            The Uniform Resource Identifier (URI) for the integration.
+        connectionType:
+          type: string
+          enum:
+          - INTERNET
+          - VPC_LINK
+          description: The type of the network connection to the integration endpoint.
+        connectionId:
+          type: string
+          description: >-
+            The ID of the VPC link used for the integration when
+            connectionType is VPC_LINK.
+        credentials:
+          type: string
+          description: >-
+            The credentials required for the integration, if any. For AWS
+            integrations, three options are available.
+        requestParameters:
+          type: object
+          additionalProperties:
+            type: string
+        requestTemplates:
+          type: object
+          additionalProperties:
+            type: string
+        passthroughBehavior:
+          type: string
+          enum:
+          - WHEN_NO_MATCH
+          - WHEN_NO_TEMPLATES
+          - NEVER
+        contentHandling:
+          type: string
+          enum:
+          - CONVERT_TO_BINARY
+          - CONVERT_TO_TEXT
+        timeoutInMillis:
+          type: integer
+          description: Custom timeout between 50 and 29000 milliseconds.
+        cacheNamespace:
+          type: string
+        cacheKeyParameters:
+          type: array
+          items:
+            type: string
+        integrationResponses:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/IntegrationResponse'
+        tlsConfig:
+          type: object
+          properties:
+            insecureSkipVerification:
+              type: boolean
+
+    PutIntegrationRequest:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - HTTP
+          - HTTP_PROXY
+          - AWS
+          - AWS_PROXY
+          - MOCK
+        httpMethod:
+          type: string
+        uri:
+          type: string
+        connectionType:
+          type: string
+          enum:
+          - INTERNET
+          - VPC_LINK
+        connectionId:
+          type: string
+        credentials:
+          type: string
+        requestParameters:
+          type: object
+          additionalProperties:
+            type: string
+        requestTemplates:
+          type: object
+          additionalProperties:
+            type: string
+        passthroughBehavior:
+          type: string
+          enum:
+          - WHEN_NO_MATCH
+          - WHEN_NO_TEMPLATES
+          - NEVER
+        contentHandling:
+          type: string
+          enum:
+          - CONVERT_TO_BINARY
+          - CONVERT_TO_TEXT
+        timeoutInMillis:
+          type: integer
+        cacheNamespace:
+          type: string
+        cacheKeyParameters:
+          type: array
+          items:
+            type: string
+
+    IntegrationResponse:
+      type: object
+      properties:
+        statusCode:
+          type: string
+        selectionPattern:
+          type: string
+        responseParameters:
+          type: object
+          additionalProperties:
+            type: string
+        responseTemplates:
+          type: object
+          additionalProperties:
+            type: string
+        contentHandling:
+          type: string
+          enum:
+          - CONVERT_TO_BINARY
+          - CONVERT_TO_TEXT
+
+    Stage:
+      type: object
+      properties:
+        deploymentId:
+          type: string
+          description: The identifier of the deployment attached to this stage.
+        clientCertificateId:
+          type: string
+          description: The identifier of a client certificate for an API stage.
+        stageName:
+          type: string
+          description: The name of the stage.
+        description:
+          type: string
+          description: The stage's description.
+        cacheClusterEnabled:
+          type: boolean
+          description: Whether cache clustering is enabled for the stage.
+        cacheClusterSize:
+          type: string
+          enum:
+          - '0.5'
+          - '1.6'
+          - '6.1'
+          - '13.5'
+          - '28.4'
+          - '58.2'
+          - '118'
+          - '237'
+          description: The stage's cache cluster size.
+        cacheClusterStatus:
+          type: string
+          enum:
+          - CREATE_IN_PROGRESS
+          - AVAILABLE
+          - DELETE_IN_PROGRESS
+          - NOT_AVAILABLE
+          - FLUSH_IN_PROGRESS
+        methodSettings:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/MethodSetting'
+        variables:
+          type: object
+          additionalProperties:
+            type: string
+          description: Stage variables.
+        documentationVersion:
+          type: string
+        accessLogSettings:
+          $ref: '#/components/schemas/AccessLogSettings'
+        canarySettings:
+          $ref: '#/components/schemas/CanarySettings'
+        tracingEnabled:
+          type: boolean
+          description: Whether X-Ray tracing is enabled for this stage.
+        webAclArn:
+          type: string
+          description: The ARN of the WebAcl associated with the stage.
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        createdDate:
+          type: string
+          format: date-time
+        lastUpdatedDate:
+          type: string
+          format: date-time
+
+    Stages:
+      type: object
+      properties:
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/Stage'
+
+    CreateStageRequest:
+      type: object
+      required:
+      - stageName
+      - deploymentId
+      properties:
+        stageName:
+          type: string
+          description: The name for the stage.
+        deploymentId:
+          type: string
+          description: The identifier of the deployment.
+        description:
+          type: string
+        cacheClusterEnabled:
+          type: boolean
+        cacheClusterSize:
+          type: string
+          enum:
+          - '0.5'
+          - '1.6'
+          - '6.1'
+          - '13.5'
+          - '28.4'
+          - '58.2'
+          - '118'
+          - '237'
+        variables:
+          type: object
+          additionalProperties:
+            type: string
+        documentationVersion:
+          type: string
+        canarySettings:
+          $ref: '#/components/schemas/CanarySettings'
+        tracingEnabled:
+          type: boolean
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+
+    MethodSetting:
+      type: object
+      properties:
+        metricsEnabled:
+          type: boolean
+        loggingLevel:
+          type: string
+          enum:
+          - 'OFF'
+          - ERROR
+          - INFO
+        dataTraceEnabled:
+          type: boolean
+        throttlingBurstLimit:
+          type: integer
+        throttlingRateLimit:
+          type: number
+        cachingEnabled:
+          type: boolean
+        cacheTtlInSeconds:
+          type: integer
+        cacheDataEncrypted:
+          type: boolean
+        requireAuthorizationForCacheControl:
+          type: boolean
+        unauthorizedCacheControlHeaderStrategy:
+          type: string
+          enum:
+          - FAIL_WITH_403
+          - SUCCEED_WITH_RESPONSE_HEADER
+          - SUCCEED_WITHOUT_RESPONSE_HEADER
+
+    AccessLogSettings:
+      type: object
+      properties:
+        format:
+          type: string
+          description: >-
+            A single line format of the access logs of data using CLF,
+            JSON, XML, or CSV format.
+        destinationArn:
+          type: string
+          description: >-
+            The Amazon Resource Name (ARN) of the CloudWatch Logs log
+            group or Kinesis Data Firehose delivery stream.
+
+    CanarySettings:
+      type: object
+      properties:
+        percentTraffic:
+          type: number
+          description: The percent of traffic the canary deployment receives.
+        deploymentId:
+          type: string
+        stageVariableOverrides:
+          type: object
+          additionalProperties:
+            type: string
+        useStageCache:
+          type: boolean
+
+    Deployment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The identifier of the deployment.
+        description:
+          type: string
+          description: The description for the deployment.
+        createdDate:
+          type: string
+          format: date-time
+        apiSummary:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              $ref: '#/components/schemas/MethodSnapshot'
+
+    Deployments:
+      type: object
+      properties:
+        position:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/Deployment'
+
+    CreateDeploymentRequest:
+      type: object
+      properties:
+        stageName:
+          type: string
+          description: >-
+            The name of the stage that the deployment is made to. If not
+            specified, a new stage is created with a generated name.
+        stageDescription:
+          type: string
+        description:
+          type: string
+          description: A description for the deployment.
+        cacheClusterEnabled:
+          type: boolean
+        cacheClusterSize:
+          type: string
+          enum:
+          - '0.5'
+          - '1.6'
+          - '6.1'
+          - '13.5'
+          - '28.4'
+          - '58.2'
+          - '118'
+          - '237'
+        variables:
+          type: object
+          additionalProperties:
+            type: string
+        canarySettings:
+          $ref: '#/components/schemas/DeploymentCanarySettings'
+        tracingEnabled:
+          type: boolean
+
+    DeploymentCanarySettings:
+      type: object
+      properties:
+        percentTraffic:
+          type: number
+        stageVariableOverrides:
+          type: object
+          additionalProperties:
+            type: string
+        useStageCache:
+          type: boolean
+
+    MethodSnapshot:
+      type: object
+      properties:
+        authorizationType:
+          type: string
+        apiKeyRequired:
+          type: boolean
+
+    Authorizer:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The identifier of the authorizer.
+        name:
+          type: string
+          description: The name of the authorizer.
+        type:
+          type: string
+          enum:
+          - TOKEN
+          - REQUEST
+          - COGNITO_USER_POOLS
+          description: The authorizer type.
+        providerARNs:
+          type: array
+          items:
+            type: string
+          description: A list of the Amazon Cognito user pool ARNs.
+        authType:
+          type: string
+          description: An optional customer-defined field for authorization type.
+        authorizerUri:
+          type: string
+          description: >-
+            The authorizer's URI. For TOKEN or REQUEST authorizers, this
+            is the Lambda function URI.
+        authorizerCredentials:
+          type: string
+          description: >-
+            The credentials required for the authorizer as an IAM role
+            ARN.
+        identitySource:
+          type: string
+          description: >-
+            The identity source for which authorization is requested.
+        identityValidationExpression:
+          type: string
+          description: >-
+            A validation expression for the incoming identity token.
+        authorizerResultTtlInSeconds:
+          type: integer
+          description: >-
+            The TTL in seconds of cached authorizer results. Max 3600.
+
+    Authorizers:
+      type: object
+      properties:
+        position:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/Authorizer'
+
+    CreateAuthorizerRequest:
+      type: object
+      required:
+      - name
+      - type
+      properties:
+        name:
+          type: string
+          description: The name of the authorizer.
+        type:
+          type: string
+          enum:
+          - TOKEN
+          - REQUEST
+          - COGNITO_USER_POOLS
+        providerARNs:
+          type: array
+          items:
+            type: string
+        authType:
+          type: string
+        authorizerUri:
+          type: string
+        authorizerCredentials:
+          type: string
+        identitySource:
+          type: string
+        identityValidationExpression:
+          type: string
+        authorizerResultTtlInSeconds:
+          type: integer
+
+    Model:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The identifier of the model.
+        name:
+          type: string
+          description: The name of the model.
+        description:
+          type: string
+          description: The description of the model.
+        schema:
+          type: string
+          description: >-
+            The schema for the model. For application/json models, this
+            should be JSON schema draft 4 model.
+        contentType:
+          type: string
+          description: The content type for the model.
+
+    Models:
+      type: object
+      properties:
+        position:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model'
+
+    CreateModelRequest:
+      type: object
+      required:
+      - name
+      - contentType
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        schema:
+          type: string
+        contentType:
+          type: string
+
+    ApiKey:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The identifier of the API key.
+        value:
+          type: string
+          description: The value of the API key.
+        name:
+          type: string
+          description: The name of the API key.
+        customerId:
+          type: string
+          description: An AWS Marketplace customer identifier.
+        description:
+          type: string
+        enabled:
+          type: boolean
+          description: Whether the API key can be used by callers.
+        createdDate:
+          type: string
+          format: date-time
+        lastUpdatedDate:
+          type: string
+          format: date-time
+        stageKeys:
+          type: array
+          items:
+            type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+
+    ApiKeys:
+      type: object
+      properties:
+        position:
+          type: string
+        warnings:
+          type: array
+          items:
+            type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiKey'
+
+    CreateApiKeyRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        enabled:
+          type: boolean
+        generateDistinctId:
+          type: boolean
+        value:
+          type: string
+        stageKeys:
+          type: array
+          items:
+            $ref: '#/components/schemas/StageKey'
+        customerId:
+          type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+
+    StageKey:
+      type: object
+      properties:
+        restApiId:
+          type: string
+        stageName:
+          type: string
+
+    UsagePlan:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The identifier of the usage plan.
+        name:
+          type: string
+          description: The name of the usage plan.
+        description:
+          type: string
+        apiStages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiStage'
+        throttle:
+          $ref: '#/components/schemas/ThrottleSettings'
+        quota:
+          $ref: '#/components/schemas/QuotaSettings'
+        productCode:
+          type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+
+    UsagePlans:
+      type: object
+      properties:
+        position:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsagePlan'
+
+    CreateUsagePlanRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        apiStages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiStage'
+        throttle:
+          $ref: '#/components/schemas/ThrottleSettings'
+        quota:
+          $ref: '#/components/schemas/QuotaSettings'
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+
+    ApiStage:
+      type: object
+      properties:
+        apiId:
+          type: string
+        stage:
+          type: string
+        throttle:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/ThrottleSettings'
+
+    ThrottleSettings:
+      type: object
+      properties:
+        burstLimit:
+          type: integer
+          description: The API request burst limit per second.
+        rateLimit:
+          type: number
+          description: The API request steady-state rate limit per second.
+
+    QuotaSettings:
+      type: object
+      properties:
+        limit:
+          type: integer
+          description: The maximum number of requests per time period.
+        offset:
+          type: integer
+          description: The day that a time period starts.
+        period:
+          type: string
+          enum:
+          - DAY
+          - WEEK
+          - MONTH
+          description: The time period for which the maximum limit applies.
+
+    DomainName:
+      type: object
+      properties:
+        domainName:
+          type: string
+        certificateName:
+          type: string
+        certificateArn:
+          type: string
+        certificateUploadDate:
+          type: string
+          format: date-time
+        regionalDomainName:
+          type: string
+        regionalHostedZoneId:
+          type: string
+        regionalCertificateName:
+          type: string
+        regionalCertificateArn:
+          type: string
+        distributionDomainName:
+          type: string
+        distributionHostedZoneId:
+          type: string
+        endpointConfiguration:
+          $ref: '#/components/schemas/EndpointConfiguration'
+        domainNameStatus:
+          type: string
+          enum:
+          - AVAILABLE
+          - UPDATING
+          - PENDING
+          - PENDING_CERTIFICATE_REIMPORT
+          - PENDING_OWNERSHIP_VERIFICATION
+        domainNameStatusMessage:
+          type: string
+        securityPolicy:
+          type: string
+          enum:
+          - TLS_1_0
+          - TLS_1_2
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        mutualTlsAuthentication:
+          type: object
+          properties:
+            truststoreUri:
+              type: string
+            truststoreVersion:
+              type: string
+            truststoreWarnings:
+              type: array
+              items:
+                type: string
+
+    DomainNames:
+      type: object
+      properties:
+        position:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/DomainName'
+
+    CreateDomainNameRequest:
+      type: object
+      required:
+      - domainName
+      properties:
+        domainName:
+          type: string
+        certificateName:
+          type: string
+        certificateBody:
+          type: string
+        certificatePrivateKey:
+          type: string
+        certificateChain:
+          type: string
+        certificateArn:
+          type: string
+        regionalCertificateName:
+          type: string
+        regionalCertificateArn:
+          type: string
+        endpointConfiguration:
+          $ref: '#/components/schemas/EndpointConfiguration'
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        securityPolicy:
+          type: string
+          enum:
+          - TLS_1_0
+          - TLS_1_2
+        mutualTlsAuthentication:
+          type: object
+          properties:
+            truststoreUri:
+              type: string
+            truststoreVersion:
+              type: string
+
+    BasePathMapping:
+      type: object
+      properties:
+        basePath:
+          type: string
+        restApiId:
+          type: string
+        stage:
+          type: string
+
+    BasePathMappings:
+      type: object
+      properties:
+        position:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasePathMapping'
+
+    CreateBasePathMappingRequest:
+      type: object
+      required:
+      - restApiId
+      properties:
+        basePath:
+          type: string
+        restApiId:
+          type: string
+        stage:
+          type: string
+
+    RequestValidator:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        validateRequestBody:
+          type: boolean
+        validateRequestParameters:
+          type: boolean
+
+    RequestValidators:
+      type: object
+      properties:
+        position:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestValidator'
+
+    CreateRequestValidatorRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        validateRequestBody:
+          type: boolean
+        validateRequestParameters:
+          type: boolean
+
+    GatewayResponse:
+      type: object
+      properties:
+        responseType:
+          type: string
+        statusCode:
+          type: string
+        responseParameters:
+          type: object
+          additionalProperties:
+            type: string
+        responseTemplates:
+          type: object
+          additionalProperties:
+            type: string
+        defaultResponse:
+          type: boolean
+
+    GatewayResponses:
+      type: object
+      properties:
+        position:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/GatewayResponse'
+
+    PutGatewayResponseRequest:
+      type: object
+      properties:
+        statusCode:
+          type: string
+        responseParameters:
+          type: object
+          additionalProperties:
+            type: string
+        responseTemplates:
+          type: object
+          additionalProperties:
+            type: string
+
+    VpcLink:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        targetArns:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+          enum:
+          - AVAILABLE
+          - PENDING
+          - DELETING
+          - FAILED
+        statusMessage:
+          type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+
+    VpcLinks:
+      type: object
+      properties:
+        position:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/VpcLink'
+
+    CreateVpcLinkRequest:
+      type: object
+      required:
+      - name
+      - targetArns
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        targetArns:
+          type: array
+          items:
+            type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+
+    DocumentationPart:
+      type: object
+      properties:
+        id:
+          type: string
+        location:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - API
+              - AUTHORIZER
+              - MODEL
+              - RESOURCE
+              - METHOD
+              - PATH_PARAMETER
+              - QUERY_PARAMETER
+              - REQUEST_HEADER
+              - REQUEST_BODY
+              - RESPONSE
+              - RESPONSE_HEADER
+              - RESPONSE_BODY
+            path:
+              type: string
+            method:
+              type: string
+            statusCode:
+              type: string
+            name:
+              type: string
+        properties:
+          type: string
+
+    DocumentationParts:
+      type: object
+      properties:
+        position:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentationPart'
+
+    CreateDocumentationPartRequest:
+      type: object
+      required:
+      - location
+      - properties
+      properties:
+        location:
+          type: object
+          required:
+          - type
+          properties:
+            type:
+              type: string
+              enum:
+              - API
+              - AUTHORIZER
+              - MODEL
+              - RESOURCE
+              - METHOD
+              - PATH_PARAMETER
+              - QUERY_PARAMETER
+              - REQUEST_HEADER
+              - REQUEST_BODY
+              - RESPONSE
+              - RESPONSE_HEADER
+              - RESPONSE_BODY
+            path:
+              type: string
+            method:
+              type: string
+            statusCode:
+              type: string
+            name:
+              type: string
+        properties:
+          type: string
+
+    DocumentationVersion:
+      type: object
+      properties:
+        version:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        description:
+          type: string
+
+    DocumentationVersions:
+      type: object
+      properties:
+        position:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentationVersion'
+
+    CreateDocumentationVersionRequest:
+      type: object
+      required:
+      - documentationVersion
+      properties:
+        documentationVersion:
+          type: string
+        stageName:
+          type: string
+        description:
+          type: string
+
+    EndpointConfiguration:
+      type: object
+      properties:
+        types:
+          type: array
+          items:
+            type: string
+            enum:
+            - REGIONAL
+            - EDGE
+            - PRIVATE
+          description: >-
+            A list of endpoint types of an API or its custom domain name.
+        vpcEndpointIds:
+          type: array
+          items:
+            type: string
+          description: >-
+            A list of VPC endpoint IDs of an API against which to create
+            Route53 ALIASes.
+
+    PatchOperations:
+      type: object
+      properties:
+        patchOperations:
+          type: array
+          items:
+            $ref: '#/components/schemas/PatchOperation'
+
+    PatchOperation:
+      type: object
+      properties:
+        op:
+          type: string
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          description: The operation type.
+        path:
+          type: string
+          description: >-
+            The op operation's target, as identified by a JSON Pointer
+            value.
+        value:
+          type: string
+          description: >-
+            The new target value of the update operation. It is
+            applicable for the add or replace operation.
+        from:
+          type: string
+          description: >-
+            The copy update operation's source as identified by a JSON
+            Pointer value.
+
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message.
+        code:
+          type: string
+          description: The error code.
+
+  responses:
+    BadRequest:
+      description: The request is invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: The request lacks valid authentication credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The specified resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Conflict:
+      description: The request conflicts with the current state of the resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: The request rate has exceeded the allowed limit.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalError:
+      description: An internal server error occurred.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

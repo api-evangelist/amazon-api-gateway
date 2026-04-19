@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "PutMethodRequest",
+  "type": "record",
+  "fields": [
+    {
+      "name": "authorizationType",
+      "type": "string"
+    },
+    {
+      "name": "authorizerId",
+      "type": "string"
+    },
+    {
+      "name": "apiKeyRequired",
+      "type": "boolean"
+    },
+    {
+      "name": "operationName",
+      "type": "string"
+    },
+    {
+      "name": "requestParameters",
+      "type": "object"
+    },
+    {
+      "name": "requestModels",
+      "type": "object"
+    },
+    {
+      "name": "requestValidatorId",
+      "type": "string"
+    }
+  ]
+}

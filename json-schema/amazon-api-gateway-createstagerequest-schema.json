@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CreateStageRequest",
+  "type": "object",
+  "properties": {
+    "stageName": {
+      "type": "string",
+      "description": "The name for the stage."
+    },
+    "deploymentId": {
+      "type": "string",
+      "description": "The identifier of the deployment."
+    },
+    "description": {
+      "type": "string"
+    },
+    "cacheClusterEnabled": {
+      "type": "boolean"
+    },
+    "cacheClusterSize": {
+      "type": "string",
+      "enum": [
+        "0.5",
+        "1.6",
+        "6.1",
+        "13.5",
+        "28.4",
+        "58.2",
+        "118",
+        "237"
+      ]
+    },
+    "variables": {
+      "type": "object"
+    },
+    "documentationVersion": {
+      "type": "string"
+    },
+    "canarySettings": {
+      "$ref": "#/definitions/CanarySettings"
+    },
+    "tracingEnabled": {
+      "type": "boolean"
+    },
+    "tags": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "stageName",
+    "deploymentId"
+  ]
+}

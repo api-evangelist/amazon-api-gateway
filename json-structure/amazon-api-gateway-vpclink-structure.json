@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "VpcLink",
+  "type": "record",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "targetArns",
+      "type": "array"
+    },
+    {
+      "name": "status",
+      "type": "string"
+    },
+    {
+      "name": "statusMessage",
+      "type": "string"
+    },
+    {
+      "name": "tags",
+      "type": "object"
+    }
+  ]
+}

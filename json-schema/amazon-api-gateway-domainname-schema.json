@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DomainName",
+  "type": "object",
+  "properties": {
+    "domainName": {
+      "type": "string"
+    },
+    "certificateName": {
+      "type": "string"
+    },
+    "certificateArn": {
+      "type": "string"
+    },
+    "certificateUploadDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "regionalDomainName": {
+      "type": "string"
+    },
+    "regionalHostedZoneId": {
+      "type": "string"
+    },
+    "regionalCertificateName": {
+      "type": "string"
+    },
+    "regionalCertificateArn": {
+      "type": "string"
+    },
+    "distributionDomainName": {
+      "type": "string"
+    },
+    "distributionHostedZoneId": {
+      "type": "string"
+    },
+    "endpointConfiguration": {
+      "$ref": "#/definitions/EndpointConfiguration"
+    },
+    "domainNameStatus": {
+      "type": "string",
+      "enum": [
+        "AVAILABLE",
+        "UPDATING",
+        "PENDING",
+        "PENDING_CERTIFICATE_REIMPORT",
+        "PENDING_OWNERSHIP_VERIFICATION"
+      ]
+    },
+    "domainNameStatusMessage": {
+      "type": "string"
+    },
+    "securityPolicy": {
+      "type": "string",
+      "enum": [
+        "TLS_1_0",
+        "TLS_1_2"
+      ]
+    },
+    "tags": {
+      "type": "object"
+    },
+    "mutualTlsAuthentication": {
+      "type": "object",
+      "properties": {
+        "truststoreUri": {
+          "type": "string"
+        },
+        "truststoreVersion": {
+          "type": "string"
+        },
+        "truststoreWarnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Amazon API Gateway REST API
+  description: Shared capability for managing API Gateway REST APIs, resources, methods, stages, and deployments.
+  tags:
+  - Amazon
+  - API Gateway
+  - AWS
+  - REST
+  created: '2026-04-19'
+  modified: '2026-04-19'
+binds:
+- namespace: env
+  keys:
+    AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+    AWS_REGION: AWS_REGION
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-api-gateway
+    baseUri: https://apigateway.{region}.amazonaws.com
+    description: Amazon API Gateway Control Plane API
+    authentication:
+      type: aws-sigv4
+      service: apigateway
+    resources:
+    - name: rest-apis
+      path: /restapis
+      description: Manage REST API definitions.
+      operations:
+      - name: get-rest-apis
+        method: GET
+        description: List all REST APIs.
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-rest-api
+        method: POST
+        description: Create a new REST API.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: REST API configuration.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8113
+    namespace: amazon-api-gateway-api
+    resources:
+    - path: /v1/rest-apis
+      name: rest-apis
+      operations:
+      - method: GET
+        name: get-rest-apis
+        description: List REST APIs.
+        call: amazon-api-gateway.get-rest-apis
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9113
+    namespace: amazon-api-gateway-mcp
+    transport: http
+    tools:
+    - name: list-rest-apis
+      description: List all Amazon API Gateway REST APIs in the account.
+      hints:
+        readOnly: true
+        openWorld: false
+      call: amazon-api-gateway.get-rest-apis
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-rest-api
+      description: Create a new Amazon API Gateway REST API definition.
+      hints:
+        readOnly: false
+        openWorld: false
+      call: amazon-api-gateway.create-rest-api
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

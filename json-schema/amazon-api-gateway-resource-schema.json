@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Resource",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The resource's identifier."
+    },
+    "parentId": {
+      "type": "string",
+      "description": "The parent resource's identifier."
+    },
+    "pathPart": {
+      "type": "string",
+      "description": "The last path segment for this resource."
+    },
+    "path": {
+      "type": "string",
+      "description": "The full path for this resource."
+    },
+    "resourceMethods": {
+      "type": "object",
+      "description": "Map of methods for this resource keyed by HTTP method type."
+    }
+  }
+}

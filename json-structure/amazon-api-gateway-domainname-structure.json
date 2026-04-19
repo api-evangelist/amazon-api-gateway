@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "DomainName",
+  "type": "record",
+  "fields": [
+    {
+      "name": "domainName",
+      "type": "string"
+    },
+    {
+      "name": "certificateName",
+      "type": "string"
+    },
+    {
+      "name": "certificateArn",
+      "type": "string"
+    },
+    {
+      "name": "certificateUploadDate",
+      "type": "datetime"
+    },
+    {
+      "name": "regionalDomainName",
+      "type": "string"
+    },
+    {
+      "name": "regionalHostedZoneId",
+      "type": "string"
+    },
+    {
+      "name": "regionalCertificateName",
+      "type": "string"
+    },
+    {
+      "name": "regionalCertificateArn",
+      "type": "string"
+    },
+    {
+      "name": "distributionDomainName",
+      "type": "string"
+    },
+    {
+      "name": "distributionHostedZoneId",
+      "type": "string"
+    },
+    {
+      "name": "endpointConfiguration",
+      "type": "string"
+    },
+    {
+      "name": "domainNameStatus",
+      "type": "string"
+    },
+    {
+      "name": "domainNameStatusMessage",
+      "type": "string"
+    },
+    {
+      "name": "securityPolicy",
+      "type": "string"
+    },
+    {
+      "name": "tags",
+      "type": "object"
+    },
+    {
+      "name": "mutualTlsAuthentication",
+      "type": "object"
+    }
+  ]
+}

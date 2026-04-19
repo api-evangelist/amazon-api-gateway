@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PutIntegrationRequest",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "HTTP",
+        "HTTP_PROXY",
+        "AWS",
+        "AWS_PROXY",
+        "MOCK"
+      ]
+    },
+    "httpMethod": {
+      "type": "string"
+    },
+    "uri": {
+      "type": "string"
+    },
+    "connectionType": {
+      "type": "string",
+      "enum": [
+        "INTERNET",
+        "VPC_LINK"
+      ]
+    },
+    "connectionId": {
+      "type": "string"
+    },
+    "credentials": {
+      "type": "string"
+    },
+    "requestParameters": {
+      "type": "object"
+    },
+    "requestTemplates": {
+      "type": "object"
+    },
+    "passthroughBehavior": {
+      "type": "string",
+      "enum": [
+        "WHEN_NO_MATCH",
+        "WHEN_NO_TEMPLATES",
+        "NEVER"
+      ]
+    },
+    "contentHandling": {
+      "type": "string",
+      "enum": [
+        "CONVERT_TO_BINARY",
+        "CONVERT_TO_TEXT"
+      ]
+    },
+    "timeoutInMillis": {
+      "type": "integer"
+    },
+    "cacheNamespace": {
+      "type": "string"
+    },
+    "cacheKeyParameters": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "type"
+  ]
+}

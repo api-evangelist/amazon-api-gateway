@@ -1,0 +1,7 @@
+{
+  "responseType": "example-responseType",
+  "statusCode": "example-statusCode",
+  "responseParameters": {},
+  "responseTemplates": {},
+  "defaultResponse": true
+}

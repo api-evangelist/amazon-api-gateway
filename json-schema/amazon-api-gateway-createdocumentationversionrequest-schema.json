@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CreateDocumentationVersionRequest",
+  "type": "object",
+  "properties": {
+    "documentationVersion": {
+      "type": "string"
+    },
+    "stageName": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "documentationVersion"
+  ]
+}

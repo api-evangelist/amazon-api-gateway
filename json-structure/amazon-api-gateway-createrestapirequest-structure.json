@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "CreateRestApiRequest",
+  "type": "record",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "version",
+      "type": "string"
+    },
+    {
+      "name": "cloneFrom",
+      "type": "string"
+    },
+    {
+      "name": "binaryMediaTypes",
+      "type": "array"
+    },
+    {
+      "name": "minimumCompressionSize",
+      "type": "int32"
+    },
+    {
+      "name": "apiKeySource",
+      "type": "string"
+    },
+    {
+      "name": "endpointConfiguration",
+      "type": "string"
+    },
+    {
+      "name": "policy",
+      "type": "string"
+    },
+    {
+      "name": "tags",
+      "type": "object"
+    },
+    {
+      "name": "disableExecuteApiEndpoint",
+      "type": "boolean"
+    }
+  ]
+}

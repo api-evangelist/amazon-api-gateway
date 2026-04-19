@@ -1,0 +1,15 @@
+{
+  "id": "example-id",
+  "name": "example-name",
+  "description": "example-description",
+  "createdDate": "2024-01-15T10:30:00Z",
+  "version": "example-version",
+  "warnings": [],
+  "binaryMediaTypes": [],
+  "minimumCompressionSize": 1,
+  "apiKeySource": "HEADER",
+  "endpointConfiguration": "example-endpointConfiguration",
+  "policy": "example-policy",
+  "tags": {},
+  "disableExecuteApiEndpoint": true
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "CreateVpcLinkRequest",
+  "type": "record",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "targetArns",
+      "type": "array"
+    },
+    {
+      "name": "tags",
+      "type": "object"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MethodSetting",
+  "type": "object",
+  "properties": {
+    "metricsEnabled": {
+      "type": "boolean"
+    },
+    "loggingLevel": {
+      "type": "string",
+      "enum": [
+        "OFF",
+        "ERROR",
+        "INFO"
+      ]
+    },
+    "dataTraceEnabled": {
+      "type": "boolean"
+    },
+    "throttlingBurstLimit": {
+      "type": "integer"
+    },
+    "throttlingRateLimit": {
+      "type": "number"
+    },
+    "cachingEnabled": {
+      "type": "boolean"
+    },
+    "cacheTtlInSeconds": {
+      "type": "integer"
+    },
+    "cacheDataEncrypted": {
+      "type": "boolean"
+    },
+    "requireAuthorizationForCacheControl": {
+      "type": "boolean"
+    },
+    "unauthorizedCacheControlHeaderStrategy": {
+      "type": "string",
+      "enum": [
+        "FAIL_WITH_403",
+        "SUCCEED_WITH_RESPONSE_HEADER",
+        "SUCCEED_WITHOUT_RESPONSE_HEADER"
+      ]
+    }
+  }
+}

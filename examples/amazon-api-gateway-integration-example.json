@@ -1,0 +1,17 @@
+{
+  "type": "HTTP",
+  "httpMethod": "example-httpMethod",
+  "uri": "example-uri",
+  "connectionType": "INTERNET",
+  "connectionId": "example-connectionId",
+  "credentials": "example-credentials",
+  "requestParameters": {},
+  "requestTemplates": {},
+  "passthroughBehavior": "WHEN_NO_MATCH",
+  "contentHandling": "CONVERT_TO_BINARY",
+  "timeoutInMillis": 1,
+  "cacheNamespace": "example-cacheNamespace",
+  "cacheKeyParameters": [],
+  "integrationResponses": {},
+  "tlsConfig": {}
+}

@@ -1,0 +1,122 @@
+vocabulary: 1.0.0
+info:
+  provider: Amazon API Gateway
+  description: Vocabulary for the Amazon API Gateway API surface covering REST APIs, WebSocket APIs, resources, methods, stages, and deployments.
+  created: '2026-04-19'
+  modified: '2026-04-19'
+operational:
+  apis:
+  - namespace: amazon-api-gateway
+    name: Amazon API Gateway REST API
+    version: '2015-07-09'
+    baseUrl: https://apigateway.{region}.amazonaws.com
+    status: active
+  resources:
+  - name: rest-apis
+    description: REST API definitions managed by API Gateway.
+    apis:
+    - amazon-api-gateway
+    actions:
+    - list
+    - create
+    - get
+    - update
+    - delete
+  - name: resources
+    description: API resource paths within a REST API.
+    apis:
+    - amazon-api-gateway
+    actions:
+    - list
+    - create
+    - get
+    - delete
+  - name: methods
+    description: HTTP methods on API resources.
+    apis:
+    - amazon-api-gateway
+    actions:
+    - get
+    - create
+    - update
+    - delete
+  - name: stages
+    description: Deployment stages for API Gateway REST APIs.
+    apis:
+    - amazon-api-gateway
+    actions:
+    - list
+    - create
+    - get
+    - update
+    - delete
+  - name: deployments
+    description: Deployment snapshots of API configurations.
+    apis:
+    - amazon-api-gateway
+    actions:
+    - list
+    - create
+    - get
+    - delete
+  actions:
+  - name: list
+    description: List resources.
+    httpMethod: GET
+    pattern: query
+  - name: create
+    description: Create a resource.
+    httpMethod: POST
+    pattern: write
+  - name: get
+    description: Get a specific resource.
+    httpMethod: GET
+    pattern: read
+  - name: update
+    description: Update a resource.
+    httpMethod: PATCH
+    pattern: write
+  - name: delete
+    description: Delete a resource.
+    httpMethod: DELETE
+    pattern: delete
+  authentication:
+    schemes:
+    - type: aws-sigv4
+      description: AWS Signature Version 4.
+      service: apigateway
+capability:
+  workflows:
+  - name: API Gateway Management
+    file: capabilities/api-gateway-management.yaml
+    description: Manage API Gateway REST APIs, resources, stages, and deployments.
+    apisCombined:
+    - Amazon API Gateway REST API
+    toolCount: 2
+    personas:
+    - API Developer
+    - Platform Engineer
+  personas:
+  - id: api-developer
+    name: API Developer
+    description: Developer creating and managing REST APIs on Amazon API Gateway.
+    workflows:
+    - API Gateway Management
+  - id: platform-engineer
+    name: Platform Engineer
+    description: Engineer managing API infrastructure and deployments across environments.
+    workflows:
+    - API Gateway Management
+  namespaces:
+    consumed:
+    - amazon-api-gateway
+    rest:
+    - api-gateway-management-api (port 8080)
+    - amazon-api-gateway-api (port 8113)
+    mcp:
+    - api-gateway-management-mcp (port 9090)
+    - amazon-api-gateway-mcp (port 9113)
+  binds:
+  - AWS_ACCESS_KEY_ID
+  - AWS_SECRET_ACCESS_KEY
+  - AWS_REGION

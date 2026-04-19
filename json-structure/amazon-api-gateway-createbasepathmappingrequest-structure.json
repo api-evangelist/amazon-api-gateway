@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "CreateBasePathMappingRequest",
+  "type": "record",
+  "fields": [
+    {
+      "name": "basePath",
+      "type": "string"
+    },
+    {
+      "name": "restApiId",
+      "type": "string"
+    },
+    {
+      "name": "stage",
+      "type": "string"
+    }
+  ]
+}

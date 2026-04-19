@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "CreateDomainNameRequest",
+  "type": "record",
+  "fields": [
+    {
+      "name": "domainName",
+      "type": "string"
+    },
+    {
+      "name": "certificateName",
+      "type": "string"
+    },
+    {
+      "name": "certificateBody",
+      "type": "string"
+    },
+    {
+      "name": "certificatePrivateKey",
+      "type": "string"
+    },
+    {
+      "name": "certificateChain",
+      "type": "string"
+    },
+    {
+      "name": "certificateArn",
+      "type": "string"
+    },
+    {
+      "name": "regionalCertificateName",
+      "type": "string"
+    },
+    {
+      "name": "regionalCertificateArn",
+      "type": "string"
+    },
+    {
+      "name": "endpointConfiguration",
+      "type": "string"
+    },
+    {
+      "name": "tags",
+      "type": "object"
+    },
+    {
+      "name": "securityPolicy",
+      "type": "string"
+    },
+    {
+      "name": "mutualTlsAuthentication",
+      "type": "object"
+    }
+  ]
+}

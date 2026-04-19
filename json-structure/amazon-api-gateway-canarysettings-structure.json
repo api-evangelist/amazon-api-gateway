@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "CanarySettings",
+  "type": "record",
+  "fields": [
+    {
+      "name": "percentTraffic",
+      "type": "double"
+    },
+    {
+      "name": "deploymentId",
+      "type": "string"
+    },
+    {
+      "name": "stageVariableOverrides",
+      "type": "object"
+    },
+    {
+      "name": "useStageCache",
+      "type": "boolean"
+    }
+  ]
+}

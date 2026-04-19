@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "MethodSnapshot",
+  "type": "record",
+  "fields": [
+    {
+      "name": "authorizationType",
+      "type": "string"
+    },
+    {
+      "name": "apiKeyRequired",
+      "type": "boolean"
+    }
+  ]
+}

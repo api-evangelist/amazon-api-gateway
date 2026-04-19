@@ -1,0 +1,18 @@
+{
+  "domainName": "example-domainName",
+  "certificateName": "example-certificateName",
+  "certificateArn": "example-certificateArn",
+  "certificateUploadDate": "2024-01-15T10:30:00Z",
+  "regionalDomainName": "example-regionalDomainName",
+  "regionalHostedZoneId": "example-regionalHostedZoneId",
+  "regionalCertificateName": "example-regionalCertificateName",
+  "regionalCertificateArn": "example-regionalCertificateArn",
+  "distributionDomainName": "example-distributionDomainName",
+  "distributionHostedZoneId": "example-distributionHostedZoneId",
+  "endpointConfiguration": "example-endpointConfiguration",
+  "domainNameStatus": "AVAILABLE",
+  "domainNameStatusMessage": "example-domainNameStatusMessage",
+  "securityPolicy": "TLS_1_0",
+  "tags": {},
+  "mutualTlsAuthentication": {}
+}

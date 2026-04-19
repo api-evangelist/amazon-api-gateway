@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "GatewayResponse",
+  "type": "record",
+  "fields": [
+    {
+      "name": "responseType",
+      "type": "string"
+    },
+    {
+      "name": "statusCode",
+      "type": "string"
+    },
+    {
+      "name": "responseParameters",
+      "type": "object"
+    },
+    {
+      "name": "responseTemplates",
+      "type": "object"
+    },
+    {
+      "name": "defaultResponse",
+      "type": "boolean"
+    }
+  ]
+}

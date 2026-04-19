@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "EndpointConfiguration",
+  "type": "record",
+  "fields": [
+    {
+      "name": "types",
+      "type": "array"
+    },
+    {
+      "name": "vpcEndpointIds",
+      "type": "array"
+    }
+  ]
+}

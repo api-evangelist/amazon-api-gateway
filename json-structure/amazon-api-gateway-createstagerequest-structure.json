@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "CreateStageRequest",
+  "type": "record",
+  "fields": [
+    {
+      "name": "stageName",
+      "type": "string"
+    },
+    {
+      "name": "deploymentId",
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "cacheClusterEnabled",
+      "type": "boolean"
+    },
+    {
+      "name": "cacheClusterSize",
+      "type": "string"
+    },
+    {
+      "name": "variables",
+      "type": "object"
+    },
+    {
+      "name": "documentationVersion",
+      "type": "string"
+    },
+    {
+      "name": "canarySettings",
+      "type": "string"
+    },
+    {
+      "name": "tracingEnabled",
+      "type": "boolean"
+    },
+    {
+      "name": "tags",
+      "type": "object"
+    }
+  ]
+}

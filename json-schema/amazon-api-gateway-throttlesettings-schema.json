@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ThrottleSettings",
+  "type": "object",
+  "properties": {
+    "burstLimit": {
+      "type": "integer",
+      "description": "The API request burst limit per second."
+    },
+    "rateLimit": {
+      "type": "number",
+      "description": "The API request steady-state rate limit per second."
+    }
+  }
+}

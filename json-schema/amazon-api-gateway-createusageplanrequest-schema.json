@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CreateUsagePlanRequest",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "apiStages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ApiStage"
+      }
+    },
+    "throttle": {
+      "$ref": "#/definitions/ThrottleSettings"
+    },
+    "quota": {
+      "$ref": "#/definitions/QuotaSettings"
+    },
+    "tags": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

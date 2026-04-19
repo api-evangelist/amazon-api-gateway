@@ -1,0 +1,8 @@
+{
+  "name": "example-name",
+  "description": "example-description",
+  "apiStages": [],
+  "throttle": "example-throttle",
+  "quota": "example-quota",
+  "tags": {}
+}

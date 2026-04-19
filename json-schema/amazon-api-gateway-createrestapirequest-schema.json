@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CreateRestApiRequest",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the REST API."
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the REST API."
+    },
+    "version": {
+      "type": "string",
+      "description": "A version identifier for the API."
+    },
+    "cloneFrom": {
+      "type": "string",
+      "description": "The ID of the REST API to clone from."
+    },
+    "binaryMediaTypes": {
+      "type": "array",
+      "description": "The list of binary media types to support.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "minimumCompressionSize": {
+      "type": "integer",
+      "description": "Minimum payload compression size in bytes."
+    },
+    "apiKeySource": {
+      "type": "string",
+      "enum": [
+        "HEADER",
+        "AUTHORIZER"
+      ]
+    },
+    "endpointConfiguration": {
+      "$ref": "#/definitions/EndpointConfiguration"
+    },
+    "policy": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "object"
+    },
+    "disableExecuteApiEndpoint": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

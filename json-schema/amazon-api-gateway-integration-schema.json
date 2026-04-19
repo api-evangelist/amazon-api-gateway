@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Integration",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The integration input's type.",
+      "enum": [
+        "HTTP",
+        "HTTP_PROXY",
+        "AWS",
+        "AWS_PROXY",
+        "MOCK"
+      ]
+    },
+    "httpMethod": {
+      "type": "string",
+      "description": "The integration's HTTP method type."
+    },
+    "uri": {
+      "type": "string",
+      "description": "The Uniform Resource Identifier (URI) for the integration."
+    },
+    "connectionType": {
+      "type": "string",
+      "description": "The type of the network connection to the integration endpoint.",
+      "enum": [
+        "INTERNET",
+        "VPC_LINK"
+      ]
+    },
+    "connectionId": {
+      "type": "string",
+      "description": "The ID of the VPC link used for the integration when connectionType is VPC_LINK."
+    },
+    "credentials": {
+      "type": "string",
+      "description": "The credentials required for the integration, if any. For AWS integrations, three options are available."
+    },
+    "requestParameters": {
+      "type": "object"
+    },
+    "requestTemplates": {
+      "type": "object"
+    },
+    "passthroughBehavior": {
+      "type": "string",
+      "enum": [
+        "WHEN_NO_MATCH",
+        "WHEN_NO_TEMPLATES",
+        "NEVER"
+      ]
+    },
+    "contentHandling": {
+      "type": "string",
+      "enum": [
+        "CONVERT_TO_BINARY",
+        "CONVERT_TO_TEXT"
+      ]
+    },
+    "timeoutInMillis": {
+      "type": "integer",
+      "description": "Custom timeout between 50 and 29000 milliseconds."
+    },
+    "cacheNamespace": {
+      "type": "string"
+    },
+    "cacheKeyParameters": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "integrationResponses": {
+      "type": "object"
+    },
+    "tlsConfig": {
+      "type": "object",
+      "properties": {
+        "insecureSkipVerification": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RestApi",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The API's identifier."
+    },
+    "name": {
+      "type": "string",
+      "description": "The API's name."
+    },
+    "description": {
+      "type": "string",
+      "description": "The API's description."
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp when the API was created."
+    },
+    "version": {
+      "type": "string",
+      "description": "A version identifier for the API."
+    },
+    "warnings": {
+      "type": "array",
+      "description": "The warning messages reported when failonwarnings is on.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "binaryMediaTypes": {
+      "type": "array",
+      "description": "The list of binary media types supported by the REST API.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "minimumCompressionSize": {
+      "type": "integer",
+      "description": "A nullable integer for the minimum payload size in bytes to compress."
+    },
+    "apiKeySource": {
+      "type": "string",
+      "description": "The source of the API key for metering requests.",
+      "enum": [
+        "HEADER",
+        "AUTHORIZER"
+      ]
+    },
+    "endpointConfiguration": {
+      "$ref": "#/definitions/EndpointConfiguration"
+    },
+    "policy": {
+      "type": "string",
+      "description": "A stringified JSON policy document that applies to this REST API."
+    },
+    "tags": {
+      "type": "object",
+      "description": "Tags attached to the REST API."
+    },
+    "disableExecuteApiEndpoint": {
+      "type": "boolean",
+      "description": "Specifies whether clients can invoke your API by using the default execute-api endpoint."
+    }
+  }
+}

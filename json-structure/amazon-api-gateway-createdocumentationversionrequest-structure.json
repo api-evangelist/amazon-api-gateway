@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "CreateDocumentationVersionRequest",
+  "type": "record",
+  "fields": [
+    {
+      "name": "documentationVersion",
+      "type": "string"
+    },
+    {
+      "name": "stageName",
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    }
+  ]
+}

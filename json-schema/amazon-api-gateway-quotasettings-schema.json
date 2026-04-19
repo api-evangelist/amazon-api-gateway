@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "QuotaSettings",
+  "type": "object",
+  "properties": {
+    "limit": {
+      "type": "integer",
+      "description": "The maximum number of requests per time period."
+    },
+    "offset": {
+      "type": "integer",
+      "description": "The day that a time period starts."
+    },
+    "period": {
+      "type": "string",
+      "description": "The time period for which the maximum limit applies.",
+      "enum": [
+        "DAY",
+        "WEEK",
+        "MONTH"
+      ]
+    }
+  }
+}

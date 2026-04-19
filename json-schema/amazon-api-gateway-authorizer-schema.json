@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Authorizer",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The identifier of the authorizer."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the authorizer."
+    },
+    "type": {
+      "type": "string",
+      "description": "The authorizer type.",
+      "enum": [
+        "TOKEN",
+        "REQUEST",
+        "COGNITO_USER_POOLS"
+      ]
+    },
+    "providerARNs": {
+      "type": "array",
+      "description": "A list of the Amazon Cognito user pool ARNs.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authType": {
+      "type": "string",
+      "description": "An optional customer-defined field for authorization type."
+    },
+    "authorizerUri": {
+      "type": "string",
+      "description": "The authorizer's URI. For TOKEN or REQUEST authorizers, this is the Lambda function URI."
+    },
+    "authorizerCredentials": {
+      "type": "string",
+      "description": "The credentials required for the authorizer as an IAM role ARN."
+    },
+    "identitySource": {
+      "type": "string",
+      "description": "The identity source for which authorization is requested."
+    },
+    "identityValidationExpression": {
+      "type": "string",
+      "description": "A validation expression for the incoming identity token."
+    },
+    "authorizerResultTtlInSeconds": {
+      "type": "integer",
+      "description": "The TTL in seconds of cached authorizer results. Max 3600."
+    }
+  }
+}

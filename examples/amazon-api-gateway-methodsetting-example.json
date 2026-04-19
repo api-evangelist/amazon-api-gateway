@@ -1,0 +1,11 @@
+{
+  "metricsEnabled": true,
+  "loggingLevel": "OFF",
+  "dataTraceEnabled": true,
+  "throttlingBurstLimit": 1,
+  "cachingEnabled": true,
+  "cacheTtlInSeconds": 1,
+  "cacheDataEncrypted": true,
+  "requireAuthorizationForCacheControl": true,
+  "unauthorizedCacheControlHeaderStrategy": "FAIL_WITH_403"
+}

@@ -1,0 +1,19 @@
+{
+  "deploymentId": "example-deploymentId",
+  "clientCertificateId": "example-clientCertificateId",
+  "stageName": "example-stageName",
+  "description": "example-description",
+  "cacheClusterEnabled": true,
+  "cacheClusterSize": "0.5",
+  "cacheClusterStatus": "CREATE_IN_PROGRESS",
+  "methodSettings": {},
+  "variables": {},
+  "documentationVersion": "example-documentationVersion",
+  "accessLogSettings": "example-accessLogSettings",
+  "canarySettings": "example-canarySettings",
+  "tracingEnabled": true,
+  "webAclArn": "example-webAclArn",
+  "tags": {},
+  "createdDate": "2024-01-15T10:30:00Z",
+  "lastUpdatedDate": "2024-01-15T10:30:00Z"
+}

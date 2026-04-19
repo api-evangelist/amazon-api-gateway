@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EndpointConfiguration",
+  "type": "object",
+  "properties": {
+    "types": {
+      "type": "array",
+      "description": "A list of endpoint types of an API or its custom domain name.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "REGIONAL",
+          "EDGE",
+          "PRIVATE"
+        ]
+      }
+    },
+    "vpcEndpointIds": {
+      "type": "array",
+      "description": "A list of VPC endpoint IDs of an API against which to create Route53 ALIASes.",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

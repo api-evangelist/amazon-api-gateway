@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "name": "ThrottleSettings",
+  "type": "record",
+  "fields": [
+    {
+      "name": "burstLimit",
+      "type": "int32"
+    },
+    {
+      "name": "rateLimit",
+      "type": "double"
+    }
+  ]
+}
