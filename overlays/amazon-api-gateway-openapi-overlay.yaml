@@ -1,0 +1,31 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Amazon API Gateway REST API
+  version: 1.0.0
+extends: openapi/amazon-api-gateway-openapi.yaml
+x-provenance:
+  generated: '2026-06-20'
+  method: generated
+  source: apis.yml + repo artifacts
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-slug: amazon-api-gateway
+      x-apievangelist-aid: amazon-api-gateway:rest-api
+      x-apievangelist-artifacts:
+        packages: packages/amazon-api-gateway-packages.yml
+        errors: errors/amazon-api-gateway-problem-types.yml
+        conformance: conformance/amazon-api-gateway-conformance.yml
+        lifecycle: lifecycle/amazon-api-gateway-lifecycle.yml
+        llms: llms/amazon-api-gateway-llms.txt
+        mcp: mcp/amazon-api-gateway-mcp.yml
+        well_known: well-known/amazon-api-gateway-well-known.yml
+  - target: $.info
+    update:
+      x-apievangelist-auth: aws-sigv4
+      x-apievangelist-sla: "99.95%"
+      x-apievangelist-status-page: https://health.aws.amazon.com/health/status
+  - target: $.externalDocs
+    update:
+      description: Amazon API Gateway Developer Guide
+      url: https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html

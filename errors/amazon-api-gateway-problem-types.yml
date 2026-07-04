@@ -1,0 +1,100 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/amazon-api-gateway-openapi.yaml
+enriched_from: https://docs.aws.amazon.com/apigateway/latest/api/CommonErrors.md
+format: aws-json
+note: >-
+  Amazon API Gateway's control-plane returns errors as application/json with a
+  { "message": ..., "code": ... } body (not RFC 9457 problem+json). The first
+  block is DERIVED from the OpenAPI components.responses shared across all
+  operations; the second block (common_errors) is SEARCHED from the AWS API
+  Reference "Common Error Types" page and applies service-wide.
+error_schema:
+  content_type: application/json
+  properties:
+    message: A human-readable error message.
+    code: The error code.
+problems:
+  - status: 400
+    name: BadRequest
+    title: The request is invalid or malformed.
+    remediation: Check request parameters, path values, and body against the API reference.
+    source: openapi components.responses BadRequest
+  - status: 401
+    name: Unauthorized
+    title: The request lacks valid authentication credentials.
+    remediation: Sign the request with AWS Signature Version 4 using valid credentials.
+    source: openapi components.responses Unauthorized
+  - status: 404
+    name: NotFound
+    title: The specified resource was not found.
+    remediation: Verify the resource identifier (restapi_id, resource_id, etc.) exists in the target region.
+    source: openapi components.responses NotFound
+  - status: 409
+    name: Conflict
+    title: The request conflicts with the current state of the resource.
+    remediation: Resolve the conflicting state (e.g. duplicate name, concurrent update) and retry.
+    source: openapi components.responses Conflict
+  - status: 429
+    name: TooManyRequests
+    title: The request rate has exceeded the allowed limit.
+    remediation: Back off and retry with exponential backoff; request a control-plane quota increase if sustained.
+    source: openapi components.responses TooManyRequests
+  - status: 500
+    name: InternalError
+    title: An internal server error occurred.
+    remediation: Retry the request; if it persists, contact AWS Support.
+    source: openapi components.responses InternalError
+common_errors:
+  - status: 403
+    code: AccessDeniedException
+    title: You don't have permission to perform this action.
+    remediation: Verify that your IAM policy includes the required apigateway permissions.
+  - status: 403
+    code: ExpiredTokenException
+    title: The security token included in the request has expired.
+    remediation: Request a new security token and try again.
+  - status: 403
+    code: IncompleteSignature
+    title: The request signature doesn't conform to AWS standards.
+    remediation: Ensure your SDK is up to date and the request is correctly SigV4-signed.
+  - status: 500
+    code: InternalFailure
+    title: The request can't be processed because of an internal server issue.
+    remediation: Try again later; contact AWS Support if it persists.
+  - status: 400
+    code: MalformedHttpRequestException
+    title: The request body can't be processed.
+    remediation: Verify the content-encoding header matches the compression used.
+  - status: 401
+    code: NotAuthorized
+    title: You don't have permissions to perform this action.
+    remediation: Verify that your IAM policy includes the required permissions.
+  - status: 403
+    code: OptInRequired
+    title: Your AWS account needs a subscription for this service.
+    remediation: Enable the service in your account.
+  - status: 400
+    code: RequestAbortedException
+    title: The request was aborted before a response could be returned.
+    remediation: Retry; typically caused by the client closing the connection.
+  - status: 413
+    code: RequestEntityTooLargeException
+    title: The request entity is too large.
+    remediation: Reduce the size of the request body and try again.
+  - status: 408
+    code: RequestTimeoutException
+    title: The request timed out.
+    remediation: Retry the request.
+  - status: 503
+    code: ServiceUnavailable
+    title: The service is temporarily unavailable.
+    remediation: Try again later.
+  - status: 400
+    code: ThrottlingException
+    title: Your request rate is too high.
+    remediation: Reduce request frequency; AWS SDKs retry this automatically.
+  - status: 404
+    code: UnknownOperationException
+    title: The action or operation isn't recognized.
+    remediation: Verify the action name and API version.

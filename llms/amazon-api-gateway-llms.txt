@@ -1,0 +1,178 @@
+# Amazon API Gateway API Reference
+
+> Amazon API Gateway helps developers deliver robust, secure, and scalable mobile and web application back ends. API Gateway allows developers to securely connect mobile and web applications to APIs that run on AWS Lambda, Amazon EC2, or other publicly addressable web services that are hosted outside of AWS.
+
+- [Welcome](https://docs.aws.amazon.com/apigateway/latest/api/Welcome.md)
+- [Common Parameters](https://docs.aws.amazon.com/apigateway/latest/api/CommonParameters.md)
+- [Common Error Types](https://docs.aws.amazon.com/apigateway/latest/api/CommonErrors.md)
+- [Patch Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.md)
+
+## [Actions](https://docs.aws.amazon.com/apigateway/latest/api/API_Operations.md)
+
+- [CreateApiKey](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateApiKey.md): Create an ApiKey resource.
+- [CreateAuthorizer](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateAuthorizer.md): Adds a new Authorizer resource to an existing RestApi resource.
+- [CreateBasePathMapping](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateBasePathMapping.md): Creates a new BasePathMapping resource.
+- [CreateDeployment](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateDeployment.md): Creates a Deployment resource, which makes a specified RestApi callable over the internet.
+- [CreateDocumentationPart](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateDocumentationPart.md): Creates a documentation part.
+- [CreateDocumentationVersion](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateDocumentationVersion.md): Creates a documentation version
+- [CreateDomainName](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateDomainName.md): Creates a new domain name.
+- [CreateDomainNameAccessAssociation](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateDomainNameAccessAssociation.md): Creates a domain name access association resource between an access association source and a private custom domain name.
+- [CreateModel](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateModel.md): Adds a new Model resource to an existing RestApi resource.
+- [CreateRequestValidator](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateRequestValidator.md): Creates a RequestValidator of a given RestApi.
+- [CreateResource](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateResource.md): Creates a Resource resource.
+- [CreateRestApi](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateRestApi.md): Creates a new RestApi resource.
+- [CreateStage](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateStage.md): Creates a new Stage resource that references a pre-existing Deployment for the API.
+- [CreateUsagePlan](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateUsagePlan.md): Creates a usage plan with the throttle and quota limits, as well as the associated API stages, specified in the payload.
+- [CreateUsagePlanKey](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateUsagePlanKey.md): Creates a usage plan key for adding an existing API key to a usage plan.
+- [CreateVpcLink](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateVpcLink.md): Creates a VPC link, under the caller's account in a selected region, in an asynchronous operation that typically takes 2-4 minutes to complete and become operational.
+- [DeleteApiKey](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteApiKey.md): Deletes the ApiKey resource.
+- [DeleteAuthorizer](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteAuthorizer.md): Deletes an existing Authorizer resource.
+- [DeleteBasePathMapping](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteBasePathMapping.md): Deletes the BasePathMapping resource.
+- [DeleteClientCertificate](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteClientCertificate.md): Deletes the ClientCertificate resource.
+- [DeleteDeployment](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteDeployment.md): Deletes a Deployment resource.
+- [DeleteDocumentationPart](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteDocumentationPart.md): Deletes a documentation part
+- [DeleteDocumentationVersion](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteDocumentationVersion.md): Deletes a documentation version.
+- [DeleteDomainName](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteDomainName.md): Deletes the DomainName resource.
+- [DeleteDomainNameAccessAssociation](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteDomainNameAccessAssociation.md): Deletes the DomainNameAccessAssociation resource.
+- [DeleteGatewayResponse](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteGatewayResponse.md): Clears any customization of a GatewayResponse of a specified response type on the given RestApi and resets it with the default settings.
+- [DeleteIntegration](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteIntegration.md): Represents a delete integration.
+- [DeleteIntegrationResponse](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteIntegrationResponse.md): Represents a delete integration response.
+- [DeleteMethod](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteMethod.md): Deletes an existing Method resource.
+- [DeleteMethodResponse](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteMethodResponse.md): Deletes an existing MethodResponse resource.
+- [DeleteModel](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteModel.md): Deletes a model.
+- [DeleteRequestValidator](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteRequestValidator.md): Deletes a RequestValidator of a given RestApi.
+- [DeleteResource](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteResource.md): Deletes a Resource resource.
+- [DeleteRestApi](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteRestApi.md): Deletes the specified API.
+- [DeleteStage](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteStage.md): Deletes a Stage resource.
+- [DeleteUsagePlan](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteUsagePlan.md): Deletes a usage plan of a given plan Id.
+- [DeleteUsagePlanKey](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteUsagePlanKey.md): Deletes a usage plan key and remove the underlying API key from the associated usage plan.
+- [DeleteVpcLink](https://docs.aws.amazon.com/apigateway/latest/api/API_DeleteVpcLink.md): Deletes an existing VpcLink of a specified identifier.
+- [FlushStageAuthorizersCache](https://docs.aws.amazon.com/apigateway/latest/api/API_FlushStageAuthorizersCache.md): Flushes all authorizer cache entries on a stage.
+- [FlushStageCache](https://docs.aws.amazon.com/apigateway/latest/api/API_FlushStageCache.md): Flushes a stage's cache.
+- [GenerateClientCertificate](https://docs.aws.amazon.com/apigateway/latest/api/API_GenerateClientCertificate.md): Generates a ClientCertificate resource.
+- [GetAccount](https://docs.aws.amazon.com/apigateway/latest/api/API_GetAccount.md): Gets information about the current Account resource.
+- [GetApiKey](https://docs.aws.amazon.com/apigateway/latest/api/API_GetApiKey.md): Gets information about the current ApiKey resource.
+- [GetApiKeys](https://docs.aws.amazon.com/apigateway/latest/api/API_GetApiKeys.md): Gets information about the current ApiKeys resource.
+- [GetAuthorizer](https://docs.aws.amazon.com/apigateway/latest/api/API_GetAuthorizer.md): Describe an existing Authorizer resource.
+- [GetAuthorizers](https://docs.aws.amazon.com/apigateway/latest/api/API_GetAuthorizers.md): Describe an existing Authorizers resource.
+- [GetBasePathMapping](https://docs.aws.amazon.com/apigateway/latest/api/API_GetBasePathMapping.md): Describe a BasePathMapping resource.
+- [GetBasePathMappings](https://docs.aws.amazon.com/apigateway/latest/api/API_GetBasePathMappings.md): Represents a collection of BasePathMapping resources.
+- [GetClientCertificate](https://docs.aws.amazon.com/apigateway/latest/api/API_GetClientCertificate.md): Gets information about the current ClientCertificate resource.
+- [GetClientCertificates](https://docs.aws.amazon.com/apigateway/latest/api/API_GetClientCertificates.md): Gets a collection of ClientCertificate resources.
+- [GetDeployment](https://docs.aws.amazon.com/apigateway/latest/api/API_GetDeployment.md): Gets information about a Deployment resource.
+- [GetDeployments](https://docs.aws.amazon.com/apigateway/latest/api/API_GetDeployments.md): Gets information about a Deployments collection.
+- [GetDocumentationPart](https://docs.aws.amazon.com/apigateway/latest/api/API_GetDocumentationPart.md): Gets a documentation part.
+- [GetDocumentationParts](https://docs.aws.amazon.com/apigateway/latest/api/API_GetDocumentationParts.md): Gets documentation parts.
+- [GetDocumentationVersion](https://docs.aws.amazon.com/apigateway/latest/api/API_GetDocumentationVersion.md): Gets a documentation version.
+- [GetDocumentationVersions](https://docs.aws.amazon.com/apigateway/latest/api/API_GetDocumentationVersions.md): Gets documentation versions.
+- [GetDomainName](https://docs.aws.amazon.com/apigateway/latest/api/API_GetDomainName.md): Represents a domain name that is contained in a simpler, more intuitive URL that can be called.
+- [GetDomainNameAccessAssociations](https://docs.aws.amazon.com/apigateway/latest/api/API_GetDomainNameAccessAssociations.md): Represents a collection on DomainNameAccessAssociations resources.
+- [GetDomainNames](https://docs.aws.amazon.com/apigateway/latest/api/API_GetDomainNames.md): Represents a collection of DomainName resources.
+- [GetExport](https://docs.aws.amazon.com/apigateway/latest/api/API_GetExport.md): Exports a deployed version of a RestApi in a specified format.
+- [GetGatewayResponse](https://docs.aws.amazon.com/apigateway/latest/api/API_GetGatewayResponse.md): Gets a GatewayResponse of a specified response type on the given RestApi.
+- [GetGatewayResponses](https://docs.aws.amazon.com/apigateway/latest/api/API_GetGatewayResponses.md): Gets the GatewayResponses collection on the given RestApi.
+- [GetIntegration](https://docs.aws.amazon.com/apigateway/latest/api/API_GetIntegration.md): Get the integration settings.
+- [GetIntegrationResponse](https://docs.aws.amazon.com/apigateway/latest/api/API_GetIntegrationResponse.md): Represents a get integration response.
+- [GetMethod](https://docs.aws.amazon.com/apigateway/latest/api/API_GetMethod.md): Describe an existing Method resource.
+- [GetMethodResponse](https://docs.aws.amazon.com/apigateway/latest/api/API_GetMethodResponse.md): Describes a MethodResponse resource.
+- [GetModel](https://docs.aws.amazon.com/apigateway/latest/api/API_GetModel.md): Describes an existing model defined for a RestApi resource.
+- [GetModels](https://docs.aws.amazon.com/apigateway/latest/api/API_GetModels.md): Describes existing Models defined for a RestApi resource.
+- [GetModelTemplate](https://docs.aws.amazon.com/apigateway/latest/api/API_GetModelTemplate.md): Generates a sample mapping template that can be used to transform a payload into the structure of a model.
+- [GetRequestValidator](https://docs.aws.amazon.com/apigateway/latest/api/API_GetRequestValidator.md): Gets a RequestValidator of a given RestApi.
+- [GetRequestValidators](https://docs.aws.amazon.com/apigateway/latest/api/API_GetRequestValidators.md): Gets the RequestValidators collection of a given RestApi.
+- [GetResource](https://docs.aws.amazon.com/apigateway/latest/api/API_GetResource.md): Lists information about a resource.
+- [GetResources](https://docs.aws.amazon.com/apigateway/latest/api/API_GetResources.md): Lists information about a collection of Resource resources.
+- [GetRestApi](https://docs.aws.amazon.com/apigateway/latest/api/API_GetRestApi.md): Lists the RestApi resource in the collection.
+- [GetRestApis](https://docs.aws.amazon.com/apigateway/latest/api/API_GetRestApis.md): Lists the RestApis resources for your collection.
+- [GetSdk](https://docs.aws.amazon.com/apigateway/latest/api/API_GetSdk.md): Generates a client SDK for a RestApi and Stage.
+- [GetSdkType](https://docs.aws.amazon.com/apigateway/latest/api/API_GetSdkType.md): Gets an SDK type.
+- [GetSdkTypes](https://docs.aws.amazon.com/apigateway/latest/api/API_GetSdkTypes.md): Gets SDK types
+- [GetStage](https://docs.aws.amazon.com/apigateway/latest/api/API_GetStage.md): Gets information about a Stage resource.
+- [GetStages](https://docs.aws.amazon.com/apigateway/latest/api/API_GetStages.md): Gets information about one or more Stage resources.
+- [GetTags](https://docs.aws.amazon.com/apigateway/latest/api/API_GetTags.md): Gets the Tags collection for a given resource.
+- [GetUsage](https://docs.aws.amazon.com/apigateway/latest/api/API_GetUsage.md): Gets the usage data of a usage plan in a specified time interval.
+- [GetUsagePlan](https://docs.aws.amazon.com/apigateway/latest/api/API_GetUsagePlan.md): Gets a usage plan of a given plan identifier.
+- [GetUsagePlanKey](https://docs.aws.amazon.com/apigateway/latest/api/API_GetUsagePlanKey.md): Gets a usage plan key of a given key identifier.
+- [GetUsagePlanKeys](https://docs.aws.amazon.com/apigateway/latest/api/API_GetUsagePlanKeys.md): Gets all the usage plan keys representing the API keys added to a specified usage plan.
+- [GetUsagePlans](https://docs.aws.amazon.com/apigateway/latest/api/API_GetUsagePlans.md): Gets all the usage plans of the caller's account.
+- [GetVpcLink](https://docs.aws.amazon.com/apigateway/latest/api/API_GetVpcLink.md): Gets a specified VPC link under the caller's account in a region.
+- [GetVpcLinks](https://docs.aws.amazon.com/apigateway/latest/api/API_GetVpcLinks.md): Gets the VpcLinks collection under the caller's account in a selected region.
+- [ImportApiKeys](https://docs.aws.amazon.com/apigateway/latest/api/API_ImportApiKeys.md): Import API keys from an external source, such as a CSV-formatted file.
+- [ImportDocumentationParts](https://docs.aws.amazon.com/apigateway/latest/api/API_ImportDocumentationParts.md): Imports documentation parts
+- [ImportRestApi](https://docs.aws.amazon.com/apigateway/latest/api/API_ImportRestApi.md): A feature of the API Gateway control service for creating a new API from an external API definition file.
+- [PutGatewayResponse](https://docs.aws.amazon.com/apigateway/latest/api/API_PutGatewayResponse.md): Creates a customization of a GatewayResponse of a specified response type and status code on the given RestApi.
+- [PutIntegration](https://docs.aws.amazon.com/apigateway/latest/api/API_PutIntegration.md): Sets up a method's integration.
+- [PutIntegrationResponse](https://docs.aws.amazon.com/apigateway/latest/api/API_PutIntegrationResponse.md): Represents a put integration.
+- [PutMethod](https://docs.aws.amazon.com/apigateway/latest/api/API_PutMethod.md): Add a method to an existing Resource resource.
+- [PutMethodResponse](https://docs.aws.amazon.com/apigateway/latest/api/API_PutMethodResponse.md): Adds a MethodResponse to an existing Method resource.
+- [PutRestApi](https://docs.aws.amazon.com/apigateway/latest/api/API_PutRestApi.md): A feature of the API Gateway control service for updating an existing API with an input of external API definitions.
+- [RejectDomainNameAccessAssociation](https://docs.aws.amazon.com/apigateway/latest/api/API_RejectDomainNameAccessAssociation.md): Rejects a domain name access association with a private custom domain name.
+- [TagResource](https://docs.aws.amazon.com/apigateway/latest/api/API_TagResource.md): Adds or updates a tag on a given resource.
+- [TestInvokeAuthorizer](https://docs.aws.amazon.com/apigateway/latest/api/API_TestInvokeAuthorizer.md): Simulate the execution of an Authorizer in your RestApi with headers, parameters, and an incoming request body.
+- [TestInvokeMethod](https://docs.aws.amazon.com/apigateway/latest/api/API_TestInvokeMethod.md): Simulate the invocation of a Method in your RestApi with headers, parameters, and an incoming request body.
+- [UntagResource](https://docs.aws.amazon.com/apigateway/latest/api/API_UntagResource.md): Removes a tag from a given resource.
+- [UpdateAccount](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateAccount.md): Changes information about the current Account resource.
+- [UpdateApiKey](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateApiKey.md): Changes information about an ApiKey resource.
+- [UpdateAuthorizer](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateAuthorizer.md): Updates an existing Authorizer resource.
+- [UpdateBasePathMapping](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateBasePathMapping.md): Changes information about the BasePathMapping resource.
+- [UpdateClientCertificate](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateClientCertificate.md): Changes information about an ClientCertificate resource.
+- [UpdateDeployment](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateDeployment.md): Changes information about a Deployment resource.
+- [UpdateDocumentationPart](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateDocumentationPart.md): Updates a documentation part.
+- [UpdateDocumentationVersion](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateDocumentationVersion.md): Updates a documentation version.
+- [UpdateDomainName](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateDomainName.md): Changes information about the DomainName resource.
+- [UpdateGatewayResponse](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateGatewayResponse.md): Updates a GatewayResponse of a specified response type on the given RestApi.
+- [UpdateIntegration](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateIntegration.md): Represents an update integration.
+- [UpdateIntegrationResponse](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateIntegrationResponse.md): Represents an update integration response.
+- [UpdateMethod](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateMethod.md): Updates an existing Method resource.
+- [UpdateMethodResponse](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateMethodResponse.md): Updates an existing MethodResponse resource.
+- [UpdateModel](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateModel.md): Changes information about a model.
+- [UpdateRequestValidator](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateRequestValidator.md): Updates a RequestValidator of a given RestApi.
+- [UpdateResource](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateResource.md): Changes information about a Resource resource.
+- [UpdateRestApi](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateRestApi.md): Changes information about the specified API.
+- [UpdateStage](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateStage.md): Changes information about a Stage resource.
+- [UpdateUsage](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateUsage.md): Grants a temporary extension to the remaining quota of a usage plan associated with a specified API key.
+- [UpdateUsagePlan](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateUsagePlan.md): Updates a usage plan of a given plan Id.
+- [UpdateVpcLink](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateVpcLink.md): Updates an existing VpcLink of a specified identifier.
+
+
+## [Data Types](https://docs.aws.amazon.com/apigateway/latest/api/API_Types.md)
+
+- [AccessLogSettings](https://docs.aws.amazon.com/apigateway/latest/api/API_AccessLogSettings.md): Access log settings, including the access log format and access log destination ARN.
+- [ApiKey](https://docs.aws.amazon.com/apigateway/latest/api/API_ApiKey.md): A resource that can be distributed to callers for executing Method resources that require an API key.
+- [ApiStage](https://docs.aws.amazon.com/apigateway/latest/api/API_ApiStage.md): API stage name of the associated API stage in a usage plan.
+- [Authorizer](https://docs.aws.amazon.com/apigateway/latest/api/API_Authorizer.md): Represents an authorization layer for methods.
+- [BasePathMapping](https://docs.aws.amazon.com/apigateway/latest/api/API_BasePathMapping.md): Represents the base path that callers of the API must provide as part of the URL after the domain name.
+- [CanarySettings](https://docs.aws.amazon.com/apigateway/latest/api/API_CanarySettings.md): Configuration settings of a canary deployment.
+- [ClientCertificate](https://docs.aws.amazon.com/apigateway/latest/api/API_ClientCertificate.md): Represents a client certificate used to configure client-side SSL authentication while sending requests to the integration endpoint.
+- [Deployment](https://docs.aws.amazon.com/apigateway/latest/api/API_Deployment.md): An immutable representation of a RestApi resource that can be called by users using Stages.
+- [DeploymentCanarySettings](https://docs.aws.amazon.com/apigateway/latest/api/API_DeploymentCanarySettings.md): The input configuration for a canary deployment.
+- [DocumentationPart](https://docs.aws.amazon.com/apigateway/latest/api/API_DocumentationPart.md): A documentation part for a targeted API entity.
+- [DocumentationPartLocation](https://docs.aws.amazon.com/apigateway/latest/api/API_DocumentationPartLocation.md): Specifies the target API entity to which the documentation applies.
+- [DocumentationVersion](https://docs.aws.amazon.com/apigateway/latest/api/API_DocumentationVersion.md): A snapshot of the documentation of an API.
+- [DomainName](https://docs.aws.amazon.com/apigateway/latest/api/API_DomainName.md): Represents a custom domain name as a user-friendly host name of an API (RestApi).
+- [DomainNameAccessAssociation](https://docs.aws.amazon.com/apigateway/latest/api/API_DomainNameAccessAssociation.md): Represents a domain name access association between an access association source and a private custom domain name.
+- [EndpointConfiguration](https://docs.aws.amazon.com/apigateway/latest/api/API_EndpointConfiguration.md): The endpoint configuration to indicate the types of endpoints an API (RestApi) or its custom domain name (DomainName) has and the IP address types that can invoke it.
+- [GatewayResponse](https://docs.aws.amazon.com/apigateway/latest/api/API_GatewayResponse.md): A gateway response of a given response type and status code, with optional response parameters and mapping templates.
+- [Integration](https://docs.aws.amazon.com/apigateway/latest/api/API_Integration.md): Represents an HTTP, HTTP_PROXY, AWS, AWS_PROXY, or Mock integration.
+- [IntegrationResponse](https://docs.aws.amazon.com/apigateway/latest/api/API_IntegrationResponse.md): Represents an integration response.
+- [Method](https://docs.aws.amazon.com/apigateway/latest/api/API_Method.md): Represents a client-facing interface by which the client calls the API to access back-end resources.
+- [MethodResponse](https://docs.aws.amazon.com/apigateway/latest/api/API_MethodResponse.md): Represents a method response of a given HTTP status code returned to the client.
+- [MethodSetting](https://docs.aws.amazon.com/apigateway/latest/api/API_MethodSetting.md): Specifies the method setting properties.
+- [MethodSnapshot](https://docs.aws.amazon.com/apigateway/latest/api/API_MethodSnapshot.md): Represents a summary of a Method resource, given a particular date and time.
+- [Model](https://docs.aws.amazon.com/apigateway/latest/api/API_Model.md): Represents the data structure of a method's request or response payload.
+- [MutualTlsAuthentication](https://docs.aws.amazon.com/apigateway/latest/api/API_MutualTlsAuthentication.md): The mutual TLS authentication configuration for a custom domain name.
+- [MutualTlsAuthenticationInput](https://docs.aws.amazon.com/apigateway/latest/api/API_MutualTlsAuthenticationInput.md): The mutual TLS authentication configuration for a custom domain name.
+- [PatchOperation](https://docs.aws.amazon.com/apigateway/latest/api/API_PatchOperation.md): For more information about supported patch operations, see .
+- [QuotaSettings](https://docs.aws.amazon.com/apigateway/latest/api/API_QuotaSettings.md): Quotas configured for a usage plan.
+- [RequestValidator](https://docs.aws.amazon.com/apigateway/latest/api/API_RequestValidator.md): A set of validation rules for incoming Method requests.
+- [Resource](https://docs.aws.amazon.com/apigateway/latest/api/API_Resource.md): Represents an API resource.
+- [RestApi](https://docs.aws.amazon.com/apigateway/latest/api/API_RestApi.md): Represents a REST API.
+- [SdkConfigurationProperty](https://docs.aws.amazon.com/apigateway/latest/api/API_SdkConfigurationProperty.md): A configuration property of an SDK type.
+- [SdkType](https://docs.aws.amazon.com/apigateway/latest/api/API_SdkType.md): A type of SDK that API Gateway can generate.
+- [Stage](https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.md): Represents a unique identifier for a version of a deployed RestApi that is callable by users.
+- [StageKey](https://docs.aws.amazon.com/apigateway/latest/api/API_StageKey.md): A reference to a unique stage identified in the format {restApiId}/{stage}.
+- [ThrottleSettings](https://docs.aws.amazon.com/apigateway/latest/api/API_ThrottleSettings.md): The API request rate limits.
+- [TlsConfig](https://docs.aws.amazon.com/apigateway/latest/api/API_TlsConfig.md): Specifies the TLS configuration for an integration.
+- [UsagePlan](https://docs.aws.amazon.com/apigateway/latest/api/API_UsagePlan.md): Represents a usage plan used to specify who can assess associated API stages.
+- [UsagePlanKey](https://docs.aws.amazon.com/apigateway/latest/api/API_UsagePlanKey.md): Represents a usage plan key to identify a plan customer.
+- [VpcLink](https://docs.aws.amazon.com/apigateway/latest/api/API_VpcLink.md): An API Gateway VPC link for a RestApi to access resources in an Amazon Virtual Private Cloud (VPC).

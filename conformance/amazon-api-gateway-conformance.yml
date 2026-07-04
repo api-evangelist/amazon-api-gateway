@@ -1,0 +1,58 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/amazon-api-gateway-openapi.yaml
+enriched_from: https://aws.amazon.com/compliance/
+note: >-
+  Conformance of the Amazon API Gateway control-plane (management) API to
+  cross-cutting standards. Booleans are DERIVED from the captured OpenAPI
+  (security schemes, response media types, tags) except where marked searched.
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: Control-plane auth is AWS Signature Version 4 (sigv4), not OAuth2.
+  - id: oidc
+    conforms: false
+    evidence: No OpenID Connect discovery or flows on the management API.
+  - id: aws-sigv4
+    conforms: true
+    evidence: "openapi securitySchemes 'sigv4'; security requirement [{sigv4: []}] on all operations."
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors are application/json { message, code }, not application/problem+json.
+  - id: json-api
+    conforms: false
+    evidence: Responses are plain application/json resource shapes, not JSON:API envelopes.
+  - id: odata
+    conforms: false
+  - id: fhir-r4
+    conforms: false
+  - id: scim2
+    conforms: false
+  - id: fapi
+    conforms: false
+  - id: psd2
+    conforms: false
+  - id: pagination
+    conforms: true
+    evidence: List operations accept 'position' and 'limit' query parameters (AWS token-style pagination).
+  - id: idempotency
+    conforms: partial
+    evidence: PUT operations (PutMethod, PutIntegration, PutGatewayResponse) are idempotent by design; no Idempotency-Key header.
+  - id: rest
+    conforms: true
+    evidence: Resource-oriented paths with GET/POST/PUT/PATCH/DELETE over HTTP.
+  - id: openapi-3.1
+    conforms: true
+    evidence: Captured specification is openapi 3.1.0.
+  - id: soc2
+    conforms: true
+    evidence: AWS publishes SOC 1/2/3 reports (searched aws.amazon.com/compliance).
+  - id: iso27001
+    conforms: true
+    evidence: AWS is ISO/IEC 27001 certified (searched aws.amazon.com/compliance).
+  - id: pci-dss
+    conforms: true
+    evidence: Amazon API Gateway is in scope for AWS PCI DSS compliance (searched aws.amazon.com/compliance).
+  - id: hipaa
+    conforms: true
+    evidence: Amazon API Gateway is a HIPAA-eligible service (searched aws.amazon.com/compliance/hipaa-eligible-services-reference).

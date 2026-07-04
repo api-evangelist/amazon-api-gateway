@@ -1,0 +1,213 @@
+generated: '2026-06-20'
+method: derived
+status: candidate
+source: openapi/amazon-api-gateway-openapi.yaml
+note: No official hosted/remote MCP server is published for Amazon API Gateway. This candidate tool list
+  is derived one-per-operation from the captured OpenAPI; each tool maps to an AWS API Gateway control-plane
+  call (SigV4 auth). Not an endorsement of a real server.
+server:
+  name: amazon-api-gateway
+  transport: stdio
+  auth: aws-sigv4
+tools:
+- name: get_rest_apis
+  description: List REST APIs
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetRestApis
+- name: create_rest_api
+  description: Create a REST API
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#CreateRestApi
+- name: get_rest_api
+  description: Get a REST API
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetRestApi
+- name: update_rest_api
+  description: Update a REST API
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#UpdateRestApi
+- name: delete_rest_api
+  description: Delete a REST API
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#DeleteRestApi
+- name: get_resources
+  description: List Resources
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetResources
+- name: get_resource
+  description: Get a Resource
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetResource
+- name: create_resource
+  description: Create a Child Resource
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#CreateResource
+- name: update_resource
+  description: Update a Resource
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#UpdateResource
+- name: delete_resource
+  description: Delete a Resource
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#DeleteResource
+- name: get_method
+  description: Get a Method
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetMethod
+- name: put_method
+  description: Create or Update a Method
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#PutMethod
+- name: update_method
+  description: Update a Method
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#UpdateMethod
+- name: delete_method
+  description: Delete a Method
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#DeleteMethod
+- name: get_integration
+  description: Get an Integration
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetIntegration
+- name: put_integration
+  description: Create or Update an Integration
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#PutIntegration
+- name: get_stages
+  description: List Stages
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetStages
+- name: create_stage
+  description: Create a Stage
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#CreateStage
+- name: get_stage
+  description: Get a Stage
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetStage
+- name: update_stage
+  description: Update a Stage
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#UpdateStage
+- name: delete_stage
+  description: Delete a Stage
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#DeleteStage
+- name: get_deployments
+  description: List Deployments
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetDeployments
+- name: create_deployment
+  description: Create a Deployment
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#CreateDeployment
+- name: get_deployment
+  description: Get a Deployment
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetDeployment
+- name: update_deployment
+  description: Update a Deployment
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#UpdateDeployment
+- name: delete_deployment
+  description: Delete a Deployment
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#DeleteDeployment
+- name: get_authorizers
+  description: List Authorizers
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetAuthorizers
+- name: create_authorizer
+  description: Create an Authorizer
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#CreateAuthorizer
+- name: get_authorizer
+  description: Get an Authorizer
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetAuthorizer
+- name: update_authorizer
+  description: Update an Authorizer
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#UpdateAuthorizer
+- name: delete_authorizer
+  description: Delete an Authorizer
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#DeleteAuthorizer
+- name: get_models
+  description: List Models
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetModels
+- name: create_model
+  description: Create a Model
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#CreateModel
+- name: get_model
+  description: Get a Model
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetModel
+- name: update_model
+  description: Update a Model
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#UpdateModel
+- name: delete_model
+  description: Delete a Model
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#DeleteModel
+- name: get_api_keys
+  description: List API Keys
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetApiKeys
+- name: create_api_key
+  description: Create an API Key
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#CreateApiKey
+- name: get_api_key
+  description: Get an API Key
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetApiKey
+- name: update_api_key
+  description: Update an API Key
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#UpdateApiKey
+- name: delete_api_key
+  description: Delete an API Key
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#DeleteApiKey
+- name: get_usage_plans
+  description: List Usage Plans
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetUsagePlans
+- name: create_usage_plan
+  description: Create a Usage Plan
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#CreateUsagePlan
+- name: get_usage_plan
+  description: Get a Usage Plan
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetUsagePlan
+- name: update_usage_plan
+  description: Update a Usage Plan
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#UpdateUsagePlan
+- name: delete_usage_plan
+  description: Delete a Usage Plan
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#DeleteUsagePlan
+- name: get_domain_names
+  description: List Custom Domain Names
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetDomainNames
+- name: create_domain_name
+  description: Create a Custom Domain Name
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#CreateDomainName
+- name: get_domain_name
+  description: Get a Custom Domain Name
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetDomainName
+- name: update_domain_name
+  description: Update a Custom Domain Name
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#UpdateDomainName
+- name: delete_domain_name
+  description: Delete a Custom Domain Name
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#DeleteDomainName
+- name: get_base_path_mappings
+  description: List Base Path Mappings
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetBasePathMappings
+- name: create_base_path_mapping
+  description: Create a Base Path Mapping
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#CreateBasePathMapping
+- name: get_request_validators
+  description: List Request Validators
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetRequestValidators
+- name: create_request_validator
+  description: Create a Request Validator
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#CreateRequestValidator
+- name: get_gateway_responses
+  description: List Gateway Responses
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetGatewayResponses
+- name: get_gateway_response
+  description: Get a Gateway Response
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetGatewayResponse
+- name: put_gateway_response
+  description: Create or Update a Gateway Response
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#PutGatewayResponse
+- name: get_vpc_links
+  description: List VPC Links
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetVpcLinks
+- name: create_vpc_link
+  description: Create a VPC Link
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#CreateVpcLink
+- name: get_vpc_link
+  description: Get a VPC Link
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetVpcLink
+- name: update_vpc_link
+  description: Update a VPC Link
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#UpdateVpcLink
+- name: delete_vpc_link
+  description: Delete a VPC Link
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#DeleteVpcLink
+- name: get_documentation_parts
+  description: List Documentation Parts
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetDocumentationParts
+- name: create_documentation_part
+  description: Create a Documentation Part
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#CreateDocumentationPart
+- name: get_documentation_versions
+  description: List Documentation Versions
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#GetDocumentationVersions
+- name: create_documentation_version
+  description: Create a Documentation Version
+  source_operation: openapi/amazon-api-gateway-openapi.yaml#CreateDocumentationVersion

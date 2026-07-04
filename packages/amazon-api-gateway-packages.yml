@@ -1,0 +1,71 @@
+generated: '2026-06-20'
+method: searched
+source: https://aws.amazon.com/tools/
+description: >-
+  First-party AWS SDK client libraries that expose the Amazon API Gateway
+  control-plane (apigateway) service. Each was verified present on its
+  registry (HTTP 200) on 2026-06-20. AWS publishes and maintains all of these.
+packages:
+  - language: javascript
+    registry: npm
+    name: "@aws-sdk/client-api-gateway"
+    url: https://www.npmjs.com/package/@aws-sdk/client-api-gateway
+    install: npm install @aws-sdk/client-api-gateway
+    official: true
+  - language: javascript
+    registry: npm
+    name: aws-sdk
+    url: https://www.npmjs.com/package/aws-sdk
+    install: npm install aws-sdk
+    official: true
+    note: AWS SDK for JavaScript v2 (maintenance mode); prefer the v3 modular client above.
+  - language: python
+    registry: pypi
+    name: boto3
+    url: https://pypi.org/project/boto3/
+    install: pip install boto3
+    official: true
+    note: "AWS SDK for Python; client('apigateway')."
+  - language: python
+    registry: pypi
+    name: botocore
+    url: https://pypi.org/project/botocore/
+    install: pip install botocore
+    official: true
+  - language: ruby
+    registry: rubygems
+    name: aws-sdk-apigateway
+    url: https://rubygems.org/gems/aws-sdk-apigateway
+    install: gem install aws-sdk-apigateway
+    official: true
+  - language: java
+    registry: maven
+    name: software.amazon.awssdk:apigateway
+    url: https://central.sonatype.com/artifact/software.amazon.awssdk/apigateway
+    install: "implementation 'software.amazon.awssdk:apigateway'"
+    official: true
+    note: AWS SDK for Java v2.
+  - language: dotnet
+    registry: nuget
+    name: AWSSDK.APIGateway
+    url: https://www.nuget.org/packages/AWSSDK.APIGateway
+    install: dotnet add package AWSSDK.APIGateway
+    official: true
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/aws/aws-sdk-go-v2/service/apigateway
+    url: https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/apigateway
+    install: go get github.com/aws/aws-sdk-go-v2/service/apigateway
+    official: true
+  - language: php
+    registry: packagist
+    name: aws/aws-sdk-php
+    url: https://packagist.org/packages/aws/aws-sdk-php
+    install: composer require aws/aws-sdk-php
+    official: true
+    note: Full AWS SDK for PHP; includes the ApiGateway client.
+cli:
+  - name: AWS CLI
+    command: aws apigateway
+    url: https://docs.aws.amazon.com/cli/latest/reference/apigateway/
+    official: true

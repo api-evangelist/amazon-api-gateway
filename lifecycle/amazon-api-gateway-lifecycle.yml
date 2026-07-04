@@ -1,0 +1,32 @@
+generated: '2026-06-20'
+method: searched
+source: https://docs.aws.amazon.com/apigateway/latest/api/Welcome.html
+note: >-
+  Versioning, deprecation, SLA, and status for the Amazon API Gateway
+  control-plane API. SLA and status URLs verified 200 on 2026-06-20;
+  API version is DERIVED from the captured OpenAPI info.version.
+versioning:
+  scheme: date-service-version
+  current: '2015-07-09'
+  docs: https://docs.aws.amazon.com/apigateway/latest/api/
+  note: >-
+    AWS services are versioned by a fixed service API date. New capabilities are
+    added additively to the same 2015-07-09 version rather than via a new URI
+    version; SDKs pin this service version internally.
+deprecation:
+  policy_url: https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    The control-plane API does not emit RFC 8594 Sunset/Deprecation headers.
+    Deprecations are announced via AWS documentation and account notifications.
+sdk_lifecycle:
+  - name: AWS SDK for JavaScript v2 (npm aws-sdk)
+    status: maintenance
+    note: In maintenance mode; migrate to @aws-sdk/client-api-gateway (v3).
+sla:
+  url: https://aws.amazon.com/api-gateway/sla/
+  uptime_target: "99.95%"
+status_page: https://health.aws.amazon.com/health/status
+legacy_status_page: https://status.aws.amazon.com/
+deprecated_operations: []

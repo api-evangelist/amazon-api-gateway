@@ -11,7 +11,7 @@ tags:
 - Serverless
 - WebSocket
 created: '2024-01-15'
-modified: '2026-04-19'
+modified: '2026-06-20'
 apis:
 - name: Amazon API Gateway REST API
   description: >-
@@ -63,6 +63,10 @@ apis:
     url: json-structure/amazon-api-gateway-apikeys-structure.json
   - type: JSONLD
     url: json-ld/amazon-api-gateway-context.jsonld
+  - type: Overlay
+    url: overlays/amazon-api-gateway-openapi-overlay.yaml
+  - type: Overlay
+    url: overlays/amazon-api-gateway-rest-openapi-overlay.yaml
   aid: amazon-api-gateway:rest-api
 - name: Amazon API Gateway WebSocket API
   description: >-
@@ -161,6 +165,24 @@ common:
   url: capabilities/api-gateway-management.yaml
 - type: Vocabulary
   url: vocabulary/amazon-api-gateway-vocabulary.yaml
+- type: Packages
+  url: packages/amazon-api-gateway-packages.yml
+- type: WellKnown
+  url: well-known/amazon-api-gateway-well-known.yml
+- type: SecurityTxt
+  url: well-known/amazon-api-gateway-security.txt
+- type: MCPServer
+  url: mcp/amazon-api-gateway-mcp.yml
+- type: LLMsTxt
+  url: llms/amazon-api-gateway-llms.txt
+- type: LLMsTxt
+  url: llms/amazon-api-gateway-llms-full.txt
+- type: Conformance
+  url: conformance/amazon-api-gateway-conformance.yml
+- type: ErrorCatalog
+  url: errors/amazon-api-gateway-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/amazon-api-gateway-lifecycle.yml
 - type: Features
   data:
   - name: REST API Management

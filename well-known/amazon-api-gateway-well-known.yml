@@ -1,0 +1,47 @@
+generated: '2026-06-20'
+method: searched
+source: probed /.well-known/ on API base host, marketing host, and docs host
+description: >-
+  Results of probing the /.well-known/ discovery surface for each host in
+  apis.yml (base and human URLs) on 2026-06-20. Only aws.amazon.com serves a
+  security.txt; the regional API endpoint and docs host return 404 for all
+  probed paths.
+hosts:
+  - host: https://apigateway.us-east-1.amazonaws.com
+    note: Regional control-plane endpoint (baseURL template apigateway.{region}.amazonaws.com); us-east-1 probed as representative.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://aws.amazon.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: amazon-api-gateway-security.txt
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://docs.aws.amazon.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
