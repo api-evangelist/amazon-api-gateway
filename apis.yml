@@ -123,6 +123,8 @@ apis:
     url: https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-how-to-call-websocket-api-connections.html
   aid: amazon-api-gateway:management-api
 common:
+- type: AgenticAccess
+  url: agentic-access/amazon-api-gateway-agentic-access.yml
 - type: TrustCenter
   url: security/amazon-api-gateway-trust-center.yml
 - type: VulnerabilityDisclosure
