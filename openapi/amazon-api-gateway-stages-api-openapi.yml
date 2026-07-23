@@ -1,0 +1,420 @@
+openapi: 3.1.0
+info:
+  title: Amazon API Gateway REST API Keys Stages API
+  description: The Amazon API Gateway REST API enables programmatic management of API Gateway resources. You can create, configure, and manage REST APIs, stages, deployments, authorizers, models, resources, methods, and integrations through this management interface.
+  version: '2015-07-09'
+  contact:
+    name: AWS Support
+    url: https://aws.amazon.com/premiumsupport/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  x-logo:
+    url: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+servers:
+- url: https://apigateway.{region}.amazonaws.com
+  description: Amazon API Gateway regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-south-1
+      - sa-east-1
+      - ca-central-1
+security:
+- sigv4: []
+tags:
+- name: Stages
+  description: Operations for managing deployment stages
+paths:
+  /restapis/{restapi_id}/stages:
+    get:
+      operationId: GetStages
+      summary: Amazon API Gateway List Stages
+      description: Returns information about all stages of a REST API.
+      tags:
+      - Stages
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - name: deploymentId
+        in: query
+        description: Filter stages by deployment ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with list of stages
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stages'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    post:
+      operationId: CreateStage
+      summary: Amazon API Gateway Create a Stage
+      description: Creates a new stage for a REST API deployment.
+      tags:
+      - Stages
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateStageRequest'
+      responses:
+        '201':
+          description: Stage created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stage'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /restapis/{restapi_id}/stages/{stage_name}:
+    get:
+      operationId: GetStage
+      summary: Amazon API Gateway Get a Stage
+      description: Returns information about a specific stage.
+      tags:
+      - Stages
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/StageName'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stage'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    patch:
+      operationId: UpdateStage
+      summary: Amazon API Gateway Update a Stage
+      description: Updates an existing stage configuration.
+      tags:
+      - Stages
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/StageName'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchOperations'
+      responses:
+        '200':
+          description: Stage updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stage'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      operationId: DeleteStage
+      summary: Amazon API Gateway Delete a Stage
+      description: Deletes the specified stage.
+      tags:
+      - Stages
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/StageName'
+      responses:
+        '202':
+          description: Stage deletion accepted
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+components:
+  schemas:
+    CanarySettings:
+      type: object
+      properties:
+        percentTraffic:
+          type: number
+          description: The percent of traffic the canary deployment receives.
+        deploymentId:
+          type: string
+        stageVariableOverrides:
+          type: object
+          additionalProperties:
+            type: string
+        useStageCache:
+          type: boolean
+    Stage:
+      type: object
+      properties:
+        deploymentId:
+          type: string
+          description: The identifier of the deployment attached to this stage.
+        clientCertificateId:
+          type: string
+          description: The identifier of a client certificate for an API stage.
+        stageName:
+          type: string
+          description: The name of the stage.
+        description:
+          type: string
+          description: The stage's description.
+        cacheClusterEnabled:
+          type: boolean
+          description: Whether cache clustering is enabled for the stage.
+        cacheClusterSize:
+          type: string
+          enum:
+          - '0.5'
+          - '1.6'
+          - '6.1'
+          - '13.5'
+          - '28.4'
+          - '58.2'
+          - '118'
+          - '237'
+          description: The stage's cache cluster size.
+        cacheClusterStatus:
+          type: string
+          enum:
+          - CREATE_IN_PROGRESS
+          - AVAILABLE
+          - DELETE_IN_PROGRESS
+          - NOT_AVAILABLE
+          - FLUSH_IN_PROGRESS
+        methodSettings:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/MethodSetting'
+        variables:
+          type: object
+          additionalProperties:
+            type: string
+          description: Stage variables.
+        documentationVersion:
+          type: string
+        accessLogSettings:
+          $ref: '#/components/schemas/AccessLogSettings'
+        canarySettings:
+          $ref: '#/components/schemas/CanarySettings'
+        tracingEnabled:
+          type: boolean
+          description: Whether X-Ray tracing is enabled for this stage.
+        webAclArn:
+          type: string
+          description: The ARN of the WebAcl associated with the stage.
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        createdDate:
+          type: string
+          format: date-time
+        lastUpdatedDate:
+          type: string
+          format: date-time
+    AccessLogSettings:
+      type: object
+      properties:
+        format:
+          type: string
+          description: A single line format of the access logs of data using CLF, JSON, XML, or CSV format.
+        destinationArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the CloudWatch Logs log group or Kinesis Data Firehose delivery stream.
+    PatchOperations:
+      type: object
+      properties:
+        patchOperations:
+          type: array
+          items:
+            $ref: '#/components/schemas/PatchOperation'
+    MethodSetting:
+      type: object
+      properties:
+        metricsEnabled:
+          type: boolean
+        loggingLevel:
+          type: string
+          enum:
+          - 'OFF'
+          - ERROR
+          - INFO
+        dataTraceEnabled:
+          type: boolean
+        throttlingBurstLimit:
+          type: integer
+        throttlingRateLimit:
+          type: number
+        cachingEnabled:
+          type: boolean
+        cacheTtlInSeconds:
+          type: integer
+        cacheDataEncrypted:
+          type: boolean
+        requireAuthorizationForCacheControl:
+          type: boolean
+        unauthorizedCacheControlHeaderStrategy:
+          type: string
+          enum:
+          - FAIL_WITH_403
+          - SUCCEED_WITH_RESPONSE_HEADER
+          - SUCCEED_WITHOUT_RESPONSE_HEADER
+    PatchOperation:
+      type: object
+      properties:
+        op:
+          type: string
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          description: The operation type.
+        path:
+          type: string
+          description: The op operation's target, as identified by a JSON Pointer value.
+        value:
+          type: string
+          description: The new target value of the update operation. It is applicable for the add or replace operation.
+        from:
+          type: string
+          description: The copy update operation's source as identified by a JSON Pointer value.
+    Stages:
+      type: object
+      properties:
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/Stage'
+    CreateStageRequest:
+      type: object
+      required:
+      - stageName
+      - deploymentId
+      properties:
+        stageName:
+          type: string
+          description: The name for the stage.
+        deploymentId:
+          type: string
+          description: The identifier of the deployment.
+        description:
+          type: string
+        cacheClusterEnabled:
+          type: boolean
+        cacheClusterSize:
+          type: string
+          enum:
+          - '0.5'
+          - '1.6'
+          - '6.1'
+          - '13.5'
+          - '28.4'
+          - '58.2'
+          - '118'
+          - '237'
+        variables:
+          type: object
+          additionalProperties:
+            type: string
+        documentationVersion:
+          type: string
+        canarySettings:
+          $ref: '#/components/schemas/CanarySettings'
+        tracingEnabled:
+          type: boolean
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message.
+        code:
+          type: string
+          description: The error code.
+  responses:
+    TooManyRequests:
+      description: The request rate has exceeded the allowed limit.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request is invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The specified resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Conflict:
+      description: The request conflicts with the current state of the resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    StageName:
+      name: stage_name
+      in: path
+      required: true
+      description: The name of the stage.
+      schema:
+        type: string
+    RestApiId:
+      name: restapi_id
+      in: path
+      required: true
+      description: The identifier of the REST API.
+      schema:
+        type: string
+  securitySchemes:
+    sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication

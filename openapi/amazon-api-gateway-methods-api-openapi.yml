@@ -1,0 +1,514 @@
+openapi: 3.1.0
+info:
+  title: Amazon API Gateway REST API Keys Methods API
+  description: The Amazon API Gateway REST API enables programmatic management of API Gateway resources. You can create, configure, and manage REST APIs, stages, deployments, authorizers, models, resources, methods, and integrations through this management interface.
+  version: '2015-07-09'
+  contact:
+    name: AWS Support
+    url: https://aws.amazon.com/premiumsupport/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  x-logo:
+    url: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+servers:
+- url: https://apigateway.{region}.amazonaws.com
+  description: Amazon API Gateway regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-south-1
+      - sa-east-1
+      - ca-central-1
+security:
+- sigv4: []
+tags:
+- name: Methods
+  description: Operations for managing HTTP methods on resources
+paths:
+  /restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}:
+    get:
+      operationId: GetMethod
+      summary: Amazon API Gateway Get a Method
+      description: Returns information about an API method request.
+      tags:
+      - Methods
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/HttpMethod'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Method'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    put:
+      operationId: PutMethod
+      summary: Amazon API Gateway Create or Update a Method
+      description: Adds or updates an HTTP method on a resource. The method defines how the client submits requests to the API.
+      tags:
+      - Methods
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/HttpMethod'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutMethodRequest'
+      responses:
+        '201':
+          description: Method created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Method'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    patch:
+      operationId: UpdateMethod
+      summary: Amazon API Gateway Update a Method
+      description: Updates an existing method request.
+      tags:
+      - Methods
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/HttpMethod'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchOperations'
+      responses:
+        '200':
+          description: Method updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Method'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      operationId: DeleteMethod
+      summary: Amazon API Gateway Delete a Method
+      description: Deletes the specified method.
+      tags:
+      - Methods
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/HttpMethod'
+      responses:
+        '204':
+          description: Method deleted successfully
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration:
+    get:
+      operationId: GetIntegration
+      summary: Amazon API Gateway Get an Integration
+      description: Returns the integration setup for a method.
+      tags:
+      - Methods
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/HttpMethod'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integration'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    put:
+      operationId: PutIntegration
+      summary: Amazon API Gateway Create or Update an Integration
+      description: Sets up an integration for a method.
+      tags:
+      - Methods
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/HttpMethod'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutIntegrationRequest'
+      responses:
+        '201':
+          description: Integration created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integration'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+components:
+  schemas:
+    PutIntegrationRequest:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - HTTP
+          - HTTP_PROXY
+          - AWS
+          - AWS_PROXY
+          - MOCK
+        httpMethod:
+          type: string
+        uri:
+          type: string
+        connectionType:
+          type: string
+          enum:
+          - INTERNET
+          - VPC_LINK
+        connectionId:
+          type: string
+        credentials:
+          type: string
+        requestParameters:
+          type: object
+          additionalProperties:
+            type: string
+        requestTemplates:
+          type: object
+          additionalProperties:
+            type: string
+        passthroughBehavior:
+          type: string
+          enum:
+          - WHEN_NO_MATCH
+          - WHEN_NO_TEMPLATES
+          - NEVER
+        contentHandling:
+          type: string
+          enum:
+          - CONVERT_TO_BINARY
+          - CONVERT_TO_TEXT
+        timeoutInMillis:
+          type: integer
+        cacheNamespace:
+          type: string
+        cacheKeyParameters:
+          type: array
+          items:
+            type: string
+    Integration:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - HTTP
+          - HTTP_PROXY
+          - AWS
+          - AWS_PROXY
+          - MOCK
+          description: The integration input's type.
+        httpMethod:
+          type: string
+          description: The integration's HTTP method type.
+        uri:
+          type: string
+          description: The Uniform Resource Identifier (URI) for the integration.
+        connectionType:
+          type: string
+          enum:
+          - INTERNET
+          - VPC_LINK
+          description: The type of the network connection to the integration endpoint.
+        connectionId:
+          type: string
+          description: The ID of the VPC link used for the integration when connectionType is VPC_LINK.
+        credentials:
+          type: string
+          description: The credentials required for the integration, if any. For AWS integrations, three options are available.
+        requestParameters:
+          type: object
+          additionalProperties:
+            type: string
+        requestTemplates:
+          type: object
+          additionalProperties:
+            type: string
+        passthroughBehavior:
+          type: string
+          enum:
+          - WHEN_NO_MATCH
+          - WHEN_NO_TEMPLATES
+          - NEVER
+        contentHandling:
+          type: string
+          enum:
+          - CONVERT_TO_BINARY
+          - CONVERT_TO_TEXT
+        timeoutInMillis:
+          type: integer
+          description: Custom timeout between 50 and 29000 milliseconds.
+        cacheNamespace:
+          type: string
+        cacheKeyParameters:
+          type: array
+          items:
+            type: string
+        integrationResponses:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/IntegrationResponse'
+        tlsConfig:
+          type: object
+          properties:
+            insecureSkipVerification:
+              type: boolean
+    Method:
+      type: object
+      properties:
+        httpMethod:
+          type: string
+          description: The method's HTTP verb.
+        authorizationType:
+          type: string
+          description: The method's authorization type. Valid values are NONE, AWS_IAM, CUSTOM, or COGNITO_USER_POOLS.
+        authorizerId:
+          type: string
+          description: The identifier of an Authorizer to use on this method.
+        apiKeyRequired:
+          type: boolean
+          description: Whether the method requires an API key.
+        requestValidatorId:
+          type: string
+          description: The identifier of a RequestValidator.
+        operationName:
+          type: string
+          description: A human-friendly operation identifier for the method.
+        requestParameters:
+          type: object
+          additionalProperties:
+            type: boolean
+          description: Request parameters that can be accepted by the method. Keys identify the parameter location and name.
+        requestModels:
+          type: object
+          additionalProperties:
+            type: string
+          description: Specifies the Model resources used for the request's content type.
+        methodResponses:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/MethodResponse'
+          description: Method responses keyed by status code.
+        methodIntegration:
+          $ref: '#/components/schemas/Integration'
+    IntegrationResponse:
+      type: object
+      properties:
+        statusCode:
+          type: string
+        selectionPattern:
+          type: string
+        responseParameters:
+          type: object
+          additionalProperties:
+            type: string
+        responseTemplates:
+          type: object
+          additionalProperties:
+            type: string
+        contentHandling:
+          type: string
+          enum:
+          - CONVERT_TO_BINARY
+          - CONVERT_TO_TEXT
+    PutMethodRequest:
+      type: object
+      required:
+      - authorizationType
+      properties:
+        authorizationType:
+          type: string
+          description: The method's authorization type. Valid values are NONE, AWS_IAM, CUSTOM, or COGNITO_USER_POOLS.
+        authorizerId:
+          type: string
+        apiKeyRequired:
+          type: boolean
+        operationName:
+          type: string
+        requestParameters:
+          type: object
+          additionalProperties:
+            type: boolean
+        requestModels:
+          type: object
+          additionalProperties:
+            type: string
+        requestValidatorId:
+          type: string
+    PatchOperation:
+      type: object
+      properties:
+        op:
+          type: string
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          description: The operation type.
+        path:
+          type: string
+          description: The op operation's target, as identified by a JSON Pointer value.
+        value:
+          type: string
+          description: The new target value of the update operation. It is applicable for the add or replace operation.
+        from:
+          type: string
+          description: The copy update operation's source as identified by a JSON Pointer value.
+    PatchOperations:
+      type: object
+      properties:
+        patchOperations:
+          type: array
+          items:
+            $ref: '#/components/schemas/PatchOperation'
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message.
+        code:
+          type: string
+          description: The error code.
+    MethodResponse:
+      type: object
+      properties:
+        statusCode:
+          type: string
+          description: The method response's status code.
+        responseParameters:
+          type: object
+          additionalProperties:
+            type: boolean
+        responseModels:
+          type: object
+          additionalProperties:
+            type: string
+  responses:
+    TooManyRequests:
+      description: The request rate has exceeded the allowed limit.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request is invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The specified resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Conflict:
+      description: The request conflicts with the current state of the resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    RestApiId:
+      name: restapi_id
+      in: path
+      required: true
+      description: The identifier of the REST API.
+      schema:
+        type: string
+    ResourceId:
+      name: resource_id
+      in: path
+      required: true
+      description: The identifier of the resource.
+      schema:
+        type: string
+    HttpMethod:
+      name: http_method
+      in: path
+      required: true
+      description: The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS).
+      schema:
+        type: string
+        enum:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        - PATCH
+        - HEAD
+        - OPTIONS
+        - ANY
+  securitySchemes:
+    sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication

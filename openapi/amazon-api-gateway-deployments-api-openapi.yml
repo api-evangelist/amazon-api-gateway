@@ -1,0 +1,352 @@
+openapi: 3.1.0
+info:
+  title: Amazon API Gateway REST API Keys Deployments API
+  description: The Amazon API Gateway REST API enables programmatic management of API Gateway resources. You can create, configure, and manage REST APIs, stages, deployments, authorizers, models, resources, methods, and integrations through this management interface.
+  version: '2015-07-09'
+  contact:
+    name: AWS Support
+    url: https://aws.amazon.com/premiumsupport/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  x-logo:
+    url: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+servers:
+- url: https://apigateway.{region}.amazonaws.com
+  description: Amazon API Gateway regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-south-1
+      - sa-east-1
+      - ca-central-1
+security:
+- sigv4: []
+tags:
+- name: Deployments
+  description: Operations for managing API deployments
+paths:
+  /restapis/{restapi_id}/deployments:
+    get:
+      operationId: GetDeployments
+      summary: Amazon API Gateway List Deployments
+      description: Returns information about all deployments of a REST API.
+      tags:
+      - Deployments
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/Position'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Successful response with list of deployments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployments'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    post:
+      operationId: CreateDeployment
+      summary: Amazon API Gateway Create a Deployment
+      description: Creates a deployment for a REST API, making it callable by consumers.
+      tags:
+      - Deployments
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDeploymentRequest'
+      responses:
+        '201':
+          description: Deployment created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /restapis/{restapi_id}/deployments/{deployment_id}:
+    get:
+      operationId: GetDeployment
+      summary: Amazon API Gateway Get a Deployment
+      description: Returns information about a specific deployment.
+      tags:
+      - Deployments
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/DeploymentId'
+      - name: embed
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    patch:
+      operationId: UpdateDeployment
+      summary: Amazon API Gateway Update a Deployment
+      description: Updates an existing deployment.
+      tags:
+      - Deployments
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/DeploymentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchOperations'
+      responses:
+        '200':
+          description: Deployment updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      operationId: DeleteDeployment
+      summary: Amazon API Gateway Delete a Deployment
+      description: Deletes the specified deployment.
+      tags:
+      - Deployments
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/DeploymentId'
+      responses:
+        '202':
+          description: Deployment deletion accepted
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+components:
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      description: The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 25
+    DeploymentId:
+      name: deployment_id
+      in: path
+      required: true
+      description: The identifier of the deployment.
+      schema:
+        type: string
+    RestApiId:
+      name: restapi_id
+      in: path
+      required: true
+      description: The identifier of the REST API.
+      schema:
+        type: string
+    Position:
+      name: position
+      in: query
+      description: The current pagination position in the paged result set. Used for cursor-based pagination.
+      schema:
+        type: string
+  responses:
+    TooManyRequests:
+      description: The request rate has exceeded the allowed limit.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request is invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The specified resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InternalError:
+      description: An internal server error occurred.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Conflict:
+      description: The request conflicts with the current state of the resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    DeploymentCanarySettings:
+      type: object
+      properties:
+        percentTraffic:
+          type: number
+        stageVariableOverrides:
+          type: object
+          additionalProperties:
+            type: string
+        useStageCache:
+          type: boolean
+    Deployments:
+      type: object
+      properties:
+        position:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/Deployment'
+    MethodSnapshot:
+      type: object
+      properties:
+        authorizationType:
+          type: string
+        apiKeyRequired:
+          type: boolean
+    PatchOperation:
+      type: object
+      properties:
+        op:
+          type: string
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          description: The operation type.
+        path:
+          type: string
+          description: The op operation's target, as identified by a JSON Pointer value.
+        value:
+          type: string
+          description: The new target value of the update operation. It is applicable for the add or replace operation.
+        from:
+          type: string
+          description: The copy update operation's source as identified by a JSON Pointer value.
+    CreateDeploymentRequest:
+      type: object
+      properties:
+        stageName:
+          type: string
+          description: The name of the stage that the deployment is made to. If not specified, a new stage is created with a generated name.
+        stageDescription:
+          type: string
+        description:
+          type: string
+          description: A description for the deployment.
+        cacheClusterEnabled:
+          type: boolean
+        cacheClusterSize:
+          type: string
+          enum:
+          - '0.5'
+          - '1.6'
+          - '6.1'
+          - '13.5'
+          - '28.4'
+          - '58.2'
+          - '118'
+          - '237'
+        variables:
+          type: object
+          additionalProperties:
+            type: string
+        canarySettings:
+          $ref: '#/components/schemas/DeploymentCanarySettings'
+        tracingEnabled:
+          type: boolean
+    PatchOperations:
+      type: object
+      properties:
+        patchOperations:
+          type: array
+          items:
+            $ref: '#/components/schemas/PatchOperation'
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message.
+        code:
+          type: string
+          description: The error code.
+    Deployment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The identifier of the deployment.
+        description:
+          type: string
+          description: The description for the deployment.
+        createdDate:
+          type: string
+          format: date-time
+        apiSummary:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              $ref: '#/components/schemas/MethodSnapshot'
+  securitySchemes:
+    sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication

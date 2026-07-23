@@ -1,0 +1,453 @@
+openapi: 3.1.0
+info:
+  title: Amazon API Gateway REST API Keys Resources API
+  description: The Amazon API Gateway REST API enables programmatic management of API Gateway resources. You can create, configure, and manage REST APIs, stages, deployments, authorizers, models, resources, methods, and integrations through this management interface.
+  version: '2015-07-09'
+  contact:
+    name: AWS Support
+    url: https://aws.amazon.com/premiumsupport/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  x-logo:
+    url: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+servers:
+- url: https://apigateway.{region}.amazonaws.com
+  description: Amazon API Gateway regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-south-1
+      - sa-east-1
+      - ca-central-1
+security:
+- sigv4: []
+tags:
+- name: Resources
+  description: Operations for managing API resources (URL paths)
+paths:
+  /restapis/{restapi_id}/resources:
+    get:
+      operationId: GetResources
+      summary: Amazon API Gateway List Resources
+      description: Lists the API resources for a given REST API.
+      tags:
+      - Resources
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/Position'
+      - $ref: '#/components/parameters/Limit'
+      - name: embed
+        in: query
+        description: A query parameter used to retrieve the specified resources embedded in the returned Resources resource in the response.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Successful response with list of resources
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resources'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /restapis/{restapi_id}/resources/{resource_id}:
+    get:
+      operationId: GetResource
+      summary: Amazon API Gateway Get a Resource
+      description: Returns information about a specific API resource.
+      tags:
+      - Resources
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResourceId'
+      - name: embed
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    post:
+      operationId: CreateResource
+      summary: Amazon API Gateway Create a Child Resource
+      description: Creates a child resource under the specified parent resource.
+      tags:
+      - Resources
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResourceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - pathPart
+              properties:
+                pathPart:
+                  type: string
+                  description: The last path segment for this resource.
+      responses:
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    patch:
+      operationId: UpdateResource
+      summary: Amazon API Gateway Update a Resource
+      description: Updates an existing API resource.
+      tags:
+      - Resources
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResourceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchOperations'
+      responses:
+        '200':
+          description: Resource updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      operationId: DeleteResource
+      summary: Amazon API Gateway Delete a Resource
+      description: Deletes the specified API resource.
+      tags:
+      - Resources
+      parameters:
+      - $ref: '#/components/parameters/RestApiId'
+      - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '202':
+          description: Resource deletion accepted
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+components:
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      description: The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 25
+    RestApiId:
+      name: restapi_id
+      in: path
+      required: true
+      description: The identifier of the REST API.
+      schema:
+        type: string
+    Position:
+      name: position
+      in: query
+      description: The current pagination position in the paged result set. Used for cursor-based pagination.
+      schema:
+        type: string
+    ResourceId:
+      name: resource_id
+      in: path
+      required: true
+      description: The identifier of the resource.
+      schema:
+        type: string
+  schemas:
+    Integration:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - HTTP
+          - HTTP_PROXY
+          - AWS
+          - AWS_PROXY
+          - MOCK
+          description: The integration input's type.
+        httpMethod:
+          type: string
+          description: The integration's HTTP method type.
+        uri:
+          type: string
+          description: The Uniform Resource Identifier (URI) for the integration.
+        connectionType:
+          type: string
+          enum:
+          - INTERNET
+          - VPC_LINK
+          description: The type of the network connection to the integration endpoint.
+        connectionId:
+          type: string
+          description: The ID of the VPC link used for the integration when connectionType is VPC_LINK.
+        credentials:
+          type: string
+          description: The credentials required for the integration, if any. For AWS integrations, three options are available.
+        requestParameters:
+          type: object
+          additionalProperties:
+            type: string
+        requestTemplates:
+          type: object
+          additionalProperties:
+            type: string
+        passthroughBehavior:
+          type: string
+          enum:
+          - WHEN_NO_MATCH
+          - WHEN_NO_TEMPLATES
+          - NEVER
+        contentHandling:
+          type: string
+          enum:
+          - CONVERT_TO_BINARY
+          - CONVERT_TO_TEXT
+        timeoutInMillis:
+          type: integer
+          description: Custom timeout between 50 and 29000 milliseconds.
+        cacheNamespace:
+          type: string
+        cacheKeyParameters:
+          type: array
+          items:
+            type: string
+        integrationResponses:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/IntegrationResponse'
+        tlsConfig:
+          type: object
+          properties:
+            insecureSkipVerification:
+              type: boolean
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The resource's identifier.
+        parentId:
+          type: string
+          description: The parent resource's identifier.
+        pathPart:
+          type: string
+          description: The last path segment for this resource.
+        path:
+          type: string
+          description: The full path for this resource.
+        resourceMethods:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Method'
+          description: Map of methods for this resource keyed by HTTP method type.
+    Resources:
+      type: object
+      properties:
+        position:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+    Method:
+      type: object
+      properties:
+        httpMethod:
+          type: string
+          description: The method's HTTP verb.
+        authorizationType:
+          type: string
+          description: The method's authorization type. Valid values are NONE, AWS_IAM, CUSTOM, or COGNITO_USER_POOLS.
+        authorizerId:
+          type: string
+          description: The identifier of an Authorizer to use on this method.
+        apiKeyRequired:
+          type: boolean
+          description: Whether the method requires an API key.
+        requestValidatorId:
+          type: string
+          description: The identifier of a RequestValidator.
+        operationName:
+          type: string
+          description: A human-friendly operation identifier for the method.
+        requestParameters:
+          type: object
+          additionalProperties:
+            type: boolean
+          description: Request parameters that can be accepted by the method. Keys identify the parameter location and name.
+        requestModels:
+          type: object
+          additionalProperties:
+            type: string
+          description: Specifies the Model resources used for the request's content type.
+        methodResponses:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/MethodResponse'
+          description: Method responses keyed by status code.
+        methodIntegration:
+          $ref: '#/components/schemas/Integration'
+    IntegrationResponse:
+      type: object
+      properties:
+        statusCode:
+          type: string
+        selectionPattern:
+          type: string
+        responseParameters:
+          type: object
+          additionalProperties:
+            type: string
+        responseTemplates:
+          type: object
+          additionalProperties:
+            type: string
+        contentHandling:
+          type: string
+          enum:
+          - CONVERT_TO_BINARY
+          - CONVERT_TO_TEXT
+    PatchOperation:
+      type: object
+      properties:
+        op:
+          type: string
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          description: The operation type.
+        path:
+          type: string
+          description: The op operation's target, as identified by a JSON Pointer value.
+        value:
+          type: string
+          description: The new target value of the update operation. It is applicable for the add or replace operation.
+        from:
+          type: string
+          description: The copy update operation's source as identified by a JSON Pointer value.
+    PatchOperations:
+      type: object
+      properties:
+        patchOperations:
+          type: array
+          items:
+            $ref: '#/components/schemas/PatchOperation'
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message.
+        code:
+          type: string
+          description: The error code.
+    MethodResponse:
+      type: object
+      properties:
+        statusCode:
+          type: string
+          description: The method response's status code.
+        responseParameters:
+          type: object
+          additionalProperties:
+            type: boolean
+        responseModels:
+          type: object
+          additionalProperties:
+            type: string
+  responses:
+    TooManyRequests:
+      description: The request rate has exceeded the allowed limit.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request is invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The specified resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Conflict:
+      description: The request conflicts with the current state of the resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication
