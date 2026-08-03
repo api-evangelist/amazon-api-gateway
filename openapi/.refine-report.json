@@ -1,0 +1,42 @@
+{
+  "provider": "amazon-api-gateway",
+  "sources": [
+    "amazon-api-gateway-api-keys-api-openapi.yml",
+    "amazon-api-gateway-authorizers-api-openapi.yml",
+    "amazon-api-gateway-base-path-mappings-api-openapi.yml",
+    "amazon-api-gateway-deployments-api-openapi.yml",
+    "amazon-api-gateway-documentation-api-openapi.yml",
+    "amazon-api-gateway-domain-names-api-openapi.yml",
+    "amazon-api-gateway-gateway-responses-api-openapi.yml",
+    "amazon-api-gateway-methods-api-openapi.yml",
+    "amazon-api-gateway-models-api-openapi.yml",
+    "amazon-api-gateway-request-validators-api-openapi.yml",
+    "amazon-api-gateway-resources-api-openapi.yml",
+    "amazon-api-gateway-rest-apis-api-openapi.yml",
+    "amazon-api-gateway-stages-api-openapi.yml",
+    "amazon-api-gateway-usage-plans-api-openapi.yml",
+    "amazon-api-gateway-vpc-links-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-api-gateway-api-keys-api-openapi.yml",
+    "amazon-api-gateway-authorizers-api-openapi.yml",
+    "amazon-api-gateway-base-path-mappings-api-openapi.yml",
+    "amazon-api-gateway-deployments-api-openapi.yml",
+    "amazon-api-gateway-documentation-api-openapi.yml",
+    "amazon-api-gateway-domain-names-api-openapi.yml",
+    "amazon-api-gateway-gateway-responses-api-openapi.yml",
+    "amazon-api-gateway-methods-api-openapi.yml",
+    "amazon-api-gateway-models-api-openapi.yml",
+    "amazon-api-gateway-request-validators-api-openapi.yml",
+    "amazon-api-gateway-resources-api-openapi.yml",
+    "amazon-api-gateway-rest-apis-api-openapi.yml",
+    "amazon-api-gateway-stages-api-openapi.yml",
+    "amazon-api-gateway-usage-plans-api-openapi.yml",
+    "amazon-api-gateway-vpc-links-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
