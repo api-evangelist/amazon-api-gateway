@@ -742,6 +742,8 @@ apis:
   - type: JSONLD
     url: json-ld/amazon-api-gateway-context.jsonld
 common:
+- type: Overlay
+  url: overlays/amazon-api-gateway-openapi-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/amazon-api-gateway-agentic-access.yml
 - type: TrustCenter
