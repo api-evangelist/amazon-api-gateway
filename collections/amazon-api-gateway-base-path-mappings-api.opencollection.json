@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon API Gateway REST API Keys Base Path Mappings API",
+    "version": "2015-07-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Base Path Mappings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon API Gateway List Base Path Mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigateway.{region}.amazonaws.com/domainnames/:domain_name/basepathmappings",
+            "params": [
+              {
+                "name": "domain_name",
+                "value": "",
+                "type": "path",
+                "description": "The custom domain name."
+              },
+              {
+                "name": "position",
+                "value": "",
+                "type": "query",
+                "description": "The current pagination position in the paged result set. Used for cursor-based pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of returned results per page. The default value is 25 and the maximum value is 500."
+              }
+            ]
+          },
+          "docs": "Returns all base path mappings for a custom domain name."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Create a Base Path Mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apigateway.{region}.amazonaws.com/domainnames/:domain_name/basepathmappings",
+            "params": [
+              {
+                "name": "domain_name",
+                "value": "",
+                "type": "path",
+                "description": "The custom domain name."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a base path mapping for a custom domain name."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

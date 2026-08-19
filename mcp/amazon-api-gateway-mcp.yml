@@ -211,3 +211,9 @@ tools:
 - name: create_documentation_version
   description: Create a Documentation Version
   source_operation: openapi/amazon-api-gateway-openapi.yaml#CreateDocumentationVersion
+deployment:
+  mode: none
+  verified: derived
+  tools: 67
+  checked: '2026-08-12'
+  source: catalog MCP census

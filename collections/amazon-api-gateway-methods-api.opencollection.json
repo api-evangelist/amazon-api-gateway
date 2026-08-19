@@ -1,0 +1,224 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon API Gateway REST API Keys Methods API",
+    "version": "2015-07-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Methods",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon API Gateway Get a Method",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/resources/:resource_id/methods/:http_method",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the resource."
+              },
+              {
+                "name": "http_method",
+                "value": "",
+                "type": "path",
+                "description": "The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+              }
+            ]
+          },
+          "docs": "Returns information about an API method request."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Create or Update a Method",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/resources/:resource_id/methods/:http_method",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the resource."
+              },
+              {
+                "name": "http_method",
+                "value": "",
+                "type": "path",
+                "description": "The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds or updates an HTTP method on a resource. The method defines how the client submits requests to the API."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Update a Method",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/resources/:resource_id/methods/:http_method",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the resource."
+              },
+              {
+                "name": "http_method",
+                "value": "",
+                "type": "path",
+                "description": "The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing method request."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Delete a Method",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/resources/:resource_id/methods/:http_method",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the resource."
+              },
+              {
+                "name": "http_method",
+                "value": "",
+                "type": "path",
+                "description": "The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+              }
+            ]
+          },
+          "docs": "Deletes the specified method."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Get an Integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/resources/:resource_id/methods/:http_method/integration",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the resource."
+              },
+              {
+                "name": "http_method",
+                "value": "",
+                "type": "path",
+                "description": "The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+              }
+            ]
+          },
+          "docs": "Returns the integration setup for a method."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Create or Update an Integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/resources/:resource_id/methods/:http_method/integration",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the resource."
+              },
+              {
+                "name": "http_method",
+                "value": "",
+                "type": "path",
+                "description": "The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets up an integration for a method."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

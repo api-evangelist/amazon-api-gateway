@@ -1,0 +1,165 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon API Gateway REST API Keys Models API",
+    "version": "2015-07-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon API Gateway List Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/models",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "position",
+                "value": "",
+                "type": "query",
+                "description": "The current pagination position in the paged result set. Used for cursor-based pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of returned results per page. The default value is 25 and the maximum value is 500."
+              }
+            ]
+          },
+          "docs": "Returns information about all models defined for a REST API."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Create a Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/models",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a new Model resource to an existing REST API."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Get a Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/models/:model_name",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "model_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the model."
+              },
+              {
+                "name": "flatten",
+                "value": "",
+                "type": "query",
+                "description": "Resolve all external model references and return a flattened schema."
+              }
+            ]
+          },
+          "docs": "Returns information about a specific model."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Update a Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/models/:model_name",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "model_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the model."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Changes an existing model."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Delete a Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/models/:model_name",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "model_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the model."
+              }
+            ]
+          },
+          "docs": "Deletes the specified model."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

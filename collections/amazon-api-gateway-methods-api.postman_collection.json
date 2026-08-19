@@ -1,0 +1,2447 @@
+{
+  "item": [
+    {
+      "id": "f9955766-ff76-4df5-a800-b06e2f1f970a",
+      "name": "Methods",
+      "description": {
+        "content": "Operations for managing HTTP methods on resources",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f816b8e3-0a33-455d-a310-d31453331612",
+          "name": "Amazon API Gateway Get a Method",
+          "request": {
+            "name": "Amazon API Gateway Get a Method",
+            "description": {
+              "content": "Returns information about an API method request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "restapis",
+                ":restapi_id",
+                "resources",
+                ":resource_id",
+                "methods",
+                ":http_method"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "restapi_id",
+                  "description": "(Required) The identifier of the REST API."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_id",
+                  "description": "(Required) The identifier of the resource."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "http_method",
+                  "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                },
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69f984c1-f367-4e3f-9375-6d6aeed6d2ed",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpMethod\": \"string\",\n  \"authorizationType\": \"string\",\n  \"authorizerId\": \"string\",\n  \"apiKeyRequired\": false,\n  \"requestValidatorId\": \"string\",\n  \"operationName\": \"string\",\n  \"requestParameters\": {\n    \"key_0\": true,\n    \"key_1\": true,\n    \"key_2\": true\n  },\n  \"requestModels\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"methodResponses\": {\n    \"key_0\": {\n      \"statusCode\": \"string\",\n      \"responseParameters\": {\n        \"key_0\": true\n      },\n      \"responseModels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    },\n    \"key_1\": {\n      \"statusCode\": \"string\",\n      \"responseParameters\": {\n        \"key_0\": true,\n        \"key_1\": true\n      },\n      \"responseModels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    }\n  },\n  \"methodIntegration\": {\n    \"type\": \"HTTP\",\n    \"httpMethod\": \"string\",\n    \"uri\": \"string\",\n    \"connectionType\": \"INTERNET\",\n    \"connectionId\": \"string\",\n    \"credentials\": \"string\",\n    \"requestParameters\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"requestTemplates\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    },\n    \"passthroughBehavior\": \"WHEN_NO_MATCH\",\n    \"contentHandling\": \"CONVERT_TO_BINARY\",\n    \"timeoutInMillis\": 9000,\n    \"cacheNamespace\": \"string\",\n    \"cacheKeyParameters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"integrationResponses\": {\n      \"key_0\": {\n        \"statusCode\": \"string\",\n        \"selectionPattern\": \"string\",\n        \"responseParameters\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\",\n          \"key_3\": \"string\"\n        },\n        \"responseTemplates\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"contentHandling\": \"CONVERT_TO_BINARY\"\n      }\n    },\n    \"tlsConfig\": {\n      \"insecureSkipVerification\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99da4744-8704-4cd0-a5c2-6a3d5668bffe",
+              "name": "The specified resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5ad4e40-3f93-49b1-a21b-a0f0a8832778",
+              "name": "The request rate has exceeded the allowed limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd255b75-f6df-419a-93c1-96e2c4018239",
+          "name": "Amazon API Gateway Create or Update a Method",
+          "request": {
+            "name": "Amazon API Gateway Create or Update a Method",
+            "description": {
+              "content": "Adds or updates an HTTP method on a resource. The method defines how the client submits requests to the API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "restapis",
+                ":restapi_id",
+                "resources",
+                ":resource_id",
+                "methods",
+                ":http_method"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "restapi_id",
+                  "description": "(Required) The identifier of the REST API."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_id",
+                  "description": "(Required) The identifier of the resource."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "http_method",
+                  "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                },
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"authorizationType\": \"<string>\",\n  \"authorizerId\": \"<string>\",\n  \"apiKeyRequired\": \"<boolean>\",\n  \"operationName\": \"<string>\",\n  \"requestParameters\": {\n    \"key_0\": \"<boolean>\"\n  },\n  \"requestModels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"requestValidatorId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f9e47e72-59cb-433a-8900-1deee91caa58",
+              "name": "Method created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authorizationType\": \"<string>\",\n  \"authorizerId\": \"<string>\",\n  \"apiKeyRequired\": \"<boolean>\",\n  \"operationName\": \"<string>\",\n  \"requestParameters\": {\n    \"key_0\": \"<boolean>\",\n    \"key_1\": \"<boolean>\"\n  },\n  \"requestModels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"requestValidatorId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpMethod\": \"string\",\n  \"authorizationType\": \"string\",\n  \"authorizerId\": \"string\",\n  \"apiKeyRequired\": false,\n  \"requestValidatorId\": \"string\",\n  \"operationName\": \"string\",\n  \"requestParameters\": {\n    \"key_0\": true,\n    \"key_1\": true,\n    \"key_2\": true\n  },\n  \"requestModels\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"methodResponses\": {\n    \"key_0\": {\n      \"statusCode\": \"string\",\n      \"responseParameters\": {\n        \"key_0\": true\n      },\n      \"responseModels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    },\n    \"key_1\": {\n      \"statusCode\": \"string\",\n      \"responseParameters\": {\n        \"key_0\": true,\n        \"key_1\": true\n      },\n      \"responseModels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    }\n  },\n  \"methodIntegration\": {\n    \"type\": \"HTTP\",\n    \"httpMethod\": \"string\",\n    \"uri\": \"string\",\n    \"connectionType\": \"INTERNET\",\n    \"connectionId\": \"string\",\n    \"credentials\": \"string\",\n    \"requestParameters\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"requestTemplates\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    },\n    \"passthroughBehavior\": \"WHEN_NO_MATCH\",\n    \"contentHandling\": \"CONVERT_TO_BINARY\",\n    \"timeoutInMillis\": 9000,\n    \"cacheNamespace\": \"string\",\n    \"cacheKeyParameters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"integrationResponses\": {\n      \"key_0\": {\n        \"statusCode\": \"string\",\n        \"selectionPattern\": \"string\",\n        \"responseParameters\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\",\n          \"key_3\": \"string\"\n        },\n        \"responseTemplates\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"contentHandling\": \"CONVERT_TO_BINARY\"\n      }\n    },\n    \"tlsConfig\": {\n      \"insecureSkipVerification\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2293159-891c-43da-94a1-35f281c73326",
+              "name": "The request is invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authorizationType\": \"<string>\",\n  \"authorizerId\": \"<string>\",\n  \"apiKeyRequired\": \"<boolean>\",\n  \"operationName\": \"<string>\",\n  \"requestParameters\": {\n    \"key_0\": \"<boolean>\",\n    \"key_1\": \"<boolean>\"\n  },\n  \"requestModels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"requestValidatorId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76de22ad-51ce-4619-bdbe-68c90fff03bf",
+              "name": "The specified resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authorizationType\": \"<string>\",\n  \"authorizerId\": \"<string>\",\n  \"apiKeyRequired\": \"<boolean>\",\n  \"operationName\": \"<string>\",\n  \"requestParameters\": {\n    \"key_0\": \"<boolean>\",\n    \"key_1\": \"<boolean>\"\n  },\n  \"requestModels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"requestValidatorId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7766cfbc-4ccf-436f-ad11-98d4136e3c19",
+              "name": "The request conflicts with the current state of the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authorizationType\": \"<string>\",\n  \"authorizerId\": \"<string>\",\n  \"apiKeyRequired\": \"<boolean>\",\n  \"operationName\": \"<string>\",\n  \"requestParameters\": {\n    \"key_0\": \"<boolean>\",\n    \"key_1\": \"<boolean>\"\n  },\n  \"requestModels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"requestValidatorId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ecb1f021-99b1-4f32-8981-99231d08d3c5",
+              "name": "The request rate has exceeded the allowed limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authorizationType\": \"<string>\",\n  \"authorizerId\": \"<string>\",\n  \"apiKeyRequired\": \"<boolean>\",\n  \"operationName\": \"<string>\",\n  \"requestParameters\": {\n    \"key_0\": \"<boolean>\",\n    \"key_1\": \"<boolean>\"\n  },\n  \"requestModels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"requestValidatorId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2aebc12-1420-485a-a1ed-23c43df508b8",
+          "name": "Amazon API Gateway Update a Method",
+          "request": {
+            "name": "Amazon API Gateway Update a Method",
+            "description": {
+              "content": "Updates an existing method request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "restapis",
+                ":restapi_id",
+                "resources",
+                ":resource_id",
+                "methods",
+                ":http_method"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "restapi_id",
+                  "description": "(Required) The identifier of the REST API."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_id",
+                  "description": "(Required) The identifier of the resource."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "http_method",
+                  "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                },
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patchOperations\": [\n    {\n      \"op\": \"<string>\",\n      \"path\": \"<string>\",\n      \"value\": \"<string>\",\n      \"from\": \"<string>\"\n    },\n    {\n      \"op\": \"<string>\",\n      \"path\": \"<string>\",\n      \"value\": \"<string>\",\n      \"from\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "970d7579-0180-4f3d-a1a4-860752fed893",
+              "name": "Method updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patchOperations\": [\n    {\n      \"op\": \"add\",\n      \"path\": \"string\",\n      \"value\": \"string\",\n      \"from\": \"string\"\n    },\n    {\n      \"op\": \"copy\",\n      \"path\": \"string\",\n      \"value\": \"string\",\n      \"from\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpMethod\": \"string\",\n  \"authorizationType\": \"string\",\n  \"authorizerId\": \"string\",\n  \"apiKeyRequired\": false,\n  \"requestValidatorId\": \"string\",\n  \"operationName\": \"string\",\n  \"requestParameters\": {\n    \"key_0\": true,\n    \"key_1\": true,\n    \"key_2\": true\n  },\n  \"requestModels\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"methodResponses\": {\n    \"key_0\": {\n      \"statusCode\": \"string\",\n      \"responseParameters\": {\n        \"key_0\": true\n      },\n      \"responseModels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    },\n    \"key_1\": {\n      \"statusCode\": \"string\",\n      \"responseParameters\": {\n        \"key_0\": true,\n        \"key_1\": true\n      },\n      \"responseModels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    }\n  },\n  \"methodIntegration\": {\n    \"type\": \"HTTP\",\n    \"httpMethod\": \"string\",\n    \"uri\": \"string\",\n    \"connectionType\": \"INTERNET\",\n    \"connectionId\": \"string\",\n    \"credentials\": \"string\",\n    \"requestParameters\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"requestTemplates\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    },\n    \"passthroughBehavior\": \"WHEN_NO_MATCH\",\n    \"contentHandling\": \"CONVERT_TO_BINARY\",\n    \"timeoutInMillis\": 9000,\n    \"cacheNamespace\": \"string\",\n    \"cacheKeyParameters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"integrationResponses\": {\n      \"key_0\": {\n        \"statusCode\": \"string\",\n        \"selectionPattern\": \"string\",\n        \"responseParameters\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\",\n          \"key_3\": \"string\"\n        },\n        \"responseTemplates\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"contentHandling\": \"CONVERT_TO_BINARY\"\n      }\n    },\n    \"tlsConfig\": {\n      \"insecureSkipVerification\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c0d5017-324c-4176-9315-8656d0e335ad",
+              "name": "The specified resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patchOperations\": [\n    {\n      \"op\": \"add\",\n      \"path\": \"string\",\n      \"value\": \"string\",\n      \"from\": \"string\"\n    },\n    {\n      \"op\": \"copy\",\n      \"path\": \"string\",\n      \"value\": \"string\",\n      \"from\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b49ac20-d127-4623-81a1-ac78607f834e",
+              "name": "The request conflicts with the current state of the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patchOperations\": [\n    {\n      \"op\": \"add\",\n      \"path\": \"string\",\n      \"value\": \"string\",\n      \"from\": \"string\"\n    },\n    {\n      \"op\": \"copy\",\n      \"path\": \"string\",\n      \"value\": \"string\",\n      \"from\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f6f4aec-971b-4f88-883b-04381f6729b7",
+              "name": "The request rate has exceeded the allowed limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patchOperations\": [\n    {\n      \"op\": \"add\",\n      \"path\": \"string\",\n      \"value\": \"string\",\n      \"from\": \"string\"\n    },\n    {\n      \"op\": \"copy\",\n      \"path\": \"string\",\n      \"value\": \"string\",\n      \"from\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c876ce8-1acb-4dd1-8528-db622575164e",
+          "name": "Amazon API Gateway Delete a Method",
+          "request": {
+            "name": "Amazon API Gateway Delete a Method",
+            "description": {
+              "content": "Deletes the specified method.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "restapis",
+                ":restapi_id",
+                "resources",
+                ":resource_id",
+                "methods",
+                ":http_method"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "restapi_id",
+                  "description": "(Required) The identifier of the REST API."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_id",
+                  "description": "(Required) The identifier of the resource."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "http_method",
+                  "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                },
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "be968b8e-cf2a-4789-bb07-812a1eadf389",
+              "name": "Method deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d796a621-e648-44cb-8909-f31d57c42c1e",
+              "name": "The specified resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93e312be-720a-4156-b1c2-7ca031de5a9e",
+              "name": "The request conflicts with the current state of the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6a5e20c-8f60-4a9a-8d8c-4b285d56dc63",
+              "name": "The request rate has exceeded the allowed limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f45108c4-9fa1-47ff-9506-ca84fa342cfc",
+          "name": "Amazon API Gateway Get an Integration",
+          "request": {
+            "name": "Amazon API Gateway Get an Integration",
+            "description": {
+              "content": "Returns the integration setup for a method.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "restapis",
+                ":restapi_id",
+                "resources",
+                ":resource_id",
+                "methods",
+                ":http_method",
+                "integration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "restapi_id",
+                  "description": "(Required) The identifier of the REST API."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_id",
+                  "description": "(Required) The identifier of the resource."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "http_method",
+                  "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                },
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4e6eb9d2-ba16-4442-bb90-fe216b595bea",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method",
+                    "integration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"MOCK\",\n  \"httpMethod\": \"string\",\n  \"uri\": \"string\",\n  \"connectionType\": \"INTERNET\",\n  \"connectionId\": \"string\",\n  \"credentials\": \"string\",\n  \"requestParameters\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"requestTemplates\": {\n    \"key_0\": \"string\"\n  },\n  \"passthroughBehavior\": \"WHEN_NO_TEMPLATES\",\n  \"contentHandling\": \"CONVERT_TO_TEXT\",\n  \"timeoutInMillis\": 6719,\n  \"cacheNamespace\": \"string\",\n  \"cacheKeyParameters\": [\n    \"string\",\n    \"string\"\n  ],\n  \"integrationResponses\": {\n    \"key_0\": {\n      \"statusCode\": \"string\",\n      \"selectionPattern\": \"string\",\n      \"responseParameters\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"responseTemplates\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"contentHandling\": \"CONVERT_TO_TEXT\"\n    }\n  },\n  \"tlsConfig\": {\n    \"insecureSkipVerification\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8be64d70-b125-4640-b8b5-5649a1c01279",
+              "name": "The specified resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method",
+                    "integration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4de431c-2c76-4868-b1aa-96ae1dd4a9ff",
+              "name": "The request rate has exceeded the allowed limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method",
+                    "integration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e001ec03-a8d8-485e-a62c-a9787785dda9",
+          "name": "Amazon API Gateway Create or Update an Integration",
+          "request": {
+            "name": "Amazon API Gateway Create or Update an Integration",
+            "description": {
+              "content": "Sets up an integration for a method.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "restapis",
+                ":restapi_id",
+                "resources",
+                ":resource_id",
+                "methods",
+                ":http_method",
+                "integration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "restapi_id",
+                  "description": "(Required) The identifier of the REST API."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_id",
+                  "description": "(Required) The identifier of the resource."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "http_method",
+                  "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                },
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"httpMethod\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"connectionType\": \"<string>\",\n  \"connectionId\": \"<string>\",\n  \"credentials\": \"<string>\",\n  \"requestParameters\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"requestTemplates\": {\n    \"key_0\": \"<string>\"\n  },\n  \"passthroughBehavior\": \"<string>\",\n  \"contentHandling\": \"<string>\",\n  \"timeoutInMillis\": \"<integer>\",\n  \"cacheNamespace\": \"<string>\",\n  \"cacheKeyParameters\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b671099c-012f-4f3e-ab5e-e14b4ea6a352",
+              "name": "Integration created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method",
+                    "integration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"httpMethod\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"connectionType\": \"<string>\",\n  \"connectionId\": \"<string>\",\n  \"credentials\": \"<string>\",\n  \"requestParameters\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"requestTemplates\": {\n    \"key_0\": \"<string>\"\n  },\n  \"passthroughBehavior\": \"<string>\",\n  \"contentHandling\": \"<string>\",\n  \"timeoutInMillis\": \"<integer>\",\n  \"cacheNamespace\": \"<string>\",\n  \"cacheKeyParameters\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"MOCK\",\n  \"httpMethod\": \"string\",\n  \"uri\": \"string\",\n  \"connectionType\": \"INTERNET\",\n  \"connectionId\": \"string\",\n  \"credentials\": \"string\",\n  \"requestParameters\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"requestTemplates\": {\n    \"key_0\": \"string\"\n  },\n  \"passthroughBehavior\": \"WHEN_NO_TEMPLATES\",\n  \"contentHandling\": \"CONVERT_TO_TEXT\",\n  \"timeoutInMillis\": 6719,\n  \"cacheNamespace\": \"string\",\n  \"cacheKeyParameters\": [\n    \"string\",\n    \"string\"\n  ],\n  \"integrationResponses\": {\n    \"key_0\": {\n      \"statusCode\": \"string\",\n      \"selectionPattern\": \"string\",\n      \"responseParameters\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"responseTemplates\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"contentHandling\": \"CONVERT_TO_TEXT\"\n    }\n  },\n  \"tlsConfig\": {\n    \"insecureSkipVerification\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1759532-0370-4d79-a562-e18b11d3f5d2",
+              "name": "The request is invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method",
+                    "integration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"httpMethod\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"connectionType\": \"<string>\",\n  \"connectionId\": \"<string>\",\n  \"credentials\": \"<string>\",\n  \"requestParameters\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"requestTemplates\": {\n    \"key_0\": \"<string>\"\n  },\n  \"passthroughBehavior\": \"<string>\",\n  \"contentHandling\": \"<string>\",\n  \"timeoutInMillis\": \"<integer>\",\n  \"cacheNamespace\": \"<string>\",\n  \"cacheKeyParameters\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dec38865-e6b1-4804-9080-11141680c915",
+              "name": "The specified resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method",
+                    "integration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"httpMethod\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"connectionType\": \"<string>\",\n  \"connectionId\": \"<string>\",\n  \"credentials\": \"<string>\",\n  \"requestParameters\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"requestTemplates\": {\n    \"key_0\": \"<string>\"\n  },\n  \"passthroughBehavior\": \"<string>\",\n  \"contentHandling\": \"<string>\",\n  \"timeoutInMillis\": \"<integer>\",\n  \"cacheNamespace\": \"<string>\",\n  \"cacheKeyParameters\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4149265-c3eb-4a1a-a6bb-5726b4fc4e74",
+              "name": "The request conflicts with the current state of the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method",
+                    "integration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"httpMethod\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"connectionType\": \"<string>\",\n  \"connectionId\": \"<string>\",\n  \"credentials\": \"<string>\",\n  \"requestParameters\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"requestTemplates\": {\n    \"key_0\": \"<string>\"\n  },\n  \"passthroughBehavior\": \"<string>\",\n  \"contentHandling\": \"<string>\",\n  \"timeoutInMillis\": \"<integer>\",\n  \"cacheNamespace\": \"<string>\",\n  \"cacheKeyParameters\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55e60ea3-57d1-44dc-8b8b-859012656c65",
+              "name": "The request rate has exceeded the allowed limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id",
+                    "methods",
+                    ":http_method",
+                    "integration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "http_method",
+                      "description": "(Required) The HTTP method (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS)."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"httpMethod\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"connectionType\": \"<string>\",\n  \"connectionId\": \"<string>\",\n  \"credentials\": \"<string>\",\n  \"requestParameters\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"requestTemplates\": {\n    \"key_0\": \"<string>\"\n  },\n  \"passthroughBehavior\": \"<string>\",\n  \"contentHandling\": \"<string>\",\n  \"timeoutInMillis\": \"<integer>\",\n  \"cacheNamespace\": \"<string>\",\n  \"cacheKeyParameters\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us-east-1",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://apigateway.{{region}}.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "57ca95cb-9123-44ab-b1f8-16ccd3c82f9d",
+    "name": "Amazon API Gateway REST API Keys Methods API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Amazon API Gateway REST API enables programmatic management of API Gateway resources. You can create, configure, and manage REST APIs, stages, deployments, authorizers, models, resources, methods, and integrations through this management interface.\n\nContact Support:\n Name: AWS Support",
+      "type": "text/plain"
+    }
+  }
+}

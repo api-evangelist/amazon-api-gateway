@@ -1,0 +1,153 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon API Gateway REST API Keys Stages API",
+    "version": "2015-07-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon API Gateway List Stages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/stages",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "query",
+                "description": "Filter stages by deployment ID"
+              }
+            ]
+          },
+          "docs": "Returns information about all stages of a REST API."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Create a Stage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/stages",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new stage for a REST API deployment."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Get a Stage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/stages/:stage_name",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "stage_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the stage."
+              }
+            ]
+          },
+          "docs": "Returns information about a specific stage."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Update a Stage",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/stages/:stage_name",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "stage_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the stage."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing stage configuration."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Delete a Stage",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/stages/:stage_name",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "stage_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the stage."
+              }
+            ]
+          },
+          "docs": "Deletes the specified stage."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,111 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon API Gateway REST API Keys Gateway Responses API",
+    "version": "2015-07-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Gateway Responses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon API Gateway List Gateway Responses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/gatewayresponses",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "position",
+                "value": "",
+                "type": "query",
+                "description": "The current pagination position in the paged result set. Used for cursor-based pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of returned results per page. The default value is 25 and the maximum value is 500."
+              }
+            ]
+          },
+          "docs": "Returns all gateway responses defined for a REST API."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Get a Gateway Response",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/gatewayresponses/:response_type",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "response_type",
+                "value": "",
+                "type": "path",
+                "description": "The response type of the gateway response."
+              }
+            ]
+          },
+          "docs": "Returns a gateway response of a specified type."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Create or Update a Gateway Response",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/gatewayresponses/:response_type",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "response_type",
+                "value": "",
+                "type": "path",
+                "description": "The response type of the gateway response."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates a gateway response of a specified type."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon API Gateway REST API Keys Request Validators API",
+    "version": "2015-07-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Request Validators",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon API Gateway List Request Validators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/requestvalidators",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "position",
+                "value": "",
+                "type": "query",
+                "description": "The current pagination position in the paged result set. Used for cursor-based pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of returned results per page. The default value is 25 and the maximum value is 500."
+              }
+            ]
+          },
+          "docs": "Returns all request validators for a REST API."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Create a Request Validator",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/requestvalidators",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a request validator for a REST API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

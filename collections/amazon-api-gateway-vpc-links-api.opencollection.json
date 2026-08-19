@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon API Gateway REST API Keys VPC Links API",
+    "version": "2015-07-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "VPC Links",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon API Gateway List VPC Links",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigateway.{region}.amazonaws.com/vpclinks",
+            "params": [
+              {
+                "name": "position",
+                "value": "",
+                "type": "query",
+                "description": "The current pagination position in the paged result set. Used for cursor-based pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of returned results per page. The default value is 25 and the maximum value is 500."
+              }
+            ]
+          },
+          "docs": "Returns information about all VPC links."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Create a VPC Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apigateway.{region}.amazonaws.com/vpclinks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a VPC link for private integrations."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Get a VPC Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigateway.{region}.amazonaws.com/vpclinks/:vpclink_id",
+            "params": [
+              {
+                "name": "vpclink_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the VPC link."
+              }
+            ]
+          },
+          "docs": "Returns information about a specific VPC link."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Update a VPC Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apigateway.{region}.amazonaws.com/vpclinks/:vpclink_id",
+            "params": [
+              {
+                "name": "vpclink_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the VPC link."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing VPC link."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Delete a VPC Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apigateway.{region}.amazonaws.com/vpclinks/:vpclink_id",
+            "params": [
+              {
+                "name": "vpclink_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the VPC link."
+              }
+            ]
+          },
+          "docs": "Deletes the specified VPC link."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

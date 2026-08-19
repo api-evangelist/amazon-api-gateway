@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon API Gateway REST API Keys REST APIs API",
+    "version": "2015-07-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "REST APIs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon API Gateway List REST APIs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis",
+            "params": [
+              {
+                "name": "position",
+                "value": "",
+                "type": "query",
+                "description": "The current pagination position in the paged result set. Used for cursor-based pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of returned results per page. The default value is 25 and the maximum value is 500."
+              }
+            ]
+          },
+          "docs": "Lists the collection of REST APIs in your account."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Create a REST API",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new REST API."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Get a REST API",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              }
+            ]
+          },
+          "docs": "Returns information about a specific REST API."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Update a REST API",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing REST API."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Delete a REST API",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              }
+            ]
+          },
+          "docs": "Deletes the specified REST API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

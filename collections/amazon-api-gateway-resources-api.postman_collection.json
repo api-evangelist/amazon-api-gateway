@@ -1,0 +1,1953 @@
+{
+  "item": [
+    {
+      "id": "9e5a77c4-ad7d-4ac6-8404-2b84fb8ed859",
+      "name": "Resources",
+      "description": {
+        "content": "Operations for managing API resources (URL paths)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "53b1bfea-b987-4c14-9afd-2d6c90cf11a9",
+          "name": "Amazon API Gateway List Resources",
+          "request": {
+            "name": "Amazon API Gateway List Resources",
+            "description": {
+              "content": "Lists the API resources for a given REST API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "restapis",
+                ":restapi_id",
+                "resources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "position",
+                  "value": "<string>",
+                  "description": "The current pagination position in the paged result set. Used for cursor-based pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "The maximum number of returned results per page. The default value is 25 and the maximum value is 500."
+                },
+                {
+                  "disabled": false,
+                  "key": "embed",
+                  "value": "<string>",
+                  "description": "A query parameter used to retrieve the specified resources embedded in the returned Resources resource in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "embed",
+                  "value": "<string>",
+                  "description": "A query parameter used to retrieve the specified resources embedded in the returned Resources resource in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "restapi_id",
+                  "description": "(Required) The identifier of the REST API."
+                },
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f926482b-1e6d-4ccc-99fb-4fcecf573fb1",
+              "name": "Successful response with list of resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "position",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "embed",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "embed",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"position\": \"string\",\n  \"item\": [\n    {\n      \"id\": \"string\",\n      \"parentId\": \"string\",\n      \"pathPart\": \"string\",\n      \"path\": \"string\",\n      \"resourceMethods\": {\n        \"key_0\": {\n          \"httpMethod\": \"string\",\n          \"authorizationType\": \"string\",\n          \"authorizerId\": \"string\",\n          \"apiKeyRequired\": false,\n          \"requestValidatorId\": \"string\",\n          \"operationName\": \"string\",\n          \"requestParameters\": {\n            \"key_0\": false,\n            \"key_1\": false,\n            \"key_2\": true\n          },\n          \"requestModels\": {\n            \"key_0\": \"string\"\n          },\n          \"methodResponses\": {\n            \"key_0\": {\n              \"statusCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"responseParameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"responseModels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"key_1\": {\n              \"statusCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"responseParameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"responseModels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"methodIntegration\": {\n            \"type\": \"AWS\",\n            \"httpMethod\": \"string\",\n            \"uri\": \"string\",\n            \"connectionType\": \"VPC_LINK\",\n            \"connectionId\": \"string\",\n            \"credentials\": \"string\",\n            \"requestParameters\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"requestTemplates\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_3\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"passthroughBehavior\": \"NEVER\",\n            \"contentHandling\": \"CONVERT_TO_BINARY\",\n            \"timeoutInMillis\": 2841,\n            \"cacheNamespace\": \"string\",\n            \"cacheKeyParameters\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"integrationResponses\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"tlsConfig\": {\n              \"insecureSkipVerification\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        },\n        \"key_1\": {\n          \"httpMethod\": \"string\",\n          \"authorizationType\": \"string\",\n          \"authorizerId\": \"string\",\n          \"apiKeyRequired\": true,\n          \"requestValidatorId\": \"string\",\n          \"operationName\": \"string\",\n          \"requestParameters\": {\n            \"key_0\": true,\n            \"key_1\": false\n          },\n          \"requestModels\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\",\n            \"key_3\": \"string\",\n            \"key_4\": \"string\"\n          },\n          \"methodResponses\": {\n            \"key_0\": {\n              \"statusCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"responseParameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"responseModels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"methodIntegration\": {\n            \"type\": \"HTTP\",\n            \"httpMethod\": \"string\",\n            \"uri\": \"string\",\n            \"connectionType\": \"VPC_LINK\",\n            \"connectionId\": \"string\",\n            \"credentials\": \"string\",\n            \"requestParameters\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"requestTemplates\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"passthroughBehavior\": \"WHEN_NO_TEMPLATES\",\n            \"contentHandling\": \"CONVERT_TO_BINARY\",\n            \"timeoutInMillis\": 6913,\n            \"cacheNamespace\": \"string\",\n            \"cacheKeyParameters\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"integrationResponses\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"tlsConfig\": {\n              \"insecureSkipVerification\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        },\n        \"key_2\": {\n          \"httpMethod\": \"string\",\n          \"authorizationType\": \"string\",\n          \"authorizerId\": \"string\",\n          \"apiKeyRequired\": false,\n          \"requestValidatorId\": \"string\",\n          \"operationName\": \"string\",\n          \"requestParameters\": {\n            \"key_0\": false\n          },\n          \"requestModels\": {\n            \"key_0\": \"string\"\n          },\n          \"methodResponses\": {\n            \"key_0\": {\n              \"statusCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"responseParameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"responseModels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"key_1\": {\n              \"statusCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"responseParameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"responseModels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"methodIntegration\": {\n            \"type\": \"AWS_PROXY\",\n            \"httpMethod\": \"string\",\n            \"uri\": \"string\",\n            \"connectionType\": \"INTERNET\",\n            \"connectionId\": \"string\",\n            \"credentials\": \"string\",\n            \"requestParameters\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"requestTemplates\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"passthroughBehavior\": \"WHEN_NO_TEMPLATES\",\n            \"contentHandling\": \"CONVERT_TO_TEXT\",\n            \"timeoutInMillis\": 6223,\n            \"cacheNamespace\": \"string\",\n            \"cacheKeyParameters\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"integrationResponses\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"tlsConfig\": {\n              \"insecureSkipVerification\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        },\n        \"key_3\": {\n          \"httpMethod\": \"string\",\n          \"authorizationType\": \"string\",\n          \"authorizerId\": \"string\",\n          \"apiKeyRequired\": true,\n          \"requestValidatorId\": \"string\",\n          \"operationName\": \"string\",\n          \"requestParameters\": {\n            \"key_0\": false,\n            \"key_1\": true\n          },\n          \"requestModels\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          },\n          \"methodResponses\": {\n            \"key_0\": {\n              \"statusCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"responseParameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"responseModels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"methodIntegration\": {\n            \"type\": \"AWS\",\n            \"httpMethod\": \"string\",\n            \"uri\": \"string\",\n            \"connectionType\": \"INTERNET\",\n            \"connectionId\": \"string\",\n            \"credentials\": \"string\",\n            \"requestParameters\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"requestTemplates\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"passthroughBehavior\": \"WHEN_NO_TEMPLATES\",\n            \"contentHandling\": \"CONVERT_TO_BINARY\",\n            \"timeoutInMillis\": 8157,\n            \"cacheNamespace\": \"string\",\n            \"cacheKeyParameters\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"integrationResponses\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"tlsConfig\": {\n              \"insecureSkipVerification\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        }\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"parentId\": \"string\",\n      \"pathPart\": \"string\",\n      \"path\": \"string\",\n      \"resourceMethods\": {\n        \"key_0\": {\n          \"httpMethod\": \"string\",\n          \"authorizationType\": \"string\",\n          \"authorizerId\": \"string\",\n          \"apiKeyRequired\": false,\n          \"requestValidatorId\": \"string\",\n          \"operationName\": \"string\",\n          \"requestParameters\": {\n            \"key_0\": true,\n            \"key_1\": false,\n            \"key_2\": true\n          },\n          \"requestModels\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          },\n          \"methodResponses\": {\n            \"key_0\": {\n              \"statusCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"responseParameters\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"responseModels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"methodIntegration\": {\n            \"type\": \"AWS_PROXY\",\n            \"httpMethod\": \"string\",\n            \"uri\": \"string\",\n            \"connectionType\": \"VPC_LINK\",\n            \"connectionId\": \"string\",\n            \"credentials\": \"string\",\n            \"requestParameters\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"requestTemplates\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"passthroughBehavior\": \"WHEN_NO_TEMPLATES\",\n            \"contentHandling\": \"CONVERT_TO_TEXT\",\n            \"timeoutInMillis\": 3846,\n            \"cacheNamespace\": \"string\",\n            \"cacheKeyParameters\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"integrationResponses\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"tlsConfig\": {\n              \"insecureSkipVerification\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47acd02d-c5f0-4a1d-8ed9-dc1bb4d58022",
+              "name": "The request is invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "position",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "embed",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "embed",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6a120b6-131a-481f-9ab1-c1144524d679",
+              "name": "The specified resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "position",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "embed",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "embed",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b36f9cb-0516-4606-87d9-16ea3f9967f6",
+              "name": "The request rate has exceeded the allowed limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "position",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "embed",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "embed",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc9eb3d3-8f52-4637-b2cd-0a0d1caa1b9c",
+          "name": "Amazon API Gateway Get a Resource",
+          "request": {
+            "name": "Amazon API Gateway Get a Resource",
+            "description": {
+              "content": "Returns information about a specific API resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "restapis",
+                ":restapi_id",
+                "resources",
+                ":resource_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "embed",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "embed",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "restapi_id",
+                  "description": "(Required) The identifier of the REST API."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_id",
+                  "description": "(Required) The identifier of the resource."
+                },
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd70cebd-51b6-4b5d-978d-82ca49f11c06",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "embed",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "embed",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"parentId\": \"string\",\n  \"pathPart\": \"string\",\n  \"path\": \"string\",\n  \"resourceMethods\": {\n    \"key_0\": {\n      \"httpMethod\": \"string\",\n      \"authorizationType\": \"string\",\n      \"authorizerId\": \"string\",\n      \"apiKeyRequired\": true,\n      \"requestValidatorId\": \"string\",\n      \"operationName\": \"string\",\n      \"requestParameters\": {\n        \"key_0\": false\n      },\n      \"requestModels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"methodResponses\": {\n        \"key_0\": {\n          \"statusCode\": \"string\",\n          \"responseParameters\": {\n            \"key_0\": false,\n            \"key_1\": false,\n            \"key_2\": true\n          },\n          \"responseModels\": {\n            \"key_0\": \"string\"\n          }\n        }\n      },\n      \"methodIntegration\": {\n        \"type\": \"MOCK\",\n        \"httpMethod\": \"string\",\n        \"uri\": \"string\",\n        \"connectionType\": \"INTERNET\",\n        \"connectionId\": \"string\",\n        \"credentials\": \"string\",\n        \"requestParameters\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"requestTemplates\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"passthroughBehavior\": \"WHEN_NO_MATCH\",\n        \"contentHandling\": \"CONVERT_TO_TEXT\",\n        \"timeoutInMillis\": 10,\n        \"cacheNamespace\": \"string\",\n        \"cacheKeyParameters\": [\n          \"string\",\n          \"string\"\n        ],\n        \"integrationResponses\": {\n          \"key_0\": {\n            \"statusCode\": \"string\",\n            \"selectionPattern\": \"string\",\n            \"responseParameters\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"responseTemplates\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"contentHandling\": \"CONVERT_TO_TEXT\"\n          },\n          \"key_1\": {\n            \"statusCode\": \"string\",\n            \"selectionPattern\": \"string\",\n            \"responseParameters\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"responseTemplates\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"contentHandling\": \"CONVERT_TO_TEXT\"\n          }\n        },\n        \"tlsConfig\": {\n          \"insecureSkipVerification\": true\n        }\n      }\n    },\n    \"key_1\": {\n      \"httpMethod\": \"string\",\n      \"authorizationType\": \"string\",\n      \"authorizerId\": \"string\",\n      \"apiKeyRequired\": true,\n      \"requestValidatorId\": \"string\",\n      \"operationName\": \"string\",\n      \"requestParameters\": {\n        \"key_0\": false,\n        \"key_1\": false\n      },\n      \"requestModels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"methodResponses\": {\n        \"key_0\": {\n          \"statusCode\": \"string\",\n          \"responseParameters\": {\n            \"key_0\": false,\n            \"key_1\": false\n          },\n          \"responseModels\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\"\n          }\n        }\n      },\n      \"methodIntegration\": {\n        \"type\": \"HTTP_PROXY\",\n        \"httpMethod\": \"string\",\n        \"uri\": \"string\",\n        \"connectionType\": \"VPC_LINK\",\n        \"connectionId\": \"string\",\n        \"credentials\": \"string\",\n        \"requestParameters\": {\n          \"key_0\": \"string\"\n        },\n        \"requestTemplates\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        },\n        \"passthroughBehavior\": \"WHEN_NO_MATCH\",\n        \"contentHandling\": \"CONVERT_TO_BINARY\",\n        \"timeoutInMillis\": 5739,\n        \"cacheNamespace\": \"string\",\n        \"cacheKeyParameters\": [\n          \"string\",\n          \"string\"\n        ],\n        \"integrationResponses\": {\n          \"key_0\": {\n            \"statusCode\": \"string\",\n            \"selectionPattern\": \"string\",\n            \"responseParameters\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"responseTemplates\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"contentHandling\": \"CONVERT_TO_BINARY\"\n          },\n          \"key_1\": {\n            \"statusCode\": \"string\",\n            \"selectionPattern\": \"string\",\n            \"responseParameters\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"responseTemplates\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"contentHandling\": \"CONVERT_TO_TEXT\"\n          }\n        },\n        \"tlsConfig\": {\n          \"insecureSkipVerification\": true\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbdcdc6d-c6aa-47ce-9d16-ad5ebec1f529",
+              "name": "The specified resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "embed",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "embed",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb53f306-a57a-47cd-a136-eb91ad7defdf",
+              "name": "The request rate has exceeded the allowed limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "embed",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "embed",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c324f52-110c-400b-a083-d43b3b2cfed0",
+          "name": "Amazon API Gateway Create a Child Resource",
+          "request": {
+            "name": "Amazon API Gateway Create a Child Resource",
+            "description": {
+              "content": "Creates a child resource under the specified parent resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "restapis",
+                ":restapi_id",
+                "resources",
+                ":resource_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "restapi_id",
+                  "description": "(Required) The identifier of the REST API."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_id",
+                  "description": "(Required) The identifier of the resource."
+                },
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pathPart\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0480150d-d3b8-4f38-a362-2e984e22ab7e",
+              "name": "Resource created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pathPart\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"parentId\": \"string\",\n  \"pathPart\": \"string\",\n  \"path\": \"string\",\n  \"resourceMethods\": {\n    \"key_0\": {\n      \"httpMethod\": \"string\",\n      \"authorizationType\": \"string\",\n      \"authorizerId\": \"string\",\n      \"apiKeyRequired\": true,\n      \"requestValidatorId\": \"string\",\n      \"operationName\": \"string\",\n      \"requestParameters\": {\n        \"key_0\": false\n      },\n      \"requestModels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"methodResponses\": {\n        \"key_0\": {\n          \"statusCode\": \"string\",\n          \"responseParameters\": {\n            \"key_0\": false,\n            \"key_1\": false,\n            \"key_2\": true\n          },\n          \"responseModels\": {\n            \"key_0\": \"string\"\n          }\n        }\n      },\n      \"methodIntegration\": {\n        \"type\": \"MOCK\",\n        \"httpMethod\": \"string\",\n        \"uri\": \"string\",\n        \"connectionType\": \"INTERNET\",\n        \"connectionId\": \"string\",\n        \"credentials\": \"string\",\n        \"requestParameters\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"requestTemplates\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"passthroughBehavior\": \"WHEN_NO_MATCH\",\n        \"contentHandling\": \"CONVERT_TO_TEXT\",\n        \"timeoutInMillis\": 10,\n        \"cacheNamespace\": \"string\",\n        \"cacheKeyParameters\": [\n          \"string\",\n          \"string\"\n        ],\n        \"integrationResponses\": {\n          \"key_0\": {\n            \"statusCode\": \"string\",\n            \"selectionPattern\": \"string\",\n            \"responseParameters\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"responseTemplates\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"contentHandling\": \"CONVERT_TO_TEXT\"\n          },\n          \"key_1\": {\n            \"statusCode\": \"string\",\n            \"selectionPattern\": \"string\",\n            \"responseParameters\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"responseTemplates\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"contentHandling\": \"CONVERT_TO_TEXT\"\n          }\n        },\n        \"tlsConfig\": {\n          \"insecureSkipVerification\": true\n        }\n      }\n    },\n    \"key_1\": {\n      \"httpMethod\": \"string\",\n      \"authorizationType\": \"string\",\n      \"authorizerId\": \"string\",\n      \"apiKeyRequired\": true,\n      \"requestValidatorId\": \"string\",\n      \"operationName\": \"string\",\n      \"requestParameters\": {\n        \"key_0\": false,\n        \"key_1\": false\n      },\n      \"requestModels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"methodResponses\": {\n        \"key_0\": {\n          \"statusCode\": \"string\",\n          \"responseParameters\": {\n            \"key_0\": false,\n            \"key_1\": false\n          },\n          \"responseModels\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\"\n          }\n        }\n      },\n      \"methodIntegration\": {\n        \"type\": \"HTTP_PROXY\",\n        \"httpMethod\": \"string\",\n        \"uri\": \"string\",\n        \"connectionType\": \"VPC_LINK\",\n        \"connectionId\": \"string\",\n        \"credentials\": \"string\",\n        \"requestParameters\": {\n          \"key_0\": \"string\"\n        },\n        \"requestTemplates\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        },\n        \"passthroughBehavior\": \"WHEN_NO_MATCH\",\n        \"contentHandling\": \"CONVERT_TO_BINARY\",\n        \"timeoutInMillis\": 5739,\n        \"cacheNamespace\": \"string\",\n        \"cacheKeyParameters\": [\n          \"string\",\n          \"string\"\n        ],\n        \"integrationResponses\": {\n          \"key_0\": {\n            \"statusCode\": \"string\",\n            \"selectionPattern\": \"string\",\n            \"responseParameters\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"responseTemplates\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"contentHandling\": \"CONVERT_TO_BINARY\"\n          },\n          \"key_1\": {\n            \"statusCode\": \"string\",\n            \"selectionPattern\": \"string\",\n            \"responseParameters\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"responseTemplates\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"contentHandling\": \"CONVERT_TO_TEXT\"\n          }\n        },\n        \"tlsConfig\": {\n          \"insecureSkipVerification\": true\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dbc65a84-8b24-40c6-ab58-88ff4e63cec5",
+              "name": "The request is invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pathPart\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64a6b35b-ab14-4369-b903-5cb7e8b4bd7d",
+              "name": "The specified resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pathPart\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e2bd441-a625-41b3-b570-843dcc4812c4",
+              "name": "The request conflicts with the current state of the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pathPart\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "287fa3aa-70f8-45eb-a05e-b9d8572d5a96",
+              "name": "The request rate has exceeded the allowed limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pathPart\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "149383e8-e33d-4b82-9674-9e67ba9c9c50",
+          "name": "Amazon API Gateway Update a Resource",
+          "request": {
+            "name": "Amazon API Gateway Update a Resource",
+            "description": {
+              "content": "Updates an existing API resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "restapis",
+                ":restapi_id",
+                "resources",
+                ":resource_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "restapi_id",
+                  "description": "(Required) The identifier of the REST API."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_id",
+                  "description": "(Required) The identifier of the resource."
+                },
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patchOperations\": [\n    {\n      \"op\": \"<string>\",\n      \"path\": \"<string>\",\n      \"value\": \"<string>\",\n      \"from\": \"<string>\"\n    },\n    {\n      \"op\": \"<string>\",\n      \"path\": \"<string>\",\n      \"value\": \"<string>\",\n      \"from\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8009ba23-8a51-443a-884c-1bc8bb0892f7",
+              "name": "Resource updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patchOperations\": [\n    {\n      \"op\": \"test\",\n      \"path\": \"string\",\n      \"value\": \"string\",\n      \"from\": \"string\"\n    },\n    {\n      \"op\": \"copy\",\n      \"path\": \"string\",\n      \"value\": \"string\",\n      \"from\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"parentId\": \"string\",\n  \"pathPart\": \"string\",\n  \"path\": \"string\",\n  \"resourceMethods\": {\n    \"key_0\": {\n      \"httpMethod\": \"string\",\n      \"authorizationType\": \"string\",\n      \"authorizerId\": \"string\",\n      \"apiKeyRequired\": true,\n      \"requestValidatorId\": \"string\",\n      \"operationName\": \"string\",\n      \"requestParameters\": {\n        \"key_0\": false\n      },\n      \"requestModels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"methodResponses\": {\n        \"key_0\": {\n          \"statusCode\": \"string\",\n          \"responseParameters\": {\n            \"key_0\": false,\n            \"key_1\": false,\n            \"key_2\": true\n          },\n          \"responseModels\": {\n            \"key_0\": \"string\"\n          }\n        }\n      },\n      \"methodIntegration\": {\n        \"type\": \"MOCK\",\n        \"httpMethod\": \"string\",\n        \"uri\": \"string\",\n        \"connectionType\": \"INTERNET\",\n        \"connectionId\": \"string\",\n        \"credentials\": \"string\",\n        \"requestParameters\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"requestTemplates\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"passthroughBehavior\": \"WHEN_NO_MATCH\",\n        \"contentHandling\": \"CONVERT_TO_TEXT\",\n        \"timeoutInMillis\": 10,\n        \"cacheNamespace\": \"string\",\n        \"cacheKeyParameters\": [\n          \"string\",\n          \"string\"\n        ],\n        \"integrationResponses\": {\n          \"key_0\": {\n            \"statusCode\": \"string\",\n            \"selectionPattern\": \"string\",\n            \"responseParameters\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"responseTemplates\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"contentHandling\": \"CONVERT_TO_TEXT\"\n          },\n          \"key_1\": {\n            \"statusCode\": \"string\",\n            \"selectionPattern\": \"string\",\n            \"responseParameters\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"responseTemplates\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"contentHandling\": \"CONVERT_TO_TEXT\"\n          }\n        },\n        \"tlsConfig\": {\n          \"insecureSkipVerification\": true\n        }\n      }\n    },\n    \"key_1\": {\n      \"httpMethod\": \"string\",\n      \"authorizationType\": \"string\",\n      \"authorizerId\": \"string\",\n      \"apiKeyRequired\": true,\n      \"requestValidatorId\": \"string\",\n      \"operationName\": \"string\",\n      \"requestParameters\": {\n        \"key_0\": false,\n        \"key_1\": false\n      },\n      \"requestModels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"methodResponses\": {\n        \"key_0\": {\n          \"statusCode\": \"string\",\n          \"responseParameters\": {\n            \"key_0\": false,\n            \"key_1\": false\n          },\n          \"responseModels\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\"\n          }\n        }\n      },\n      \"methodIntegration\": {\n        \"type\": \"HTTP_PROXY\",\n        \"httpMethod\": \"string\",\n        \"uri\": \"string\",\n        \"connectionType\": \"VPC_LINK\",\n        \"connectionId\": \"string\",\n        \"credentials\": \"string\",\n        \"requestParameters\": {\n          \"key_0\": \"string\"\n        },\n        \"requestTemplates\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        },\n        \"passthroughBehavior\": \"WHEN_NO_MATCH\",\n        \"contentHandling\": \"CONVERT_TO_BINARY\",\n        \"timeoutInMillis\": 5739,\n        \"cacheNamespace\": \"string\",\n        \"cacheKeyParameters\": [\n          \"string\",\n          \"string\"\n        ],\n        \"integrationResponses\": {\n          \"key_0\": {\n            \"statusCode\": \"string\",\n            \"selectionPattern\": \"string\",\n            \"responseParameters\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"responseTemplates\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"contentHandling\": \"CONVERT_TO_BINARY\"\n          },\n          \"key_1\": {\n            \"statusCode\": \"string\",\n            \"selectionPattern\": \"string\",\n            \"responseParameters\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"responseTemplates\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"contentHandling\": \"CONVERT_TO_TEXT\"\n          }\n        },\n        \"tlsConfig\": {\n          \"insecureSkipVerification\": true\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d9075aa-6687-43b2-b374-41a14c2ec12c",
+              "name": "The request is invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patchOperations\": [\n    {\n      \"op\": \"test\",\n      \"path\": \"string\",\n      \"value\": \"string\",\n      \"from\": \"string\"\n    },\n    {\n      \"op\": \"copy\",\n      \"path\": \"string\",\n      \"value\": \"string\",\n      \"from\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e2ba2c8-78a2-4c61-8109-328748168b82",
+              "name": "The specified resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patchOperations\": [\n    {\n      \"op\": \"test\",\n      \"path\": \"string\",\n      \"value\": \"string\",\n      \"from\": \"string\"\n    },\n    {\n      \"op\": \"copy\",\n      \"path\": \"string\",\n      \"value\": \"string\",\n      \"from\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "135d7afb-8fbb-43bb-9a22-e68ab667735d",
+              "name": "The request conflicts with the current state of the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patchOperations\": [\n    {\n      \"op\": \"test\",\n      \"path\": \"string\",\n      \"value\": \"string\",\n      \"from\": \"string\"\n    },\n    {\n      \"op\": \"copy\",\n      \"path\": \"string\",\n      \"value\": \"string\",\n      \"from\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78987477-5a77-4118-ae9a-62b5411f8a4c",
+              "name": "The request rate has exceeded the allowed limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patchOperations\": [\n    {\n      \"op\": \"test\",\n      \"path\": \"string\",\n      \"value\": \"string\",\n      \"from\": \"string\"\n    },\n    {\n      \"op\": \"copy\",\n      \"path\": \"string\",\n      \"value\": \"string\",\n      \"from\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a525765e-c61d-4d43-824e-3c4759fc74ad",
+          "name": "Amazon API Gateway Delete a Resource",
+          "request": {
+            "name": "Amazon API Gateway Delete a Resource",
+            "description": {
+              "content": "Deletes the specified API resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "restapis",
+                ":restapi_id",
+                "resources",
+                ":resource_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "restapi_id",
+                  "description": "(Required) The identifier of the REST API."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_id",
+                  "description": "(Required) The identifier of the resource."
+                },
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab5440c0-cc40-4ff4-86d5-425d75b22aa3",
+              "name": "Resource deletion accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "71a04007-2141-45a7-98b6-a0a23bae6c29",
+              "name": "The specified resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02acae9a-2bf8-4d44-8f34-b1550678bc11",
+              "name": "The request conflicts with the current state of the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f132299-facc-4a78-8e3f-e7a2590a2d59",
+              "name": "The request rate has exceeded the allowed limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "restapis",
+                    ":restapi_id",
+                    "resources",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "restapi_id",
+                      "description": "(Required) The identifier of the REST API."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,ap-northeast-1,ap-northeast-2,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us-east-1",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://apigateway.{{region}}.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "79f0de15-aa8f-46e9-a435-0c3abae0178a",
+    "name": "Amazon API Gateway REST API Keys Resources API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Amazon API Gateway REST API enables programmatic management of API Gateway resources. You can create, configure, and manage REST APIs, stages, deployments, authorizers, models, resources, methods, and integrations through this management interface.\n\nContact Support:\n Name: AWS Support",
+      "type": "text/plain"
+    }
+  }
+}

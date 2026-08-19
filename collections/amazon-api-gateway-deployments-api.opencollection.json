@@ -1,0 +1,164 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon API Gateway REST API Keys Deployments API",
+    "version": "2015-07-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Deployments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon API Gateway List Deployments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/deployments",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "position",
+                "value": "",
+                "type": "query",
+                "description": "The current pagination position in the paged result set. Used for cursor-based pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of returned results per page. The default value is 25 and the maximum value is 500."
+              }
+            ]
+          },
+          "docs": "Returns information about all deployments of a REST API."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Create a Deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/deployments",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a deployment for a REST API, making it callable by consumers."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Get a Deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/deployments/:deployment_id",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "deployment_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the deployment."
+              },
+              {
+                "name": "embed",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns information about a specific deployment."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Update a Deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/deployments/:deployment_id",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "deployment_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the deployment."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing deployment."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Delete a Deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apigateway.{region}.amazonaws.com/restapis/:restapi_id/deployments/:deployment_id",
+            "params": [
+              {
+                "name": "restapi_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the REST API."
+              },
+              {
+                "name": "deployment_id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the deployment."
+              }
+            ]
+          },
+          "docs": "Deletes the specified deployment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

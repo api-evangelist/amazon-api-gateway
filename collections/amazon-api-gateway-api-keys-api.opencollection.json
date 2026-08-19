@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon API Gateway REST API Keys API",
+    "version": "2015-07-09"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "API Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon API Gateway List API Keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigateway.{region}.amazonaws.com/apikeys",
+            "params": [
+              {
+                "name": "position",
+                "value": "",
+                "type": "query",
+                "description": "The current pagination position in the paged result set. Used for cursor-based pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of returned results per page. The default value is 25 and the maximum value is 500."
+              },
+              {
+                "name": "nameQuery",
+                "value": "",
+                "type": "query",
+                "description": "Filter API keys by name."
+              },
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "query",
+                "description": "Filter API keys by customer ID."
+              },
+              {
+                "name": "includeValues",
+                "value": "",
+                "type": "query",
+                "description": "Include the API key values in the response."
+              }
+            ]
+          },
+          "docs": "Returns information about all current API keys."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Create an API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apigateway.{region}.amazonaws.com/apikeys",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new API key."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Get an API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apigateway.{region}.amazonaws.com/apikeys/:api_key",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the API key."
+              },
+              {
+                "name": "includeValue",
+                "value": "",
+                "type": "query",
+                "description": "Include the API key value in the response."
+              }
+            ]
+          },
+          "docs": "Returns information about a specific API key."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Update an API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apigateway.{region}.amazonaws.com/apikeys/:api_key",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the API key."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing API key."
+        },
+        {
+          "info": {
+            "name": "Amazon API Gateway Delete an API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apigateway.{region}.amazonaws.com/apikeys/:api_key",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the API key."
+              }
+            ]
+          },
+          "docs": "Deletes the specified API key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
