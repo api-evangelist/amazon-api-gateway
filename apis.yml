@@ -33,6 +33,10 @@ apis:
     humanURL: https://aws.amazon.com/api-gateway/
     baseURL: https://apigateway.{region}.amazonaws.com
     tags:
+      - Bidirectional
+      - Real-Time
+      - WebSocket
+    tags_raw:
       - Bi-Directional
       - Real-Time
       - WebSocket
@@ -84,6 +88,8 @@ apis:
     humanURL: https://aws.amazon.com/api-gateway/
     baseURL: https://apigateway.{region}.amazonaws.com
     tags:
+      - APIKeys
+    tags_raw:
       - API Keys
     properties:
       - type: OpenAPI
@@ -216,6 +222,8 @@ apis:
     humanURL: https://aws.amazon.com/api-gateway/
     baseURL: https://apigateway.{region}.amazonaws.com
     tags:
+      - Deployment
+    tags_raw:
       - Deployments
     properties:
       - type: OpenAPI
@@ -391,7 +399,8 @@ apis:
     description: Operations for managing HTTP methods on resources
     humanURL: https://aws.amazon.com/api-gateway/
     baseURL: https://apigateway.{region}.amazonaws.com
-    tags:
+    tags: []
+    tags_raw:
       - Methods
     properties:
       - type: OpenAPI
@@ -700,6 +709,8 @@ apis:
     humanURL: https://aws.amazon.com/api-gateway/
     baseURL: https://apigateway.{region}.amazonaws.com
     tags:
+      - Vpclinks
+    tags_raw:
       - VPC Links
     properties:
       - type: OpenAPI
