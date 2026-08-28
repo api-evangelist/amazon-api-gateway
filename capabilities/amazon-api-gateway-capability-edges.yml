@@ -1,0 +1,35 @@
+slug: amazon-api-gateway
+provider: Amazon API Gateway
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Usage Plans
+  spec_file: amazon-api-gateway-usage-plans-api-openapi.yml
+  capability_id: BC-4270.50
+  capability_id_l1: BC-4270
+  capability_name: API Consumption Governance
+  confidence: 0.85
+  evidence: 'POST /usageplans  CreateUsagePlan; schemas: QuotaSettings, ThrottleSettings, ApiStage'
+  reason: Usage plans bind API keys to quotas and throttling per API stage — exactly quota/rate-limit
+    governance of API consumption, often tied to commercial tiers.
+- tag: REST APIs
+  spec_file: amazon-api-gateway-rest-apis-api-openapi.yml
+  capability_id: BC-4270.10
+  capability_id_l1: BC-4270
+  capability_name: Public API Lifecycle Management
+  confidence: 0.7
+  evidence: POST /restapis  CreateRestApi  Amazon API Gateway Create a REST API; 'create, publish, maintain,
+    monitor, and secure APIs at any scale'
+  reason: Operations create, update and delete REST API definitions — the core lifecycle of an exposed
+    API. Maps to Public API Lifecycle Management, though the gateway also serves purely internal APIs.
