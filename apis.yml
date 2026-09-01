@@ -45,7 +45,7 @@ apis:
     humanURL: https://aws.amazon.com/api-gateway/
     baseURL: https://apigateway.{region}.amazonaws.com
     tags:
-      - Bi-Directional
+      - Bidirectional
       - Real-Time
       - WebSocket
     tags_raw:
@@ -721,7 +721,7 @@ apis:
     humanURL: https://aws.amazon.com/api-gateway/
     baseURL: https://apigateway.{region}.amazonaws.com
     tags:
-      - VPC Links
+      - Vpclinks
     tags_raw:
       - VPC Links
     properties:
