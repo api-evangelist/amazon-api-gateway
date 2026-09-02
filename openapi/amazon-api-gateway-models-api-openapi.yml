@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon API Gateway REST API Keys Models API
   description: The Amazon API Gateway REST API enables programmatic management of API Gateway resources. You can create, configure, and manage REST APIs, stages, deployments, authorizers, models, resources, methods, and integrations through this management interface.
@@ -169,6 +169,15 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message.
+        code:
+          type: string
+          description: The error code.
     Model:
       type: object
       properties:
@@ -187,29 +196,6 @@ components:
         contentType:
           type: string
           description: The content type for the model.
-    CreateModelRequest:
-      type: object
-      required:
-      - name
-      - contentType
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        schema:
-          type: string
-        contentType:
-          type: string
-    Models:
-      type: object
-      properties:
-        position:
-          type: string
-        item:
-          type: array
-          items:
-            $ref: '#/components/schemas/Model'
     PatchOperation:
       type: object
       properties:
@@ -232,6 +218,15 @@ components:
         from:
           type: string
           description: The copy update operation's source as identified by a JSON Pointer value.
+    Models:
+      type: object
+      properties:
+        position:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model'
     PatchOperations:
       type: object
       properties:
@@ -239,16 +234,28 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PatchOperation'
-    Error:
+    CreateModelRequest:
       type: object
+      required:
+      - name
+      - contentType
       properties:
-        message:
+        name:
           type: string
-          description: A human-readable error message.
-        code:
+        description:
           type: string
-          description: The error code.
+        schema:
+          type: string
+        contentType:
+          type: string
   parameters:
+    RestApiId:
+      name: restapi_id
+      in: path
+      required: true
+      description: The identifier of the REST API.
+      schema:
+        type: string
     Limit:
       name: limit
       in: query
@@ -265,13 +272,6 @@ components:
       description: The name of the model.
       schema:
         type: string
-    RestApiId:
-      name: restapi_id
-      in: path
-      required: true
-      description: The identifier of the REST API.
-      schema:
-        type: string
     Position:
       name: position
       in: query
@@ -279,14 +279,14 @@ components:
       schema:
         type: string
   responses:
-    TooManyRequests:
-      description: The request rate has exceeded the allowed limit.
+    BadRequest:
+      description: The request is invalid or malformed.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request is invalid or malformed.
+    TooManyRequests:
+      description: The request rate has exceeded the allowed limit.
       content:
         application/json:
           schema:

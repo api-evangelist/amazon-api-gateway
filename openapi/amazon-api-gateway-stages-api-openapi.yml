@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon API Gateway REST API Keys Stages API
   description: The Amazon API Gateway REST API enables programmatic management of API Gateway resources. You can create, configure, and manage REST APIs, stages, deployments, authorizers, models, resources, methods, and integrations through this management interface.
@@ -163,6 +163,53 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message.
+        code:
+          type: string
+          description: The error code.
+    MethodSetting:
+      type: object
+      properties:
+        metricsEnabled:
+          type: boolean
+        loggingLevel:
+          type: string
+          enum:
+          - 'OFF'
+          - ERROR
+          - INFO
+        dataTraceEnabled:
+          type: boolean
+        throttlingBurstLimit:
+          type: integer
+        throttlingRateLimit:
+          type: number
+        cachingEnabled:
+          type: boolean
+        cacheTtlInSeconds:
+          type: integer
+        cacheDataEncrypted:
+          type: boolean
+        requireAuthorizationForCacheControl:
+          type: boolean
+        unauthorizedCacheControlHeaderStrategy:
+          type: string
+          enum:
+          - FAIL_WITH_403
+          - SUCCEED_WITH_RESPONSE_HEADER
+          - SUCCEED_WITHOUT_RESPONSE_HEADER
+    Stages:
+      type: object
+      properties:
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/Stage'
     CanarySettings:
       type: object
       properties:
@@ -255,44 +302,6 @@ components:
         destinationArn:
           type: string
           description: The Amazon Resource Name (ARN) of the CloudWatch Logs log group or Kinesis Data Firehose delivery stream.
-    PatchOperations:
-      type: object
-      properties:
-        patchOperations:
-          type: array
-          items:
-            $ref: '#/components/schemas/PatchOperation'
-    MethodSetting:
-      type: object
-      properties:
-        metricsEnabled:
-          type: boolean
-        loggingLevel:
-          type: string
-          enum:
-          - 'OFF'
-          - ERROR
-          - INFO
-        dataTraceEnabled:
-          type: boolean
-        throttlingBurstLimit:
-          type: integer
-        throttlingRateLimit:
-          type: number
-        cachingEnabled:
-          type: boolean
-        cacheTtlInSeconds:
-          type: integer
-        cacheDataEncrypted:
-          type: boolean
-        requireAuthorizationForCacheControl:
-          type: boolean
-        unauthorizedCacheControlHeaderStrategy:
-          type: string
-          enum:
-          - FAIL_WITH_403
-          - SUCCEED_WITH_RESPONSE_HEADER
-          - SUCCEED_WITHOUT_RESPONSE_HEADER
     PatchOperation:
       type: object
       properties:
@@ -315,13 +324,13 @@ components:
         from:
           type: string
           description: The copy update operation's source as identified by a JSON Pointer value.
-    Stages:
+    PatchOperations:
       type: object
       properties:
-        item:
+        patchOperations:
           type: array
           items:
-            $ref: '#/components/schemas/Stage'
+            $ref: '#/components/schemas/PatchOperation'
     CreateStageRequest:
       type: object
       required:
@@ -363,24 +372,30 @@ components:
           type: object
           additionalProperties:
             type: string
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: A human-readable error message.
-        code:
-          type: string
-          description: The error code.
+  parameters:
+    StageName:
+      name: stage_name
+      in: path
+      required: true
+      description: The name of the stage.
+      schema:
+        type: string
+    RestApiId:
+      name: restapi_id
+      in: path
+      required: true
+      description: The identifier of the REST API.
+      schema:
+        type: string
   responses:
-    TooManyRequests:
-      description: The request rate has exceeded the allowed limit.
+    BadRequest:
+      description: The request is invalid or malformed.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request is invalid or malformed.
+    TooManyRequests:
+      description: The request rate has exceeded the allowed limit.
       content:
         application/json:
           schema:
@@ -397,21 +412,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    StageName:
-      name: stage_name
-      in: path
-      required: true
-      description: The name of the stage.
-      schema:
-        type: string
-    RestApiId:
-      name: restapi_id
-      in: path
-      required: true
-      description: The identifier of the REST API.
-      schema:
-        type: string
   securitySchemes:
     sigv4:
       type: apiKey

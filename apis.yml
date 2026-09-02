@@ -885,3 +885,5 @@ maintainers:
     url: https://apievangelist.com
 aid: amazon-api-gateway
 specificationVersion: '0.23'
+x-parent: aws
+x-relationship: product

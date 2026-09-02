@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon API Gateway REST API Keys Request Validators API
   description: The Amazon API Gateway REST API enables programmatic management of API Gateway resources. You can create, configure, and manage REST APIs, stages, deployments, authorizers, models, resources, methods, and integrations through this management interface.
@@ -90,50 +90,7 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
-  parameters:
-    Limit:
-      name: limit
-      in: query
-      description: The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 500
-        default: 25
-    RestApiId:
-      name: restapi_id
-      in: path
-      required: true
-      description: The identifier of the REST API.
-      schema:
-        type: string
-    Position:
-      name: position
-      in: query
-      description: The current pagination position in the paged result set. Used for cursor-based pagination.
-      schema:
-        type: string
   schemas:
-    RequestValidator:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        validateRequestBody:
-          type: boolean
-        validateRequestParameters:
-          type: boolean
-    RequestValidators:
-      type: object
-      properties:
-        position:
-          type: string
-        item:
-          type: array
-          items:
-            $ref: '#/components/schemas/RequestValidator'
     Error:
       type: object
       properties:
@@ -154,15 +111,58 @@ components:
           type: boolean
         validateRequestParameters:
           type: boolean
+    RequestValidators:
+      type: object
+      properties:
+        position:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestValidator'
+    RequestValidator:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        validateRequestBody:
+          type: boolean
+        validateRequestParameters:
+          type: boolean
+  parameters:
+    RestApiId:
+      name: restapi_id
+      in: path
+      required: true
+      description: The identifier of the REST API.
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      description: The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 25
+    Position:
+      name: position
+      in: query
+      description: The current pagination position in the paged result set. Used for cursor-based pagination.
+      schema:
+        type: string
   responses:
-    TooManyRequests:
-      description: The request rate has exceeded the allowed limit.
+    BadRequest:
+      description: The request is invalid or malformed.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request is invalid or malformed.
+    TooManyRequests:
+      description: The request rate has exceeded the allowed limit.
       content:
         application/json:
           schema:

@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon API Gateway REST API Keys Authorizers API
   description: The Amazon API Gateway REST API enables programmatic management of API Gateway resources. You can create, configure, and manage REST APIs, stages, deployments, authorizers, models, resources, methods, and integrations through this management interface.
@@ -159,37 +159,45 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
-  parameters:
-    Limit:
-      name: limit
-      in: query
-      description: The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 500
-        default: 25
-    RestApiId:
-      name: restapi_id
-      in: path
-      required: true
-      description: The identifier of the REST API.
-      schema:
-        type: string
-    Position:
-      name: position
-      in: query
-      description: The current pagination position in the paged result set. Used for cursor-based pagination.
-      schema:
-        type: string
-    AuthorizerId:
-      name: authorizer_id
-      in: path
-      required: true
-      description: The identifier of the authorizer.
-      schema:
-        type: string
   schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message.
+        code:
+          type: string
+          description: The error code.
+    PatchOperations:
+      type: object
+      properties:
+        patchOperations:
+          type: array
+          items:
+            $ref: '#/components/schemas/PatchOperation'
+    PatchOperation:
+      type: object
+      properties:
+        op:
+          type: string
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          description: The operation type.
+        path:
+          type: string
+          description: The op operation's target, as identified by a JSON Pointer value.
+        value:
+          type: string
+          description: The new target value of the update operation. It is applicable for the add or replace operation.
+        from:
+          type: string
+          description: The copy update operation's source as identified by a JSON Pointer value.
     Authorizers:
       type: object
       properties:
@@ -238,28 +246,6 @@ components:
         authorizerResultTtlInSeconds:
           type: integer
           description: The TTL in seconds of cached authorizer results. Max 3600.
-    PatchOperation:
-      type: object
-      properties:
-        op:
-          type: string
-          enum:
-          - add
-          - remove
-          - replace
-          - move
-          - copy
-          - test
-          description: The operation type.
-        path:
-          type: string
-          description: The op operation's target, as identified by a JSON Pointer value.
-        value:
-          type: string
-          description: The new target value of the update operation. It is applicable for the add or replace operation.
-        from:
-          type: string
-          description: The copy update operation's source as identified by a JSON Pointer value.
     CreateAuthorizerRequest:
       type: object
       required:
@@ -291,31 +277,45 @@ components:
           type: string
         authorizerResultTtlInSeconds:
           type: integer
-    PatchOperations:
-      type: object
-      properties:
-        patchOperations:
-          type: array
-          items:
-            $ref: '#/components/schemas/PatchOperation'
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: A human-readable error message.
-        code:
-          type: string
-          description: The error code.
+  parameters:
+    RestApiId:
+      name: restapi_id
+      in: path
+      required: true
+      description: The identifier of the REST API.
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      description: The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 25
+    AuthorizerId:
+      name: authorizer_id
+      in: path
+      required: true
+      description: The identifier of the authorizer.
+      schema:
+        type: string
+    Position:
+      name: position
+      in: query
+      description: The current pagination position in the paged result set. Used for cursor-based pagination.
+      schema:
+        type: string
   responses:
-    TooManyRequests:
-      description: The request rate has exceeded the allowed limit.
+    BadRequest:
+      description: The request is invalid or malformed.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request is invalid or malformed.
+    TooManyRequests:
+      description: The request rate has exceeded the allowed limit.
       content:
         application/json:
           schema:

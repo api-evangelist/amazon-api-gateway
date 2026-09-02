@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon API Gateway REST API Keys Resources API
   description: The Amazon API Gateway REST API enables programmatic management of API Gateway resources. You can create, configure, and manage REST APIs, stages, deployments, authorizers, models, resources, methods, and integrations through this management interface.
@@ -183,37 +183,59 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
-  parameters:
-    Limit:
-      name: limit
-      in: query
-      description: The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 500
-        default: 25
-    RestApiId:
-      name: restapi_id
-      in: path
-      required: true
-      description: The identifier of the REST API.
-      schema:
-        type: string
-    Position:
-      name: position
-      in: query
-      description: The current pagination position in the paged result set. Used for cursor-based pagination.
-      schema:
-        type: string
-    ResourceId:
-      name: resource_id
-      in: path
-      required: true
-      description: The identifier of the resource.
-      schema:
-        type: string
   schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message.
+        code:
+          type: string
+          description: The error code.
+    IntegrationResponse:
+      type: object
+      properties:
+        statusCode:
+          type: string
+        selectionPattern:
+          type: string
+        responseParameters:
+          type: object
+          additionalProperties:
+            type: string
+        responseTemplates:
+          type: object
+          additionalProperties:
+            type: string
+        contentHandling:
+          type: string
+          enum:
+          - CONVERT_TO_BINARY
+          - CONVERT_TO_TEXT
+    Resources:
+      type: object
+      properties:
+        position:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+    MethodResponse:
+      type: object
+      properties:
+        statusCode:
+          type: string
+          description: The method response's status code.
+        responseParameters:
+          type: object
+          additionalProperties:
+            type: boolean
+        responseModels:
+          type: object
+          additionalProperties:
+            type: string
     Integration:
       type: object
       properties:
@@ -281,6 +303,28 @@ components:
           properties:
             insecureSkipVerification:
               type: boolean
+    PatchOperation:
+      type: object
+      properties:
+        op:
+          type: string
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          description: The operation type.
+        path:
+          type: string
+          description: The op operation's target, as identified by a JSON Pointer value.
+        value:
+          type: string
+          description: The new target value of the update operation. It is applicable for the add or replace operation.
+        from:
+          type: string
+          description: The copy update operation's source as identified by a JSON Pointer value.
     Resource:
       type: object
       properties:
@@ -301,15 +345,6 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/Method'
           description: Map of methods for this resource keyed by HTTP method type.
-    Resources:
-      type: object
-      properties:
-        position:
-          type: string
-        item:
-          type: array
-          items:
-            $ref: '#/components/schemas/Resource'
     Method:
       type: object
       properties:
@@ -348,48 +383,6 @@ components:
           description: Method responses keyed by status code.
         methodIntegration:
           $ref: '#/components/schemas/Integration'
-    IntegrationResponse:
-      type: object
-      properties:
-        statusCode:
-          type: string
-        selectionPattern:
-          type: string
-        responseParameters:
-          type: object
-          additionalProperties:
-            type: string
-        responseTemplates:
-          type: object
-          additionalProperties:
-            type: string
-        contentHandling:
-          type: string
-          enum:
-          - CONVERT_TO_BINARY
-          - CONVERT_TO_TEXT
-    PatchOperation:
-      type: object
-      properties:
-        op:
-          type: string
-          enum:
-          - add
-          - remove
-          - replace
-          - move
-          - copy
-          - test
-          description: The operation type.
-        path:
-          type: string
-          description: The op operation's target, as identified by a JSON Pointer value.
-        value:
-          type: string
-          description: The new target value of the update operation. It is applicable for the add or replace operation.
-        from:
-          type: string
-          description: The copy update operation's source as identified by a JSON Pointer value.
     PatchOperations:
       type: object
       properties:
@@ -397,38 +390,45 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PatchOperation'
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: A human-readable error message.
-        code:
-          type: string
-          description: The error code.
-    MethodResponse:
-      type: object
-      properties:
-        statusCode:
-          type: string
-          description: The method response's status code.
-        responseParameters:
-          type: object
-          additionalProperties:
-            type: boolean
-        responseModels:
-          type: object
-          additionalProperties:
-            type: string
+  parameters:
+    ResourceId:
+      name: resource_id
+      in: path
+      required: true
+      description: The identifier of the resource.
+      schema:
+        type: string
+    RestApiId:
+      name: restapi_id
+      in: path
+      required: true
+      description: The identifier of the REST API.
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      description: The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 25
+    Position:
+      name: position
+      in: query
+      description: The current pagination position in the paged result set. Used for cursor-based pagination.
+      schema:
+        type: string
   responses:
-    TooManyRequests:
-      description: The request rate has exceeded the allowed limit.
+    BadRequest:
+      description: The request is invalid or malformed.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request is invalid or malformed.
+    TooManyRequests:
+      description: The request rate has exceeded the allowed limit.
       content:
         application/json:
           schema:

@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon API Gateway REST API Keys REST APIs API
   description: The Amazon API Gateway REST API enables programmatic management of API Gateway resources. You can create, configure, and manage REST APIs, stages, deployments, authorizers, models, resources, methods, and integrations through this management interface.
@@ -159,39 +159,95 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
-  parameters:
-    Limit:
-      name: limit
-      in: query
-      description: The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 500
-        default: 25
-    RestApiId:
-      name: restapi_id
-      in: path
-      required: true
-      description: The identifier of the REST API.
-      schema:
-        type: string
-    Position:
-      name: position
-      in: query
-      description: The current pagination position in the paged result set. Used for cursor-based pagination.
-      schema:
-        type: string
   schemas:
-    RestApis:
+    Error:
       type: object
       properties:
-        position:
+        message:
           type: string
-        item:
+          description: A human-readable error message.
+        code:
+          type: string
+          description: The error code.
+    EndpointConfiguration:
+      type: object
+      properties:
+        types:
           type: array
           items:
-            $ref: '#/components/schemas/RestApi'
+            type: string
+            enum:
+            - REGIONAL
+            - EDGE
+            - PRIVATE
+          description: A list of endpoint types of an API or its custom domain name.
+        vpcEndpointIds:
+          type: array
+          items:
+            type: string
+          description: A list of VPC endpoint IDs of an API against which to create Route53 ALIASes.
+    CreateRestApiRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: The name of the REST API.
+        description:
+          type: string
+          description: The description of the REST API.
+        version:
+          type: string
+          description: A version identifier for the API.
+        cloneFrom:
+          type: string
+          description: The ID of the REST API to clone from.
+        binaryMediaTypes:
+          type: array
+          items:
+            type: string
+          description: The list of binary media types to support.
+        minimumCompressionSize:
+          type: integer
+          description: Minimum payload compression size in bytes.
+        apiKeySource:
+          type: string
+          enum:
+          - HEADER
+          - AUTHORIZER
+        endpointConfiguration:
+          $ref: '#/components/schemas/EndpointConfiguration'
+        policy:
+          type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        disableExecuteApiEndpoint:
+          type: boolean
+    PatchOperation:
+      type: object
+      properties:
+        op:
+          type: string
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          description: The operation type.
+        path:
+          type: string
+          description: The op operation's target, as identified by a JSON Pointer value.
+        value:
+          type: string
+          description: The new target value of the update operation. It is applicable for the add or replace operation.
+        from:
+          type: string
+          description: The copy update operation's source as identified by a JSON Pointer value.
     RestApi:
       type: object
       properties:
@@ -243,85 +299,6 @@ components:
         disableExecuteApiEndpoint:
           type: boolean
           description: Specifies whether clients can invoke your API by using the default execute-api endpoint.
-    EndpointConfiguration:
-      type: object
-      properties:
-        types:
-          type: array
-          items:
-            type: string
-            enum:
-            - REGIONAL
-            - EDGE
-            - PRIVATE
-          description: A list of endpoint types of an API or its custom domain name.
-        vpcEndpointIds:
-          type: array
-          items:
-            type: string
-          description: A list of VPC endpoint IDs of an API against which to create Route53 ALIASes.
-    PatchOperation:
-      type: object
-      properties:
-        op:
-          type: string
-          enum:
-          - add
-          - remove
-          - replace
-          - move
-          - copy
-          - test
-          description: The operation type.
-        path:
-          type: string
-          description: The op operation's target, as identified by a JSON Pointer value.
-        value:
-          type: string
-          description: The new target value of the update operation. It is applicable for the add or replace operation.
-        from:
-          type: string
-          description: The copy update operation's source as identified by a JSON Pointer value.
-    CreateRestApiRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: The name of the REST API.
-        description:
-          type: string
-          description: The description of the REST API.
-        version:
-          type: string
-          description: A version identifier for the API.
-        cloneFrom:
-          type: string
-          description: The ID of the REST API to clone from.
-        binaryMediaTypes:
-          type: array
-          items:
-            type: string
-          description: The list of binary media types to support.
-        minimumCompressionSize:
-          type: integer
-          description: Minimum payload compression size in bytes.
-        apiKeySource:
-          type: string
-          enum:
-          - HEADER
-          - AUTHORIZER
-        endpointConfiguration:
-          $ref: '#/components/schemas/EndpointConfiguration'
-        policy:
-          type: string
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-        disableExecuteApiEndpoint:
-          type: boolean
     PatchOperations:
       type: object
       properties:
@@ -329,30 +306,47 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PatchOperation'
-    Error:
+    RestApis:
       type: object
       properties:
-        message:
+        position:
           type: string
-          description: A human-readable error message.
-        code:
-          type: string
-          description: The error code.
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestApi'
+  parameters:
+    RestApiId:
+      name: restapi_id
+      in: path
+      required: true
+      description: The identifier of the REST API.
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      description: The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 25
+    Position:
+      name: position
+      in: query
+      description: The current pagination position in the paged result set. Used for cursor-based pagination.
+      schema:
+        type: string
   responses:
-    TooManyRequests:
-      description: The request rate has exceeded the allowed limit.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: The request lacks valid authentication credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     BadRequest:
       description: The request is invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: The request rate has exceeded the allowed limit.
       content:
         application/json:
           schema:
@@ -371,6 +365,12 @@ components:
             $ref: '#/components/schemas/Error'
     Conflict:
       description: The request conflicts with the current state of the resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: The request lacks valid authentication credentials.
       content:
         application/json:
           schema:

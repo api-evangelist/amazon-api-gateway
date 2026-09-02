@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon API Gateway REST API Keys Gateway Responses API
   description: The Amazon API Gateway REST API enables programmatic management of API Gateway resources. You can create, configure, and manage REST APIs, stages, deployments, authorizers, models, resources, methods, and integrations through this management interface.
@@ -114,7 +114,63 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message.
+        code:
+          type: string
+          description: The error code.
+    GatewayResponse:
+      type: object
+      properties:
+        responseType:
+          type: string
+        statusCode:
+          type: string
+        responseParameters:
+          type: object
+          additionalProperties:
+            type: string
+        responseTemplates:
+          type: object
+          additionalProperties:
+            type: string
+        defaultResponse:
+          type: boolean
+    PutGatewayResponseRequest:
+      type: object
+      properties:
+        statusCode:
+          type: string
+        responseParameters:
+          type: object
+          additionalProperties:
+            type: string
+        responseTemplates:
+          type: object
+          additionalProperties:
+            type: string
+    GatewayResponses:
+      type: object
+      properties:
+        position:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/GatewayResponse'
   parameters:
+    RestApiId:
+      name: restapi_id
+      in: path
+      required: true
+      description: The identifier of the REST API.
+      schema:
+        type: string
     Limit:
       name: limit
       in: query
@@ -124,6 +180,12 @@ components:
         minimum: 1
         maximum: 500
         default: 25
+    Position:
+      name: position
+      in: query
+      description: The current pagination position in the paged result set. Used for cursor-based pagination.
+      schema:
+        type: string
     ResponseType:
       name: response_type
       in: path
@@ -153,28 +215,15 @@ components:
         - UNAUTHORIZED
         - UNSUPPORTED_MEDIA_TYPE
         - WAF_FILTERED
-    RestApiId:
-      name: restapi_id
-      in: path
-      required: true
-      description: The identifier of the REST API.
-      schema:
-        type: string
-    Position:
-      name: position
-      in: query
-      description: The current pagination position in the paged result set. Used for cursor-based pagination.
-      schema:
-        type: string
   responses:
-    TooManyRequests:
-      description: The request rate has exceeded the allowed limit.
+    BadRequest:
+      description: The request is invalid or malformed.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request is invalid or malformed.
+    TooManyRequests:
+      description: The request rate has exceeded the allowed limit.
       content:
         application/json:
           schema:
@@ -185,55 +234,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  schemas:
-    PutGatewayResponseRequest:
-      type: object
-      properties:
-        statusCode:
-          type: string
-        responseParameters:
-          type: object
-          additionalProperties:
-            type: string
-        responseTemplates:
-          type: object
-          additionalProperties:
-            type: string
-    GatewayResponses:
-      type: object
-      properties:
-        position:
-          type: string
-        item:
-          type: array
-          items:
-            $ref: '#/components/schemas/GatewayResponse'
-    GatewayResponse:
-      type: object
-      properties:
-        responseType:
-          type: string
-        statusCode:
-          type: string
-        responseParameters:
-          type: object
-          additionalProperties:
-            type: string
-        responseTemplates:
-          type: object
-          additionalProperties:
-            type: string
-        defaultResponse:
-          type: boolean
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: A human-readable error message.
-        code:
-          type: string
-          description: The error code.
   securitySchemes:
     sigv4:
       type: apiKey

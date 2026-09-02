@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon API Gateway REST API Keys Methods API
   description: The Amazon API Gateway REST API enables programmatic management of API Gateway resources. You can create, configure, and manage REST APIs, stages, deployments, authorizers, models, resources, methods, and integrations through this management interface.
@@ -196,58 +196,48 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
 components:
   schemas:
-    PutIntegrationRequest:
+    Error:
       type: object
-      required:
-      - type
       properties:
-        type:
+        message:
           type: string
-          enum:
-          - HTTP
-          - HTTP_PROXY
-          - AWS
-          - AWS_PROXY
-          - MOCK
-        httpMethod:
+          description: A human-readable error message.
+        code:
           type: string
-        uri:
+          description: The error code.
+    IntegrationResponse:
+      type: object
+      properties:
+        statusCode:
           type: string
-        connectionType:
+        selectionPattern:
           type: string
-          enum:
-          - INTERNET
-          - VPC_LINK
-        connectionId:
-          type: string
-        credentials:
-          type: string
-        requestParameters:
+        responseParameters:
           type: object
           additionalProperties:
             type: string
-        requestTemplates:
+        responseTemplates:
           type: object
           additionalProperties:
             type: string
-        passthroughBehavior:
-          type: string
-          enum:
-          - WHEN_NO_MATCH
-          - WHEN_NO_TEMPLATES
-          - NEVER
         contentHandling:
           type: string
           enum:
           - CONVERT_TO_BINARY
           - CONVERT_TO_TEXT
-        timeoutInMillis:
-          type: integer
-        cacheNamespace:
+    MethodResponse:
+      type: object
+      properties:
+        statusCode:
           type: string
-        cacheKeyParameters:
-          type: array
-          items:
+          description: The method response's status code.
+        responseParameters:
+          type: object
+          additionalProperties:
+            type: boolean
+        responseModels:
+          type: object
+          additionalProperties:
             type: string
     Integration:
       type: object
@@ -316,6 +306,52 @@ components:
           properties:
             insecureSkipVerification:
               type: boolean
+    PatchOperation:
+      type: object
+      properties:
+        op:
+          type: string
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          description: The operation type.
+        path:
+          type: string
+          description: The op operation's target, as identified by a JSON Pointer value.
+        value:
+          type: string
+          description: The new target value of the update operation. It is applicable for the add or replace operation.
+        from:
+          type: string
+          description: The copy update operation's source as identified by a JSON Pointer value.
+    PutMethodRequest:
+      type: object
+      required:
+      - authorizationType
+      properties:
+        authorizationType:
+          type: string
+          description: The method's authorization type. Valid values are NONE, AWS_IAM, CUSTOM, or COGNITO_USER_POOLS.
+        authorizerId:
+          type: string
+        apiKeyRequired:
+          type: boolean
+        operationName:
+          type: string
+        requestParameters:
+          type: object
+          additionalProperties:
+            type: boolean
+        requestModels:
+          type: object
+          additionalProperties:
+            type: string
+        requestValidatorId:
+          type: string
     Method:
       type: object
       properties:
@@ -354,72 +390,6 @@ components:
           description: Method responses keyed by status code.
         methodIntegration:
           $ref: '#/components/schemas/Integration'
-    IntegrationResponse:
-      type: object
-      properties:
-        statusCode:
-          type: string
-        selectionPattern:
-          type: string
-        responseParameters:
-          type: object
-          additionalProperties:
-            type: string
-        responseTemplates:
-          type: object
-          additionalProperties:
-            type: string
-        contentHandling:
-          type: string
-          enum:
-          - CONVERT_TO_BINARY
-          - CONVERT_TO_TEXT
-    PutMethodRequest:
-      type: object
-      required:
-      - authorizationType
-      properties:
-        authorizationType:
-          type: string
-          description: The method's authorization type. Valid values are NONE, AWS_IAM, CUSTOM, or COGNITO_USER_POOLS.
-        authorizerId:
-          type: string
-        apiKeyRequired:
-          type: boolean
-        operationName:
-          type: string
-        requestParameters:
-          type: object
-          additionalProperties:
-            type: boolean
-        requestModels:
-          type: object
-          additionalProperties:
-            type: string
-        requestValidatorId:
-          type: string
-    PatchOperation:
-      type: object
-      properties:
-        op:
-          type: string
-          enum:
-          - add
-          - remove
-          - replace
-          - move
-          - copy
-          - test
-          description: The operation type.
-        path:
-          type: string
-          description: The op operation's target, as identified by a JSON Pointer value.
-        value:
-          type: string
-          description: The new target value of the update operation. It is applicable for the add or replace operation.
-        from:
-          type: string
-          description: The copy update operation's source as identified by a JSON Pointer value.
     PatchOperations:
       type: object
       properties:
@@ -427,67 +397,72 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PatchOperation'
-    Error:
+    PutIntegrationRequest:
       type: object
+      required:
+      - type
       properties:
-        message:
+        type:
           type: string
-          description: A human-readable error message.
-        code:
+          enum:
+          - HTTP
+          - HTTP_PROXY
+          - AWS
+          - AWS_PROXY
+          - MOCK
+        httpMethod:
           type: string
-          description: The error code.
-    MethodResponse:
-      type: object
-      properties:
-        statusCode:
+        uri:
           type: string
-          description: The method response's status code.
-        responseParameters:
-          type: object
-          additionalProperties:
-            type: boolean
-        responseModels:
+        connectionType:
+          type: string
+          enum:
+          - INTERNET
+          - VPC_LINK
+        connectionId:
+          type: string
+        credentials:
+          type: string
+        requestParameters:
           type: object
           additionalProperties:
             type: string
-  responses:
-    TooManyRequests:
-      description: The request rate has exceeded the allowed limit.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request is invalid or malformed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The specified resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Conflict:
-      description: The request conflicts with the current state of the resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+        requestTemplates:
+          type: object
+          additionalProperties:
+            type: string
+        passthroughBehavior:
+          type: string
+          enum:
+          - WHEN_NO_MATCH
+          - WHEN_NO_TEMPLATES
+          - NEVER
+        contentHandling:
+          type: string
+          enum:
+          - CONVERT_TO_BINARY
+          - CONVERT_TO_TEXT
+        timeoutInMillis:
+          type: integer
+        cacheNamespace:
+          type: string
+        cacheKeyParameters:
+          type: array
+          items:
+            type: string
   parameters:
-    RestApiId:
-      name: restapi_id
-      in: path
-      required: true
-      description: The identifier of the REST API.
-      schema:
-        type: string
     ResourceId:
       name: resource_id
       in: path
       required: true
       description: The identifier of the resource.
+      schema:
+        type: string
+    RestApiId:
+      name: restapi_id
+      in: path
+      required: true
+      description: The identifier of the REST API.
       schema:
         type: string
     HttpMethod:
@@ -506,6 +481,31 @@ components:
         - HEAD
         - OPTIONS
         - ANY
+  responses:
+    BadRequest:
+      description: The request is invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: The request rate has exceeded the allowed limit.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The specified resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Conflict:
+      description: The request conflicts with the current state of the resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     sigv4:
       type: apiKey

@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon API Gateway REST API Keys Domain Names API
   description: The Amazon API Gateway REST API enables programmatic management of API Gateway resources. You can create, configure, and manage REST APIs, stages, deployments, authorizers, models, resources, methods, and integrations through this management interface.
@@ -152,6 +152,13 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
 components:
   parameters:
+    DomainNameParam:
+      name: domain_name
+      in: path
+      required: true
+      description: The custom domain name.
+      schema:
+        type: string
     Limit:
       name: limit
       in: query
@@ -161,45 +168,116 @@ components:
         minimum: 1
         maximum: 500
         default: 25
-    DomainNameParam:
-      name: domain_name
-      in: path
-      required: true
-      description: The custom domain name.
-      schema:
-        type: string
     Position:
       name: position
       in: query
       description: The current pagination position in the paged result set. Used for cursor-based pagination.
       schema:
         type: string
-  responses:
-    TooManyRequests:
-      description: The request rate has exceeded the allowed limit.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request is invalid or malformed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The specified resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Conflict:
-      description: The request conflicts with the current state of the resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A human-readable error message.
+        code:
+          type: string
+          description: The error code.
+    EndpointConfiguration:
+      type: object
+      properties:
+        types:
+          type: array
+          items:
+            type: string
+            enum:
+            - REGIONAL
+            - EDGE
+            - PRIVATE
+          description: A list of endpoint types of an API or its custom domain name.
+        vpcEndpointIds:
+          type: array
+          items:
+            type: string
+          description: A list of VPC endpoint IDs of an API against which to create Route53 ALIASes.
+    DomainNames:
+      type: object
+      properties:
+        position:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/DomainName'
+    PatchOperation:
+      type: object
+      properties:
+        op:
+          type: string
+          enum:
+          - add
+          - remove
+          - replace
+          - move
+          - copy
+          - test
+          description: The operation type.
+        path:
+          type: string
+          description: The op operation's target, as identified by a JSON Pointer value.
+        value:
+          type: string
+          description: The new target value of the update operation. It is applicable for the add or replace operation.
+        from:
+          type: string
+          description: The copy update operation's source as identified by a JSON Pointer value.
+    CreateDomainNameRequest:
+      type: object
+      required:
+      - domainName
+      properties:
+        domainName:
+          type: string
+        certificateName:
+          type: string
+        certificateBody:
+          type: string
+        certificatePrivateKey:
+          type: string
+        certificateChain:
+          type: string
+        certificateArn:
+          type: string
+        regionalCertificateName:
+          type: string
+        regionalCertificateArn:
+          type: string
+        endpointConfiguration:
+          $ref: '#/components/schemas/EndpointConfiguration'
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        securityPolicy:
+          type: string
+          enum:
+          - TLS_1_0
+          - TLS_1_2
+        mutualTlsAuthentication:
+          type: object
+          properties:
+            truststoreUri:
+              type: string
+            truststoreVersion:
+              type: string
+    PatchOperations:
+      type: object
+      properties:
+        patchOperations:
+          type: array
+          items:
+            $ref: '#/components/schemas/PatchOperation'
     DomainName:
       type: object
       properties:
@@ -256,109 +334,31 @@ components:
               type: array
               items:
                 type: string
-    EndpointConfiguration:
-      type: object
-      properties:
-        types:
-          type: array
-          items:
-            type: string
-            enum:
-            - REGIONAL
-            - EDGE
-            - PRIVATE
-          description: A list of endpoint types of an API or its custom domain name.
-        vpcEndpointIds:
-          type: array
-          items:
-            type: string
-          description: A list of VPC endpoint IDs of an API against which to create Route53 ALIASes.
-    CreateDomainNameRequest:
-      type: object
-      required:
-      - domainName
-      properties:
-        domainName:
-          type: string
-        certificateName:
-          type: string
-        certificateBody:
-          type: string
-        certificatePrivateKey:
-          type: string
-        certificateChain:
-          type: string
-        certificateArn:
-          type: string
-        regionalCertificateName:
-          type: string
-        regionalCertificateArn:
-          type: string
-        endpointConfiguration:
-          $ref: '#/components/schemas/EndpointConfiguration'
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-        securityPolicy:
-          type: string
-          enum:
-          - TLS_1_0
-          - TLS_1_2
-        mutualTlsAuthentication:
-          type: object
-          properties:
-            truststoreUri:
-              type: string
-            truststoreVersion:
-              type: string
-    DomainNames:
-      type: object
-      properties:
-        position:
-          type: string
-        item:
-          type: array
-          items:
-            $ref: '#/components/schemas/DomainName'
-    PatchOperation:
-      type: object
-      properties:
-        op:
-          type: string
-          enum:
-          - add
-          - remove
-          - replace
-          - move
-          - copy
-          - test
-          description: The operation type.
-        path:
-          type: string
-          description: The op operation's target, as identified by a JSON Pointer value.
-        value:
-          type: string
-          description: The new target value of the update operation. It is applicable for the add or replace operation.
-        from:
-          type: string
-          description: The copy update operation's source as identified by a JSON Pointer value.
-    PatchOperations:
-      type: object
-      properties:
-        patchOperations:
-          type: array
-          items:
-            $ref: '#/components/schemas/PatchOperation'
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: A human-readable error message.
-        code:
-          type: string
-          description: The error code.
+  responses:
+    BadRequest:
+      description: The request is invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: The request rate has exceeded the allowed limit.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The specified resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Conflict:
+      description: The request conflicts with the current state of the resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     sigv4:
       type: apiKey
